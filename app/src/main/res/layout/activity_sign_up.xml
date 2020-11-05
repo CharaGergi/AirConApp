@@ -6,4 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".SignUpActivity">
 
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="412dp"
+        android:layout_height="87dp"
+        android:background="@color/colorPrimary"
+        android:ems="1000"
+        android:gravity="center"
+        android:text="@string/welcome"
+        android:textColor="#FFFFFF"
+        android:textSize="27dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
