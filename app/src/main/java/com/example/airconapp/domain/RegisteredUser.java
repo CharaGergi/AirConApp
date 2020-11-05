@@ -5,15 +5,16 @@ public class RegisteredUser extends User
     private String name;
     private String password;
     private String priority;
-    private int fontSize; // 0 = small, 1 = medium, 2 = large
-    private boolean speechCommands;
 
-    RegisteredUser(String name, String password, String priority, int fontSize, boolean speechCommands) {
+    public RegisteredUser(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
+
+    RegisteredUser(String name, String password, String priority) {
         this.name = name;
         this.password = password;
         this.priority = priority;
-        this.fontSize = fontSize;
-        this.speechCommands = speechCommands;
     }
 
     public String getName() {
@@ -28,14 +29,6 @@ public class RegisteredUser extends User
         return priority;
     }
 
-    public int getFontSize() {
-        return fontSize;
-    }
-
-    public boolean isSpeechCommands() {
-        return speechCommands;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -46,14 +39,6 @@ public class RegisteredUser extends User
 
     public void setPriority(String priority) {
         this.priority = priority;
-    }
-
-    public void setFontSize(int fontSize) {
-        this.fontSize = fontSize;
-    }
-
-    public void setSpeechCommands(boolean speechCommands) {
-        this.speechCommands = speechCommands;
     }
 
     @Override

@@ -4,7 +4,31 @@ import java.util.HashSet;
 
 public class User
 {
+    private int fontSize; // 0 = small, 1 = medium, 2 = large
+    private boolean speechCommands;
+
     User() {}
+
+    public User(int fontSize, boolean speechCommands) {
+        this.fontSize = fontSize;
+        this.speechCommands = speechCommands;
+    }
+
+    public int getFontSize() {
+        return fontSize;
+    }
+
+    public boolean isSpeechCommands() {
+        return speechCommands;
+    }
+
+    public void setFontSize(int fontSize) {
+        this.fontSize = fontSize;
+    }
+
+    public void setSpeechCommands(boolean speechCommands) {
+        this.speechCommands = speechCommands;
+    }
 
     public void register(String name, String password1, String password2) {
         /* Searches if the name already exists (it must be unique tο be accepted) */
