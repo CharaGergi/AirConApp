@@ -9,12 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignUpActivity"></activity>
-        <activity android:name=".AirConDetailsActivity" />
-        <activity android:name=".AirConActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".SignInActivity">
+        <activity android:name=".activities.SignUpActivity"></activity>
+        <activity android:name=".activities.AirConDetailsActivity" />
+        <activity android:name=".activities.AirConActivity" />
+        <activity android:name=".activities.ProfileActivity" />
+        <activity android:name=".activities.MenuActivity" />
+        <activity android:name=".activities.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

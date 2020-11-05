@@ -1,13 +1,16 @@
-package com.example.airconapp;
+package com.example.airconapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 
-public class SignInActivity extends AppCompatActivity {
+import com.example.airconapp.R;
+
+public class AirConActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signin);
+        setContentView(R.layout.activity_air_con);
     }
 }

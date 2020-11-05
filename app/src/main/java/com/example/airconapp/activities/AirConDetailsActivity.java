@@ -1,8 +1,10 @@
-package com.example.airconapp;
+package com.example.airconapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.airconapp.R;
 
 public class AirConDetailsActivity extends AppCompatActivity {
 
