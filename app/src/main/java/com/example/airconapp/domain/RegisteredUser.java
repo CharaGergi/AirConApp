@@ -1,10 +1,13 @@
 package com.example.airconapp.domain;
 
+import java.util.HashSet;
+
 public class RegisteredUser extends User
 {
     private String name;
     private String password;
     private String priority;
+    private static String priorityTooltip;
 
     public RegisteredUser(String name, String password) {
         this.name = name;
@@ -44,5 +47,12 @@ public class RegisteredUser extends User
     @Override
     protected void logoutUser() {
         Utilities.getLoggedInUsers().remove(this);
+    }
+
+    public HashSet<AirCon> manualSearch()
+    {
+        HashSet<AirCon> result = new HashSet<>(Utilities.getAirCons());
+
+        return result;
     }
 }
