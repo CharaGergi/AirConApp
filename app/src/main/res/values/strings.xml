@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">AirConApp</string>
     <string name="welcome">Καλώς ήρθατε</string>
+    <string name="login">Σύνδεση</string>
     <string name="airConName">AirConName</string>
     <string name="airConDetails">Λεπτομέρειες Κλιματιστικού</string>
-    <string name="menu">Μενού</string>
+    <string name="menu">Αρχική Οθόνη</string>
     <string name="profile">Προφίλ</string>
 </resources>
