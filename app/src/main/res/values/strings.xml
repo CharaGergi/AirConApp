@@ -6,4 +6,5 @@
     <string name="airConDetails">Λεπτομέρειες Κλιματιστικού</string>
     <string name="menu">Αρχική Οθόνη</string>
     <string name="profile">Προφίλ</string>
+    <string name="forgotPswd"><u>Ξέχασα τον κωδικό μου</u>.</string>
 </resources>
