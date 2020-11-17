@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.AdvancedACSettingsActivity"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="87dp"
+        android:background="@color/colorPrimary"
+        android:ems="1000"
+        android:gravity="center"
+        android:text="@string/advancedAC"
+        android:textColor="#FFFFFF"
+        android:textSize="27dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/back_icon"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/settings_button"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="26.5dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/settings_icon"
+        android:backgroundTint="@color/grey"
+        app:layout_constraintBottom_toBottomOf="@+id/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/homeBtn"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/home_icon_default"
+        android:backgroundTint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/airIntensityTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/airIntensity"
+        android:textColor="@color/light_black"
+        android:textSize="24dp"
+        app:layout_constraintStart_toEndOf="@+id/airIntensity"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <ImageView
+        android:id="@+id/airIntensity"
+        android:layout_width="80dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="184dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:srcCompat="@drawable/air_intensity" />
+
+    <SeekBar
+        android:id="@+id/airIntensityseekBar"
+        android:layout_width="120dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="35dp"
+        app:layout_constraintStart_toEndOf="@+id/airIntensityTxtView"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <ImageView
+        android:id="@+id/sleep"
+        android:layout_width="89dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="112dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:srcCompat="@drawable/sleep_icon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

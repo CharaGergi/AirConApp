@@ -7,6 +7,16 @@
     <string name="menu">Αρχική Οθόνη</string>
     <string name="profile">Προφίλ</string>
     <string name="connUnits">Συνδεδεμένες Μονάδες</string>
-    <string name="homeTemp">23°C</string>
+    <string name="homeTemp">23 °C</string>
     <string name="searchBtn">Εύρεση Κλιματιστικών</string>
+    <string name="manualSearchBtn">Χειροκίνητη Εύρεση Κλιματιστικών</string>
+    <string name="manageDevices">Διαχείριση Συσκευών</string>
+    <string name="fontSize">Μέγεθος Γραμματοσειράς</string>
+    <string name="smallFontBtn">Μικρό</string>
+    <string name="mediumFontBtn">Μεσαίο</string>
+    <string name="bigFontBtn">Μεγάλο</string>
+    <string name="mic">Μικρόφωνο</string>
+    <string name="speech">Ηχητικές Εντολές</string>
+    <string name="advancedAC">Πρόσθετες Επιλογές Κλιματιστικού</string>
+    <string name="airIntensity">Ένταση Αέρα</string>
 </resources>
