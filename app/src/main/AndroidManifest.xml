@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.AirConDetailsActivity" />
-        <activity android:name=".activities.AirConActivity" />
-        <activity android:name=".activities.ProfileActivity" />
-        <activity android:name=".activities.MenuActivity" />
+        <activity android:name=".activities.AirConDetailsActivity" android:screenOrientation="landscape"/>
+        <activity android:name=".activities.AirConActivity" android:screenOrientation="landscape"/>
+        <activity android:name=".activities.ProfileActivity" android:screenOrientation="landscape"/>
+        <activity android:name=".activities.MenuActivity" android:screenOrientation="landscape"/>
     </application>
 
 </manifest>
