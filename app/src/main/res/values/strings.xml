@@ -19,4 +19,10 @@
     <string name="speech">Ηχητικές Εντολές</string>
     <string name="advancedAC">Πρόσθετες Επιλογές Κλιματιστικού</string>
     <string name="airIntensity">Ένταση Αέρα</string>
+    <string name="sleep">Λειτουργία Ύπνου</string>
+    <string name="silent">Αθόρυβη Λειτουργία</string>
+    <string name="timer">Εκκίνηση σε</string>
+    <string name="hours">ώρες</string>
+    <string name="minutes">λεπτά</string>
+    <string name="timerOff">Χρονοδιακόπτης</string>
 </resources>
