@@ -2,6 +2,7 @@ package com.example.airconapp.domain;
 
 public class AirCon
 {
+    private String name;
     private int mainMode; // 0 = sun, 1 = snow, 2 = humidity/drop, 3 = fan
     private int temperature;
     private int airPower; // probably 0 to 4
@@ -11,7 +12,8 @@ public class AirCon
     private int timer;
     private boolean power;
 
-    public AirCon(int mainMode, int temperature, int airPower, int tilt, boolean sleepMode, boolean silentMode, int timer, boolean power) {
+    public AirCon(String name, int mainMode, int temperature, int airPower, int tilt, boolean sleepMode, boolean silentMode, int timer, boolean power) {
+        this.name = name;
         this.mainMode = mainMode;
         this.temperature = temperature;
         this.airPower = airPower;
@@ -20,6 +22,11 @@ public class AirCon
         this.silentMode = silentMode;
         this.timer = timer;
         this.power = power;
+    }
+
+    public String getName()
+    {
+        return name;
     }
 
     public int getMainMode() {
@@ -52,6 +59,11 @@ public class AirCon
 
     public boolean isPower() {
         return power;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
     }
 
     public void setMainMode(int mainMode) {

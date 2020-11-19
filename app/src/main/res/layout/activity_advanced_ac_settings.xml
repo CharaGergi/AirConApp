@@ -52,7 +52,7 @@
         android:id="@+id/homeBtn"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/home_icon_default"
         android:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -64,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="26dp"
         android:text="@string/airIntensity"
         android:textColor="@color/light_black"
         android:textSize="24dp"
@@ -76,7 +76,7 @@
         android:layout_width="80dp"
         android:layout_height="65dp"
         android:layout_marginStart="184dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo"
         app:srcCompat="@drawable/air_intensity" />
@@ -86,7 +86,7 @@
         android:layout_width="120dp"
         android:layout_height="35dp"
         android:layout_marginStart="130dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="25dp"
         app:layout_constraintStart_toEndOf="@+id/airIntensityTxtView"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
@@ -95,7 +95,7 @@
         android:layout_width="66dp"
         android:layout_height="51dp"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="102dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo"
         app:srcCompat="@drawable/sleep_icon" />
@@ -172,7 +172,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="204dp"
+        android:layout_marginTop="194dp"
         android:background="@color/light_blue"
         android:ems="10"
         android:gravity="center"
@@ -186,7 +186,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="202dp"
         android:text="@string/hours"
         android:textColor="@color/light_black"
         android:textSize="22dp"
@@ -292,5 +292,66 @@
         android:textSize="22dp"
         app:layout_constraintStart_toEndOf="@+id/minsTimerOffEditTxt"
         app:layout_constraintTop_toBottomOf="@+id/minsTimerTxtView" />
+
+    <TextView
+        android:id="@+id/applyToTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="108dp"
+        android:text="@string/applyTo"
+        android:textColor="@color/light_black"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/applyToAllTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="104dp"
+        android:layout_marginBottom="112dp"
+        android:text="@string/applyToAll"
+        android:textColor="@color/light_black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="108dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/applyToAllTxtView" />
+
+    <Switch
+        android:id="@+id/silentSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:layout_marginStart="50dp"
+        android:scaleX="1.3"
+        app:layout_constraintStart_toEndOf="@+id/silentTxtView"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <Button
+        android:id="@+id/soundCommandsBtn"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginRight="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/speaker_icon"
+        app:layout_constraintEnd_toStartOf="@+id/speechCommandsBtn" />
+
+    <Button
+        android:id="@+id/speechCommandsBtn"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/mic_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

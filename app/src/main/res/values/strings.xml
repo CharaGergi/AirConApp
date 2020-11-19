@@ -25,4 +25,11 @@
     <string name="hours">ώρες</string>
     <string name="minutes">λεπτά</string>
     <string name="timerOff">Χρονοδιακόπτης</string>
+    <string name="applyTo">Εφαρμογή σε</string>
+    <string name="applyToAll">Εφαρμογή σε όλα τα κλιματιστικά</string>
+    <string name="mode">Επιλέξτε Λειτουργία</string>
+    <string name="temperature">Θερμοκρασία</string>
+    <string name="degreesC">°C</string>
+    <string name="angle">Κλίση Πτερυγίων</string>
+    <string name="advancedSettings">Ρυθμίσεις για προχωρημένους</string>
 </resources>
