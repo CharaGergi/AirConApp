@@ -7,21 +7,6 @@
     tools:context=".view.AirConDetails.AirConDetailsActivity"
     android:background="@color/white">
 
-    <TextView
-        android:id="@+id/logo"
-        android:layout_width="match_parent"
-        android:layout_height="87dp"
-        android:background="@color/colorPrimary"
-        android:ems="1000"
-        android:gravity="center"
-        android:text="@string/airConDetails"
-        android:textColor="#FFFFFF"
-        android:textSize="23dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/settings_button"
         android:layout_width="35dp"
@@ -47,5 +32,249 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/energyClassTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="540dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/energyClass"
+        android:textColor="@color/light_black"
+        android:textSize="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
+
+    <TextView
+        android:id="@+id/outputTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="42dp"
+        android:text="@string/output"
+        android:textColor="@color/light_black"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/serialNumTxtView" />
+
+    <TextView
+        android:id="@+id/noisePowerTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="540dp"
+        android:layout_marginTop="42dp"
+        android:text="@string/noisePower"
+        android:textColor="@color/light_black"
+        android:textSize="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/energyClassTxtView" />
+
+    <TextView
+        android:id="@+id/dimensionTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="540dp"
+        android:layout_marginTop="42dp"
+        android:text="@string/dimensions"
+        android:textColor="@color/light_black"
+        android:textSize="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noisePowerTxtView" />
+
+    <TextView
+        android:id="@+id/airConSerialTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="43dp"
+        android:text="airConSerial"
+        android:textColor="@color/light_black"
+        android:textSize="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/airConNameTxtView" />
+
+    <TextView
+        android:id="@+id/airConNameTxtView"
+        android:layout_width="137dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="51dp"
+        android:text="airConName"
+        android:textColor="@color/light_black"
+        android:textSize="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="87dp"
+        android:background="@color/colorPrimary"
+        android:ems="1000"
+        android:gravity="center"
+        android:text="@string/airConDetails"
+        android:textColor="#FFFFFF"
+        android:textSize="27dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/heatPowerTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/heatPower"
+        android:textColor="@color/light_black"
+        android:textSize="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/coolTxtView" />
+
+    <TextView
+        android:id="@+id/coolTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/coolPower"
+        android:textColor="@color/light_black"
+        android:textSize="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/outputTxtView" />
+
+    <TextView
+        android:id="@+id/nameTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/name"
+        android:textColor="@color/light_black"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
+
+    <TextView
+        android:id="@+id/serialNumTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="42dp"
+        android:text="@string/serialNum"
+        android:textColor="@color/light_black"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameTxtView" />
+
+    <TextView
+        android:id="@+id/airConCP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="99dp"
+        android:text="airConCP"
+        android:textColor="@color/light_black"
+        android:textSize="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/airConSerialTxtView" />
+
+    <TextView
+        android:id="@+id/airConHP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="28dp"
+        android:textColor="@color/light_black"
+        android:textSize="22dp"
+        android:text="airConHP"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/airConCP" />
+
+    <TextView
+        android:id="@+id/airConNP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="43dp"
+        android:text="airConNP"
+        android:textColor="@color/light_black"
+        android:textSize="22dp"
+        app:layout_constraintStart_toEndOf="@id/noisePowerTxtView"
+        app:layout_constraintTop_toBottomOf="@+id/airConEC" />
+
+    <TextView
+        android:id="@+id/airConEC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="51dp"
+        android:text="airConEC"
+        android:textColor="@color/light_black"
+        android:textSize="22dp"
+        app:layout_constraintStart_toEndOf="@id/energyClassTxtView"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <TextView
+        android:id="@+id/insideUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="570dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/insideUnit"
+        android:textColor="@color/light_black"
+        android:textSize="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dimensionTxtView" />
+
+    <TextView
+        android:id="@+id/outsideUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="570dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/outsideUnit"
+        android:textColor="@color/light_black"
+        android:textSize="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/insideUnit" />
+
+    <TextView
+        android:id="@+id/airConID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="99dp"
+        android:text="242x456x156"
+        android:textColor="@color/light_black"
+        android:textSize="22dp"
+        app:layout_constraintStart_toEndOf="@+id/insideUnit"
+        app:layout_constraintTop_toBottomOf="@+id/airConNP" />
+
+    <TextView
+        android:id="@+id/airConOD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:text="242x456x156"
+        android:textColor="@color/light_black"
+        android:textSize="22dp"
+        app:layout_constraintStart_toEndOf="@+id/outsideUnit"
+        app:layout_constraintTop_toBottomOf="@+id/airConID" />
+
+    <Button
+        android:id="@+id/homeBtn"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/home_icon_default"
+        android:backgroundTint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

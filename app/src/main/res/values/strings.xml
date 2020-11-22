@@ -5,7 +5,7 @@
     <string name="airConName">AirConName</string>
     <string name="airConDetails">Λεπτομέρειες Κλιματιστικού</string>
     <string name="menu">Αρχική Οθόνη</string>
-    <string name="profile">Προφίλ</string>
+    <string name="settings">Ρυθμίσεις</string>
     <string name="connUnits">Συνδεδεμένες Μονάδες</string>
     <string name="homeTemp">23 °C</string>
     <string name="searchBtn">Εύρεση Κλιματιστικών</string>
@@ -32,4 +32,14 @@
     <string name="degreesC">°C</string>
     <string name="angle">Κλίση Πτερυγίων</string>
     <string name="advancedSettings">Ρυθμίσεις για προχωρημένους</string>
+    <string name="name">Όνομα</string>
+    <string name="output">Απόδοση</string>
+    <string name="serialNum">Σειριακός Αριθμός</string>
+    <string name="coolPower">Ισχύς Ψύξης</string>
+    <string name="heatPower">Ισχύς Θέρμανσης</string>
+    <string name="energyClass">Ενεργειακή Κλάση</string>
+    <string name="noisePower">Ισχύς Θορύβου</string>
+    <string name="dimensions">Διαστάσεις (mm)</string>
+    <string name="insideUnit">Εσωτερική Μονάδα</string>
+    <string name="outsideUnit">Εξωτερική Μονάδα</string>
 </resources>

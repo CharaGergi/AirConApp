@@ -1,4 +1,10 @@
 package com.example.airconapp.view.Menu;
 
-public class MenuView {
+import android.widget.ListView;
+
+public interface MenuView {
+
+    public ListView getAirCons();
+    public void setAirCons(ListView value);
+
 }
