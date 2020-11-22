@@ -40,6 +40,6 @@
     <string name="energyClass">Ενεργειακή Κλάση</string>
     <string name="noisePower">Ισχύς Θορύβου</string>
     <string name="dimensions">Διαστάσεις (mm)</string>
-    <string name="insideUnit">Εσωτερική Μονάδα</string>
-    <string name="outsideUnit">Εξωτερική Μονάδα</string>
+    <string name="internalUnit">Εσωτερική Μονάδα</string>
+    <string name="externalUnit">Εξωτερική Μονάδα</string>
 </resources>
