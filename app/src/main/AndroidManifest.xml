@@ -9,18 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.AdvancedACSettingsActivity"
+        <activity android:name=".view.AdvancedACSettings.AdvancedACSettingsActivity"
             android:screenOrientation="landscape"/>
         <activity
-            android:name=".activities.AirConDetailsActivity"
+            android:name=".view.AirConDetails.AirConDetailsActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".activities.AirConActivity"
+            android:name=".view.AirCon.AirConActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".activities.ProfileActivity"
+            android:name=".view.Profile.ProfileActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".activities.MenuActivity"
+        <activity android:name=".view.Menu.MenuActivity"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

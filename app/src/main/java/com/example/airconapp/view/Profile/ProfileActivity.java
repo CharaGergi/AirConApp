@@ -1,4 +1,4 @@
-package com.example.airconapp.activities;
+package com.example.airconapp.view.Profile;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;

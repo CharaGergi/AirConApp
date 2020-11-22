@@ -1,4 +1,4 @@
-package com.example.airconapp.activities;
+package com.example.airconapp.view.AdvancedACSettings;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import com.example.airconapp.R;
+import com.example.airconapp.view.AirCon.AirConActivity;
+import com.example.airconapp.view.Menu.MenuActivity;
+import com.example.airconapp.view.Profile.ProfileActivity;
 
 public class AdvancedACSettingsActivity extends AppCompatActivity implements View.OnClickListener
 {

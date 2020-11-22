@@ -1,8 +1,7 @@
-package com.example.airconapp.activities;
+package com.example.airconapp.view.AirCon;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +9,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.airconapp.R;
+import com.example.airconapp.view.AdvancedACSettings.AdvancedACSettingsActivity;
+import com.example.airconapp.view.Menu.MenuActivity;
+import com.example.airconapp.view.Profile.ProfileActivity;
 
 public class AirConActivity extends AppCompatActivity implements View.OnClickListener
 {
