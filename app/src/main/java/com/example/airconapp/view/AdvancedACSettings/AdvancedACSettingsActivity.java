@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Switch;
@@ -24,7 +23,7 @@ public class AdvancedACSettingsActivity extends AppCompatActivity implements Vie
     private Switch sleepSwitch;
     private Switch silentSwitch;
     private SeekBar airSeekbar;
-    private CheckBox applyCb;
+    private Switch applySwitch;
     private EditText timerHourEditTxt;
     private EditText timerMinsEditTxt;
     private EditText timerOffHourEditTxt;
@@ -59,8 +58,8 @@ public class AdvancedACSettingsActivity extends AppCompatActivity implements Vie
         airSeekbar = findViewById(R.id.airIntensityseekBar);
         //airSeekbar.setOnSeekBarChangeListener(); // need to check this
 
-        applyCb = findViewById(R.id.checkBox);
-        applyCb.setOnClickListener(this);
+        applySwitch = findViewById(R.id.applyToAllSwitch);
+        applySwitch.setOnClickListener(this);
 
         timerHourEditTxt = findViewById(R.id.hourTimerEditTxt);
         timerMinsEditTxt = findViewById(R.id.minsTimerEditTxt);
@@ -106,7 +105,7 @@ public class AdvancedACSettingsActivity extends AppCompatActivity implements Vie
         {
             // to be implemented
         }
-        if (view == applyCb)
+        if (view == applySwitch)
         {
             // to be implemented
         }

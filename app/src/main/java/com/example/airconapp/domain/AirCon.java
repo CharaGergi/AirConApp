@@ -3,24 +3,26 @@ package com.example.airconapp.domain;
 public class AirCon
 {
     private String name;
-    private int mainMode; // 0 = sun, 1 = snow, 2 = humidity/drop, 3 = fan
+    private int mainMode; // 0 = sun, 1 = snow, 2 = auto, 3 = humidity, 4 = fan
     private int temperature;
-    private int airPower; // probably 0 to 4
+    private int airIntensity; // probably 0 to 4
     private int tilt; // probably 0 to 3, or more
     private boolean sleepMode;
     private boolean silentMode;
     private int timer;
+    private int timerOff;
     private boolean power;
 
-    public AirCon(String name, int mainMode, int temperature, int airPower, int tilt, boolean sleepMode, boolean silentMode, int timer, boolean power) {
+    public AirCon(String name, int mainMode, int temperature, int airIntensity, int tilt, boolean sleepMode, boolean silentMode, int timer, int timerOff, boolean power) {
         this.name = name;
         this.mainMode = mainMode;
         this.temperature = temperature;
-        this.airPower = airPower;
+        this.airIntensity = airIntensity;
         this.tilt = tilt;
         this.sleepMode = sleepMode;
         this.silentMode = silentMode;
         this.timer = timer;
+        this.timerOff = timerOff;
         this.power = power;
     }
 
@@ -37,8 +39,8 @@ public class AirCon
         return temperature;
     }
 
-    public int getAirPower() {
-        return airPower;
+    public int getAirIntensity() {
+        return airIntensity;
     }
 
     public int getTilt() {
@@ -55,6 +57,10 @@ public class AirCon
 
     public int getTimer() {
         return timer;
+    }
+
+    public int getTimerOff() {
+        return timerOff;
     }
 
     public boolean isPower() {
@@ -74,8 +80,8 @@ public class AirCon
         this.temperature = temperature;
     }
 
-    public void setAirPower(int airPower) {
-        this.airPower = airPower;
+    public void setAirIntensity(int airIntensity) {
+        this.airIntensity = airIntensity;
     }
 
     public void setTilt(int tilt) {
@@ -92,6 +98,10 @@ public class AirCon
 
     public void setTimer(int timer) {
         this.timer = timer;
+    }
+
+    public void setTimerOff(int timerOff) {
+        this.timerOff = timerOff;
     }
 
     public void setPower(boolean power) {

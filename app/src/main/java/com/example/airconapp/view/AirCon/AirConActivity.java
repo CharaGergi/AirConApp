@@ -7,13 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.example.airconapp.R;
 import com.example.airconapp.view.AdvancedACSettings.AdvancedACSettingsActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
 import com.example.airconapp.view.Profile.ProfileActivity;
 
-public class AirConActivity extends AppCompatActivity implements View.OnClickListener
+public class AirConActivity extends AppCompatActivity implements View.OnClickListener, AirConView
 {
     private TextView ACName;
     private Button backBtn;
@@ -33,6 +32,7 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
     private Button speechCommBtn;
     private Button powerBtn;
     private EditText temperatureEditTxt;
+    private AirConPresenter airConPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,8 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
         //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE); // if the attribute in the manifest doesn't work, use this
 
         // need to implement the way that the activity will get the AC name (maybe MVP)
+
+        airConPresenter = new AirConPresenter(this);
 
         backBtn = findViewById(R.id.back_button);
         backBtn.setOnClickListener(this);
@@ -137,19 +139,19 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
         }
         if (view == increaseTempBtn)
         {
-            // to be implemented
+            airConPresenter.onIncreaseTempBtn();
         }
         if (view == decreaseTempBtn)
         {
-            // to be implemented
+            airConPresenter.onDecreaseTempBtn();
         }
         if (view == increaseAngleBtn)
         {
-            // to be implemented
+            airConPresenter.onIncreaseTilt();
         }
         if (view == decreaseAngleBtn)
         {
-            // to be implemented
+            airConPresenter.onDecreaseTempBtn();
         }
         if (view == advancedSettingsBtn)
         {
@@ -169,4 +171,59 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
             // to be implemented
         }
     }
+
+    /*@Override to be implemented
+    public String getAirConName() {
+        return null;
+    }
+
+    @Override
+    public EditText getAirConTemp() {
+        return null;
+    }
+
+    @Override
+    public Button getHeat() {
+        return null;
+    }
+
+    @Override
+    public Button getCold() {
+        return null;
+    }
+
+    @Override
+    public Button getAuto() {
+        return null;
+    }
+
+    @Override
+    public Button getHumid() {
+        return null;
+    }
+
+    @Override
+    public Button getFan() {
+        return null;
+    }
+
+    @Override
+    public Button getMode() {
+        return null;
+    }
+
+    @Override
+    public void setAirConName(String value) {
+
+    }
+
+    @Override
+    public void setAirConTemp(EditText value) {
+
+    }
+
+    @Override
+    public void setMode() {
+
+    }*/
 }

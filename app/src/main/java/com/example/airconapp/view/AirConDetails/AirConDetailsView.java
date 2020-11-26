@@ -1,7 +1,7 @@
 package com.example.airconapp.view.AirConDetails;
 
-public interface AirConDetailsView {
-
+public interface AirConDetailsView
+{
     public String getAirConName();
 
     public String getSerialNo();
@@ -17,5 +17,4 @@ public interface AirConDetailsView {
     public String getInteriorUnitDimensions();
 
     public String getExteriorUnitDimensions();
-
 }

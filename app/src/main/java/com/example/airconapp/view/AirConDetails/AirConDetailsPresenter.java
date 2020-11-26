@@ -1,4 +1,5 @@
 package com.example.airconapp.view.AirConDetails;
 
-public class AirConDetailsPresenter {
+public class AirConDetailsPresenter
+{
 }

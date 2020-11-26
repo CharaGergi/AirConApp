@@ -9,6 +9,7 @@ public class Utilities
 
     public Utilities() {
         user = new User();
+        foundAirCons = new ArrayList<>();
     }
 
     public static User getUser() {

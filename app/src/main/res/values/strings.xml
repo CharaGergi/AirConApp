@@ -42,4 +42,5 @@
     <string name="dimensions">Διαστάσεις (mm)</string>
     <string name="internalUnit">Εσωτερική Μονάδα</string>
     <string name="externalUnit">Εξωτερική Μονάδα</string>
+    <string name="startBtn">Εφαρμογή</string>
 </resources>
