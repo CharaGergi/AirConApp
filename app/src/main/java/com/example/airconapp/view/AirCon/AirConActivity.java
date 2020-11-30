@@ -183,11 +183,11 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
         }
         if (view == soundCommBtn)
         {
-            // to be implemented
+             soundCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
         }
         if (view == speechCommBtn)
         {
-            // to be implemented
+            speechCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
         }
         if (view == powerBtn)
         {
