@@ -127,27 +127,38 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
             ACName.setFocusableInTouchMode(true);
             ACName.setInputType(InputType.TYPE_CLASS_TEXT);
             ACName.requestFocus();
-            editNameBtn.setBackgroundResource(R.drawable.);
+            editNameBtn.setBackgroundResource(R.drawable.checkmark);
+            if(view == editNameBtn) {
+                ACName.setCursorVisible(false);
+                ACName.setFocusableInTouchMode(false);
+                ACName.clearFocus();
+                editNameBtn.setBackgroundResource(R.drawable.pencil_icon);
+            }
         }
         if (view == heatBtn)
         {
-            // to be implemented
+            heatBtn.setBackgroundResource(R.drawable.heat_icon_selected);
+            airConPresenter.onSetMode(0);
         }
         if (view == coldBtn)
         {
-            // to be implemented
+            coldBtn.setBackgroundResource(R.drawable.cold_icon_selected);
+            airConPresenter.onSetMode(1);
         }
         if (view == autoBtn)
         {
             // to be implemented
+            airConPresenter.onSetMode(2);
         }
         if (view == fanBtn)
         {
-            // to be implemented
+            fanBtn.setBackgroundResource(R.drawable.fan_icon_selected);
+            airConPresenter.onSetMode(3);
         }
         if (view == humidityBtn)
         {
-            // to be implemented
+            humidityBtn.setBackgroundResource(R.drawable.humidity_icon_selected);
+            airConPresenter.onSetMode(4);
         }
         if (view == increaseTempBtn)
         {
@@ -163,7 +174,7 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
         }
         if (view == decreaseAngleBtn)
         {
-            airConPresenter.onDecreaseTempBtn();
+            airConPresenter.onDecreaseTilt();
         }
         if (view == advancedSettingsBtn)
         {
@@ -184,7 +195,7 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    @Override to be implemented
+    @Override //to be implemented
     public String getAirConName() {
         return null;
     }

@@ -79,7 +79,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo"
-        app:srcCompat="@drawable/air_intensity" />
+        app:srcCompat="@drawable/air_intensityI" />
 
     <SeekBar
         android:id="@+id/airIntensityseekBar"

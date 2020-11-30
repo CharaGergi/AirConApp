@@ -11,25 +11,25 @@ public class AirConPresenter
         this.view = view;
     }
 
-    public void onSetMode()
+    public void onSetMode(int num)
     {
-        if (view.getHeat().isPressed())
+        if ( num == 0)
         {
             airCon.setMainMode(0);
         }
-        if (view.getCold().isPressed())
+        if (num == 1)
         {
             airCon.setMainMode(1);
         }
-        if (view.getAuto().isPressed())
+        if (num == 2)
         {
             airCon.setMainMode(2);
         }
-        if (view.getHumid().isPressed())
+        if (num == 3)
         {
             airCon.setMainMode(3);
         }
-        if (view.getFan().isPressed())
+        if (num == 4)
         {
             airCon.setMainMode(4);
         }
