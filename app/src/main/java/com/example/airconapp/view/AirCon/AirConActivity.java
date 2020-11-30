@@ -3,17 +3,21 @@ package com.example.airconapp.view.AirCon;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.example.airconapp.R;
+import com.example.airconapp.domain.AirCon;
 import com.example.airconapp.view.AdvancedACSettings.AdvancedACSettingsActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
 import com.example.airconapp.view.Profile.ProfileActivity;
 
 public class AirConActivity extends AppCompatActivity implements View.OnClickListener, AirConView
 {
+    private AirCon airCon;
     private TextView ACName;
     private Button backBtn;
     private Button settingsBtn;
@@ -38,6 +42,10 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_air_con);
+        Intent intent = getIntent();
+
+        airCon = (AirCon)intent.getSerializableExtra("airCon");
+        ACName.setText(airCon.getName());
 
         //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE); // if the attribute in the manifest doesn't work, use this
 
@@ -115,7 +123,11 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
         }
         if (view == editNameBtn)
         {
-            // to be implemented
+            ACName.setCursorVisible(true);
+            ACName.setFocusableInTouchMode(true);
+            ACName.setInputType(InputType.TYPE_CLASS_TEXT);
+            ACName.requestFocus();
+            editNameBtn.setBackgroundResource(R.drawable.);
         }
         if (view == heatBtn)
         {
@@ -172,7 +184,7 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    /*@Override to be implemented
+    @Override to be implemented
     public String getAirConName() {
         return null;
     }
@@ -225,5 +237,5 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void setMode() {
 
-    }*/
+    }
 }

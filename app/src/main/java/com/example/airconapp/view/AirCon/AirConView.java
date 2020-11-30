@@ -26,5 +26,4 @@ public interface AirConView
     public void setAirConTemp(EditText value);
 
     public void setMode();
-
 }
