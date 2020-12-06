@@ -128,12 +128,21 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
             ACName.setInputType(InputType.TYPE_CLASS_TEXT);
             ACName.requestFocus();
             editNameBtn.setBackgroundResource(R.drawable.checkmark);
-            if(view == editNameBtn) {
-                ACName.setCursorVisible(false);
-                ACName.setFocusableInTouchMode(false);
-                ACName.clearFocus();
-                editNameBtn.setBackgroundResource(R.drawable.pencil_icon);
-            }
+            editNameBtn.setOnKeyListener(new View.OnKeyListener() {
+                @Override
+                public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
+                    if(view == editNameBtn || (keyEvent.getAction()==KeyEvent.ACTION_DOWN && keyCode == keyEvent.KEYCODE_ENTER)) {
+                        ACName.clearFocus();
+                        ACName.setFocusableInTouchMode(false);
+                        ACName.setCursorVisible(false);
+                        editNameBtn.setBackgroundResource(R.drawable.pencil_icon);
+
+                        return true;
+                    }
+                    return false;
+                }
+            });
+
         }
         if (view == heatBtn)
         {
