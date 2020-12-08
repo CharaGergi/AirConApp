@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import com.example.airconapp.R;
@@ -13,7 +14,7 @@ import com.example.airconapp.view.AirCon.AirConActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
 import com.example.airconapp.view.Profile.ProfileActivity;
 
-public class AdvancedACSettingsActivity extends AppCompatActivity implements View.OnClickListener
+public class AdvancedACSettingsActivity extends AppCompatActivity implements View.OnClickListener, AdvancedACSettingsView
 {
     private Button backBtn;
     private Button settingsBtn;
@@ -28,11 +29,15 @@ public class AdvancedACSettingsActivity extends AppCompatActivity implements Vie
     private EditText timerMinsEditTxt;
     private EditText timerOffHourEditTxt;
     private EditText timerOffMinsEditTxt;
+    private ScrollView airCons;
+    private AdvancedACSettingsPresenter advancedACSettingsPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advanced_ac_settings);
+
+        advancedACSettingsPresenter = new AdvancedACSettingsPresenter(this);
 
         backBtn = findViewById(R.id.back_button);
         backBtn.setOnClickListener(this);
@@ -91,23 +96,116 @@ public class AdvancedACSettingsActivity extends AppCompatActivity implements Vie
         }
         if (view == soundCommBtn)
         {
-            // to be implemented
+            soundCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
         }
         if (view == speechCommBtn)
         {
-            // to be implemented
+            speechCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
         }
         if (view == sleepSwitch)
         {
-            // to be implemented
+            sleepSwitch.toggle();
+            advancedACSettingsPresenter.onToggleSleep();
         }
         if (view == silentSwitch)
         {
-            // to be implemented
+            silentSwitch.toggle();
+            advancedACSettingsPresenter.onToggleSilent();
         }
         if (view == applySwitch)
         {
-            // to be implemented
+            applySwitch.toggle();
+            advancedACSettingsPresenter.onToggleApplyToAll();
         }
+    }
+
+    @Override
+    public ScrollView getAirCons() {
+        return airCons;
+    }
+
+    @Override
+    public void setAirCons(ScrollView value) {
+        airCons = value;
+    }
+
+    @Override
+    public String getAirConHTimer() {
+        return timerHourEditTxt.getText().toString();
+    }
+
+    @Override
+    public void setAirConHTimer(String value) {
+        timerHourEditTxt.setText(value);
+    }
+
+    @Override
+    public String getAirConMTimer() {
+        return timerMinsEditTxt.getText().toString();
+    }
+
+    @Override
+    public void setAirConMTimer(String value) {
+        timerMinsEditTxt.setText(value);
+    }
+
+    @Override
+    public String getAirConHTimerOff() {
+        return timerOffHourEditTxt.getText().toString();
+    }
+
+    @Override
+    public void setAirConHTimerOff(String value) {
+        timerOffHourEditTxt.setText(value);
+    }
+
+    @Override
+    public String getAirConMTimerOff() {
+        return timerOffMinsEditTxt.getText().toString();
+    }
+
+    @Override
+    public void setAirConMTimerOff(String value) {
+        timerOffMinsEditTxt.setText(value);
+    }
+
+    @Override
+    public SeekBar getAirConAirDens() {
+        return airSeekbar;
+    }
+
+    @Override
+    public void setAirConAirDens(SeekBar value) {
+        airSeekbar = value;
+    }
+
+    @Override
+    public Switch getSleepSwitch() {
+        return sleepSwitch;
+    }
+
+    @Override
+    public void setSleepSwitch(Switch value) {
+        sleepSwitch = value;
+    }
+
+    @Override
+    public Switch getSilentSwitch() {
+        return silentSwitch;
+    }
+
+    @Override
+    public void setSilentSwitch(Switch value) {
+        silentSwitch = value;
+    }
+
+    @Override
+    public Switch getApplyAll() {
+        return applySwitch;
+    }
+
+    @Override
+    public void setApplyAll(Switch value) {
+        applySwitch = value;
     }
 }

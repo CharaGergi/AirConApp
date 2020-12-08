@@ -6,13 +6,13 @@ public interface AirConDetailsView
 
     public String getSerialNo();
 
-    public int getCoolingPower();
+    public String getCoolingPower();
 
-    public int getHeatingPower();
+    public String getHeatingPower();
 
     public String getEnergyClass();
 
-    public int getNoisePower();
+    public String getNoisePower();
 
     public String getInteriorUnitDimensions();
 

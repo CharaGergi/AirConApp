@@ -22,8 +22,8 @@ public class AdvancedACSettingsPresenter
 
     public int onSetTimer()
     {
-        int mins = Integer.parseInt(view.getAirConHTimer().getText().toString());
-        int hours = Integer.parseInt(view.getAirConMTimer().getText().toString());
+        int mins = Integer.parseInt(view.getAirConHTimer());
+        int hours = Integer.parseInt(view.getAirConMTimer());
 
         int total = (hours*60) + mins;
 
@@ -34,8 +34,8 @@ public class AdvancedACSettingsPresenter
 
     public int onSetTimerOff()
         {
-        int mins = Integer.parseInt(view.getAirConMTimerOff().getText().toString());
-        int hours = Integer.parseInt(view.getAirConHTimerOff().getText().toString());
+        int mins = Integer.parseInt(view.getAirConMTimerOff());
+        int hours = Integer.parseInt(view.getAirConHTimerOff());
 
         int total = (hours*60) + mins;
 

@@ -37,6 +37,7 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
     private Button powerBtn;
     private EditText temperatureEditTxt;
     private AirConPresenter airConPresenter;
+    private int mainMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
 
         airCon = (AirCon)intent.getSerializableExtra("airCon");
         ACName.setText(airCon.getName());
+        mainMode = airCon.getMainMode();
 
         //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE); // if the attribute in the manifest doesn't work, use this
 
@@ -144,28 +146,53 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
             });
 
         }
-        if (view == heatBtn)
+        if (view == heatBtn && 0 != mainMode)
         {
+            coldBtn.setBackgroundResource(R.drawable.cold_icon);
+            fanBtn.setBackgroundResource(R.drawable.fan_icon);
+            humidityBtn.setBackgroundResource(R.drawable.humidity_icon);
+            //to implement autoBtn
+
             heatBtn.setBackgroundResource(R.drawable.heat_icon_selected);
             airConPresenter.onSetMode(0);
         }
-        if (view == coldBtn)
+        if (view == coldBtn && 1 != mainMode)
         {
+            heatBtn.setBackgroundResource(R.drawable.heat_icon);
+            fanBtn.setBackgroundResource(R.drawable.fan_icon);
+            humidityBtn.setBackgroundResource(R.drawable.humidity_icon);
+            //to implement autoBtn
+
             coldBtn.setBackgroundResource(R.drawable.cold_icon_selected);
             airConPresenter.onSetMode(1);
         }
-        if (view == autoBtn)
+        if (view == autoBtn && 2 != mainMode)
         {
+            heatBtn.setBackgroundResource(R.drawable.heat_icon);
+            coldBtn.setBackgroundResource(R.drawable.cold_icon);
+            fanBtn.setBackgroundResource(R.drawable.fan_icon);
+            humidityBtn.setBackgroundResource(R.drawable.humidity_icon);
+
             // to be implemented
             airConPresenter.onSetMode(2);
         }
-        if (view == fanBtn)
+        if (view == fanBtn && 3 != mainMode)
         {
+            heatBtn.setBackgroundResource(R.drawable.heat_icon);
+            coldBtn.setBackgroundResource(R.drawable.cold_icon);
+            humidityBtn.setBackgroundResource(R.drawable.humidity_icon);
+            //to implement autoBtn
+
             fanBtn.setBackgroundResource(R.drawable.fan_icon_selected);
             airConPresenter.onSetMode(3);
         }
-        if (view == humidityBtn)
+        if (view == humidityBtn && 4 != mainMode)
         {
+            heatBtn.setBackgroundResource(R.drawable.heat_icon);
+            fanBtn.setBackgroundResource(R.drawable.fan_icon);
+            coldBtn.setBackgroundResource(R.drawable.cold_icon);
+            //to implement autoBtn
+
             humidityBtn.setBackgroundResource(R.drawable.humidity_icon_selected);
             airConPresenter.onSetMode(4);
         }
@@ -206,56 +233,51 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override //to be implemented
     public String getAirConName() {
-        return null;
+        return ACName.getText().toString();
     }
 
     @Override
-    public EditText getAirConTemp() {
-        return null;
+    public String getAirConTemp() {
+        return temperatureEditTxt.getText().toString();
     }
 
     @Override
     public Button getHeat() {
-        return null;
+        return heatBtn;
     }
 
     @Override
     public Button getCold() {
-        return null;
+        return coldBtn;
     }
 
     @Override
     public Button getAuto() {
-        return null;
+        return autoBtn;
     }
 
     @Override
     public Button getHumid() {
-        return null;
+        return humidityBtn;
     }
 
     @Override
     public Button getFan() {
-        return null;
-    }
-
-    @Override
-    public Button getMode() {
-        return null;
+        return fanBtn;
     }
 
     @Override
     public void setAirConName(String value) {
-
+        ACName.setText(value);
     }
 
     @Override
-    public void setAirConTemp(EditText value) {
-
+    public void setAirConTemp(int value) {
+        temperatureEditTxt.setText(value);
     }
 
     @Override
-    public void setMode() {
-
+    public void setMode(int value) {
+        airConPresenter.onSetMode(value);
     }
 }

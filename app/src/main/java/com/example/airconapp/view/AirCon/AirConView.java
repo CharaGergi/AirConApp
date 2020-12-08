@@ -7,7 +7,7 @@ public interface AirConView
 {
     public String getAirConName();
 
-    public EditText getAirConTemp();
+    public String getAirConTemp();
 
     public Button getHeat();
 
@@ -19,11 +19,9 @@ public interface AirConView
 
     public Button getFan();
 
-    public Button getMode();
-
     public void setAirConName(String value);
 
-    public void setAirConTemp(EditText value);
+    public void setAirConTemp(int value);
 
-    public void setMode();
+    public void setMode(int value);
 }

@@ -13,7 +13,7 @@ public class AirConPresenter
 
     public void onSetMode(int num)
     {
-        if ( num == 0)
+        if (num == 0)
         {
             airCon.setMainMode(0);
         }
@@ -37,7 +37,7 @@ public class AirConPresenter
 
     public void onChangeTemp()
     {
-        airCon.setTemperature(Integer.parseInt(view.getAirConTemp().getText().toString()));
+        airCon.setTemperature(Integer.parseInt(view.getAirConTemp()));
     }
 
     public void onIncreaseTempBtn()

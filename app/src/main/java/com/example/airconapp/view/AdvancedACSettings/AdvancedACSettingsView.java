@@ -10,17 +10,17 @@ public interface AdvancedACSettingsView
     public ScrollView getAirCons();
     public void setAirCons(ScrollView value);
 
-    public EditText getAirConHTimer();
-    public void setAirConHTimer(EditText value);
+    public String getAirConHTimer();
+    public void setAirConHTimer(String value);
 
-    public EditText getAirConMTimer();
-    public void setAirConMTimer(EditText value);
+    public String getAirConMTimer();
+    public void setAirConMTimer(String value);
 
-    public EditText getAirConHTimerOff();
-    public void setAirConHTimerOff(EditText value);
+    public String getAirConHTimerOff();
+    public void setAirConHTimerOff(String value);
 
-    public EditText getAirConMTimerOff();
-    public void setAirConMTimerOff(EditText value);
+    public String getAirConMTimerOff();
+    public void setAirConMTimerOff(String value);
 
     public SeekBar getAirConAirDens();
     public void setAirConAirDens(SeekBar value);
