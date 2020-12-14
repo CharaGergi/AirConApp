@@ -4,20 +4,20 @@ import java.util.ArrayList;
 
 public class Utilities
 {
-    private static User user;
+    private static Profile profile;
     private static ArrayList<AirCon> foundAirCons;
 
     public Utilities() {
-        user = new User();
+        profile = new Profile();
         foundAirCons = new ArrayList<>();
     }
 
-    public static User getUser() {
-        return user;
+    public static Profile getProfile() {
+        return profile;
     }
 
-    public static void setUser(User user) {
-        Utilities.user = user;
+    public static void setProfile(Profile profile) {
+        Utilities.profile = profile;
     }
 
     public static ArrayList<AirCon> getAirCons() {

@@ -1,7 +1,10 @@
 package com.example.airconapp.view.AirCon;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.KeyEvent;
@@ -9,14 +12,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import com.example.airconapp.R;
 import com.example.airconapp.domain.AirCon;
 import com.example.airconapp.view.AdvancedACSettings.AdvancedACSettingsActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
 import com.example.airconapp.view.Profile.ProfileActivity;
 
-public class AirConActivity extends AppCompatActivity implements View.OnClickListener, AirConView
-{
+public class AirConActivity extends AppCompatActivity implements View.OnClickListener, AirConView {
     private AirCon airCon;
     private TextView ACName;
     private Button backBtn;
@@ -39,13 +42,14 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
     private AirConPresenter airConPresenter;
     private int mainMode;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_air_con);
         Intent intent = getIntent();
 
-        airCon = (AirCon)intent.getSerializableExtra("airCon");
+        airCon = (AirCon) intent.getSerializableExtra("airCon");
         ACName.setText(airCon.getName());
         mainMode = airCon.getMainMode();
 
@@ -111,20 +115,17 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
         super.onPause();
     }
 
-    public void onClick(View view)
-    {
-        if (view == backBtn)
-        {
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void onClick(View view) {
+        if (view == backBtn) {
             Intent intent = new Intent(AirConActivity.this, MenuActivity.class);
             startActivity(intent);
         }
-        if (view == settingsBtn)
-        {
+        if (view == settingsBtn) {
             Intent intent = new Intent(AirConActivity.this, ProfileActivity.class);
             startActivity(intent);
         }
-        if (view == editNameBtn)
-        {
+        if (view == editNameBtn) {
             ACName.setCursorVisible(true);
             ACName.setFocusableInTouchMode(true);
             ACName.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -133,7 +134,7 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
             editNameBtn.setOnKeyListener(new View.OnKeyListener() {
                 @Override
                 public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
-                    if(view == editNameBtn || (keyEvent.getAction()==KeyEvent.ACTION_DOWN && keyCode == keyEvent.KEYCODE_ENTER)) {
+                    if (view == editNameBtn || (keyEvent.getAction() == KeyEvent.ACTION_DOWN && keyCode == keyEvent.KEYCODE_ENTER)) {
                         ACName.clearFocus();
                         ACName.setFocusableInTouchMode(false);
                         ACName.setCursorVisible(false);
@@ -146,8 +147,7 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
             });
 
         }
-        if (view == heatBtn && 0 != mainMode)
-        {
+        if (view == heatBtn && 0 != mainMode) {
             coldBtn.setBackgroundResource(R.drawable.cold_icon);
             fanBtn.setBackgroundResource(R.drawable.fan_icon);
             humidityBtn.setBackgroundResource(R.drawable.humidity_icon);
@@ -156,8 +156,7 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
             heatBtn.setBackgroundResource(R.drawable.heat_icon_selected);
             airConPresenter.onSetMode(0);
         }
-        if (view == coldBtn && 1 != mainMode)
-        {
+        if (view == coldBtn && 1 != mainMode) {
             heatBtn.setBackgroundResource(R.drawable.heat_icon);
             fanBtn.setBackgroundResource(R.drawable.fan_icon);
             humidityBtn.setBackgroundResource(R.drawable.humidity_icon);
@@ -166,8 +165,7 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
             coldBtn.setBackgroundResource(R.drawable.cold_icon_selected);
             airConPresenter.onSetMode(1);
         }
-        if (view == autoBtn && 2 != mainMode)
-        {
+        if (view == autoBtn && 2 != mainMode) {
             heatBtn.setBackgroundResource(R.drawable.heat_icon);
             coldBtn.setBackgroundResource(R.drawable.cold_icon);
             fanBtn.setBackgroundResource(R.drawable.fan_icon);
@@ -176,8 +174,7 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
             // to be implemented
             airConPresenter.onSetMode(2);
         }
-        if (view == fanBtn && 3 != mainMode)
-        {
+        if (view == fanBtn && 3 != mainMode) {
             heatBtn.setBackgroundResource(R.drawable.heat_icon);
             coldBtn.setBackgroundResource(R.drawable.cold_icon);
             humidityBtn.setBackgroundResource(R.drawable.humidity_icon);
@@ -186,8 +183,7 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
             fanBtn.setBackgroundResource(R.drawable.fan_icon_selected);
             airConPresenter.onSetMode(3);
         }
-        if (view == humidityBtn && 4 != mainMode)
-        {
+        if (view == humidityBtn && 4 != mainMode) {
             heatBtn.setBackgroundResource(R.drawable.heat_icon);
             fanBtn.setBackgroundResource(R.drawable.fan_icon);
             coldBtn.setBackgroundResource(R.drawable.cold_icon);
@@ -196,38 +192,49 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
             humidityBtn.setBackgroundResource(R.drawable.humidity_icon_selected);
             airConPresenter.onSetMode(4);
         }
-        if (view == increaseTempBtn)
-        {
+        if (view == increaseTempBtn) {
             airConPresenter.onIncreaseTempBtn();
         }
-        if (view == decreaseTempBtn)
-        {
+        if (view == decreaseTempBtn) {
             airConPresenter.onDecreaseTempBtn();
         }
-        if (view == increaseAngleBtn)
-        {
+        if (view == increaseAngleBtn) {
             airConPresenter.onIncreaseTilt();
         }
-        if (view == decreaseAngleBtn)
-        {
+        if (view == decreaseAngleBtn) {
             airConPresenter.onDecreaseTilt();
         }
-        if (view == advancedSettingsBtn)
-        {
+        if (view == advancedSettingsBtn) {
             Intent intent = new Intent(AirConActivity.this, AdvancedACSettingsActivity.class);
             startActivity(intent);
         }
-        if (view == soundCommBtn)
-        {
-             soundCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
+
+        if (view == soundCommBtn) {
+            if (MenuActivity.profile.isSoundCommands()) {
+                soundCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
+                MenuActivity.profile.setSoundCommands(false);
+            } else {
+                soundCommBtn.setBackgroundResource(R.drawable.speaker_icon);
+                MenuActivity.profile.setSoundCommands(true);
+            }
         }
-        if (view == speechCommBtn)
-        {
-            speechCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
+        if (view == speechCommBtn) {
+            if (MenuActivity.profile.isSpeechCommands()) {
+                speechCommBtn.setBackgroundResource(R.drawable.mic_icon_muted);
+                MenuActivity.profile.setSpeechCommands(false);
+            } else {
+                speechCommBtn.setBackgroundResource(R.drawable.mic_icon);
+                MenuActivity.profile.setSpeechCommands(true);
+            }
         }
-        if (view == powerBtn)
-        {
-            // to be implemented
+        if (view == powerBtn) {
+            if (airCon.isPower()) {
+                powerBtn.setBackgroundTintList(getResources().getColorStateList(R.color.red));
+                airCon.setPower(true);
+            } else {
+                powerBtn.setBackgroundTintList(getResources().getColorStateList(R.color.green));
+                airCon.setPower(false);
+            }
         }
     }
 

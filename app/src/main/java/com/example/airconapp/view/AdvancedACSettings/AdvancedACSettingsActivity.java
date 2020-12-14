@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.Switch;
+import android.widget.Toast;
+
 import com.example.airconapp.R;
 import com.example.airconapp.view.AirCon.AirConActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
@@ -62,6 +64,48 @@ public class AdvancedACSettingsActivity extends AppCompatActivity implements Vie
 
         airSeekbar = findViewById(R.id.airIntensityseekBar);
         //airSeekbar.setOnSeekBarChangeListener(); // need to check this
+        airSeekbar.setMax(4);
+
+        airSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+
+            int seekBarProgress = airSeekbar.getProgress();
+
+            @Override public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    seekBarProgress = progress;
+            }
+
+            @Override public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override public void onStopTrackingTouch(SeekBar seekBar) {
+                    airSeekbar.setProgress(seekBarProgress);
+            }
+        });
+
+
+
+
+
+
+
+            /*@Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                Toast.makeText(ToggleButtonActivity.this,
+                        "Seekbar vale "+i, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                Toast.makeText(ToggleButtonActivity.this,
+                        "Seekbar touch started", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                Toast.makeText(ToggleButtonActivity.this,
+                        "Seekbar touch stopped", Toast.LENGTH_SHORT).show();
+            }
+        });*/
 
         applySwitch = findViewById(R.id.applyToAllSwitch);
         applySwitch.setOnClickListener(this);

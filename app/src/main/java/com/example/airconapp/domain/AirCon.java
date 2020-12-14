@@ -11,7 +11,7 @@ public class AirCon
     private boolean silentMode;
     private int timer;
     private int timerOff;
-    private boolean power;
+    private boolean power = false;
 
     public AirCon(String name, int mainMode, int temperature, int airIntensity, int tilt, boolean sleepMode, boolean silentMode, int timer, int timerOff, boolean power) {
         this.name = name;

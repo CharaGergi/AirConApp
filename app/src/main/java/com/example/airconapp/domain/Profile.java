@@ -2,16 +2,19 @@ package com.example.airconapp.domain;
 
 import java.util.HashSet;
 
-public class User
+public class Profile
 {
     private int fontSize; // 0 = small, 1 = medium, 2 = large
-    private boolean speechCommands;
+    private boolean speechCommands = true;
+    private boolean soundCommands = true;
 
-    User() {}
 
-    public User(int fontSize, boolean speechCommands) {
+    Profile() {}
+
+    public Profile(int fontSize, boolean speechCommands, boolean soundCommands) {
         this.fontSize = fontSize;
         this.speechCommands = speechCommands;
+        this.soundCommands = soundCommands;
     }
 
     public int getFontSize() {
@@ -22,6 +25,10 @@ public class User
         return speechCommands;
     }
 
+    public boolean isSoundCommands() {
+        return soundCommands;
+    }
+
     public void setFontSize(int fontSize) {
         this.fontSize = fontSize;
     }
@@ -29,6 +36,10 @@ public class User
     public void setSpeechCommands(boolean speechCommands) {
         this.speechCommands = speechCommands;
     }
+
+    public void setSoundCommands(boolean soundCommands) {this.soundCommands = soundCommands; }
+
+
 
     public HashSet<AirCon> search() {
         //HashSet<AirCon> rtemp = new HashSet<>();

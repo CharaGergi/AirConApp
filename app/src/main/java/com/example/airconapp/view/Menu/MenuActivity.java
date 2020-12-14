@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import com.example.airconapp.R;
+import com.example.airconapp.domain.Profile;
 import com.example.airconapp.view.Profile.ProfileActivity;
 
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener
 {
     private Button settingsBtn;
+    static public Profile profile;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
