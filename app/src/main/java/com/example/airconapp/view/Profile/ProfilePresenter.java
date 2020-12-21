@@ -1,21 +1,17 @@
 package com.example.airconapp.view.Profile;
 
-import android.content.res.Configuration;
-import android.util.DisplayMetrics;
-import android.view.View;
-
 import com.example.airconapp.view.Menu.MenuActivity;
 
 public class ProfilePresenter
 {
-    ProfileView profileView;
+    ProfileView view;
 
-    public ProfilePresenter(ProfileView pView) {
-        this.profileView = pView;
+    public ProfilePresenter(ProfileView view) {
+        this.view = view;
     }
 
     public boolean onToggleMic() {
-        if (profileView.getMicSwitch().isChecked())
+        if (view.getMicSwitch().isChecked())
         {
             MenuActivity.profile.setSpeechCommands(true);
             return true;
@@ -28,7 +24,7 @@ public class ProfilePresenter
     }
 
     public boolean onToggleSpeaker() {
-        if (profileView.getSpeech().isChecked())
+        if (view.getSpeakerSwitch().isChecked())
         {
             MenuActivity.profile.setSoundCommands(true);
             return true;

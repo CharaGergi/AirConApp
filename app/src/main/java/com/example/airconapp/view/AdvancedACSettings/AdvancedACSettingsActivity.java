@@ -9,8 +9,6 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.Switch;
-import android.widget.Toast;
-
 import com.example.airconapp.R;
 import com.example.airconapp.view.AirCon.AirConActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
