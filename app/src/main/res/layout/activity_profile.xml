@@ -35,23 +35,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/manageDevicesTxtView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:text="@string/manageDevices"
-        android:textColor="@color/light_black"
-        android:textSize="27dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
-
     <Button
         android:id="@+id/homeBtn"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/home_icon_default"
         android:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -62,100 +50,92 @@
         android:id="@+id/fontSizeTxtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginBottom="172dp"
+        android:layout_marginStart="332dp"
+        android:layout_marginBottom="424dp"
         android:text="@string/fontSize"
         android:textColor="@color/light_black"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Switch
+        android:id="@+id/micSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="296dp"
+        android:layout_marginBottom="176dp"
+        android:scaleX="1.3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <Button
         android:id="@+id/smallFontBtn"
         android:layout_width="110dp"
         android:layout_height="60dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginBottom="96dp"
+        android:layout_marginStart="276dp"
+        android:layout_marginBottom="336dp"
         android:text="@string/smallFontBtn"
         android:textAllCaps="false"
         android:textSize="19dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/mediumFontBtn"
-        android:layout_width="110dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginBottom="96dp"
-        android:text="@string/mediumFontBtn"
-        android:textAllCaps="false"
-        android:textSize="19dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/smallFontBtn" />
-
-    <Button
-        android:id="@+id/bigFontBtn"
-        android:layout_width="110dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginBottom="96dp"
-        android:text="@string/bigFontBtn"
-        android:textAllCaps="false"
-        android:textSize="19dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/mediumFontBtn" />
-
     <TextView
         android:id="@+id/micTxtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="220dp"
-        android:layout_marginBottom="112dp"
+        android:layout_marginEnd="484dp"
+        android:layout_marginBottom="176dp"
         android:text="@string/mic"
         android:textColor="@color/light_black"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <Button
+        android:id="@+id/bigFontBtn"
+        android:layout_width="110dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="336dp"
+        android:text="@string/bigFontBtn"
+        android:textAllCaps="false"
+        android:textSize="19dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mediumFontBtn" />
+
+    <Switch
+        android:id="@+id/speechSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="296dp"
+        android:layout_marginBottom="52dp"
+        android:scaleX="1.3"
+        app:layout_constraintBottom_toTopOf="@+id/micSwitch"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <TextView
         android:id="@+id/speechTxtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="148dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="416dp"
+        android:layout_marginBottom="44dp"
         android:text="@string/speech"
         android:textColor="@color/light_black"
         android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/micTxtView"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Switch
-        android:id="@+id/speechSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="32dp"
-        android:scaleX="1.3"
-        app:layout_constraintBottom_toTopOf="@+id/micSwitch"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Switch
-        android:id="@+id/micSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="116dp"
-        android:scaleX="1.3"
+    <Button
+        android:id="@+id/mediumFontBtn"
+        android:layout_width="110dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="336dp"
+        android:text="@string/mediumFontBtn"
+        android:textAllCaps="false"
+        android:textSize="19dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <ListView
-        android:layout_width="450dp"
-        android:layout_height="210dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/manageDevicesTxtView" />
+        app:layout_constraintStart_toEndOf="@+id/smallFontBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

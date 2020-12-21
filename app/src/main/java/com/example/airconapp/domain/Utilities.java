@@ -1,5 +1,10 @@
 package com.example.airconapp.domain;
 
+import android.content.res.Configuration;
+import android.util.DisplayMetrics;
+
+import com.example.airconapp.view.Menu.MenuActivity;
+
 import java.util.ArrayList;
 
 public class Utilities
@@ -23,4 +28,6 @@ public class Utilities
     public static ArrayList<AirCon> getAirCons() {
         return foundAirCons;
     }
+
+
 }

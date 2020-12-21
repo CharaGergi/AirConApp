@@ -138,13 +138,23 @@ public class AdvancedACSettingsActivity extends AppCompatActivity implements Vie
             Intent intent = new Intent(AdvancedACSettingsActivity.this, MenuActivity.class);
             startActivity(intent);
         }
-        if (view == soundCommBtn)
-        {
-            soundCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
+        if (view == soundCommBtn) {
+            if (MenuActivity.profile.isSoundCommands()) {
+                soundCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
+                MenuActivity.profile.setSoundCommands(false);
+            } else {
+                soundCommBtn.setBackgroundResource(R.drawable.speaker_icon);
+                MenuActivity.profile.setSoundCommands(true);
+            }
         }
-        if (view == speechCommBtn)
-        {
-            speechCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
+        if (view == speechCommBtn) {
+            if (MenuActivity.profile.isSpeechCommands()) {
+                speechCommBtn.setBackgroundResource(R.drawable.mic_icon_muted);
+                MenuActivity.profile.setSpeechCommands(false);
+            } else {
+                speechCommBtn.setBackgroundResource(R.drawable.mic_icon);
+                MenuActivity.profile.setSpeechCommands(true);
+            }
         }
         if (view == sleepSwitch)
         {
