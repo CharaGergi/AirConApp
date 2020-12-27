@@ -45,20 +45,18 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         if (view == soundCommBtn) {
             if (profile.isSoundCommands()) {
                 soundCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
-                profile.setSoundCommands(!profile.isSoundCommands());
             } else {
                 soundCommBtn.setBackgroundResource(R.drawable.speaker_icon);
-                profile.setSoundCommands(!profile.isSoundCommands());
             }
+            profile.setSoundCommands(!profile.isSoundCommands());
         }
         if (view == speechCommBtn) {
             if (profile.isSpeechCommands()) {
                 speechCommBtn.setBackgroundResource(R.drawable.mic_icon_muted);
-                profile.setSpeechCommands(!profile.isSpeechCommands());
             } else {
                 speechCommBtn.setBackgroundResource(R.drawable.mic_icon);
-                profile.setSpeechCommands(!profile.isSpeechCommands());
             }
+            profile.setSpeechCommands(!profile.isSpeechCommands());
         }
     }
 }
