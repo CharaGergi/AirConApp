@@ -12,6 +12,8 @@ import com.example.airconapp.view.Profile.ProfileActivity;
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener
 {
     private Button settingsBtn;
+    private Button soundCommBtn;
+    private Button speechCommBtn;
     static public Profile profile;
 
     @Override
@@ -21,6 +23,12 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
         settingsBtn = findViewById(R.id.settings_button);
         settingsBtn.setOnClickListener(this);
+
+        soundCommBtn = findViewById(R.id.soundCommandsBtn);
+        soundCommBtn.setOnClickListener(this);
+
+        speechCommBtn = findViewById(R.id.speechCommandsBtn);
+        speechCommBtn.setOnClickListener(this);
     }
 
     @Override
@@ -33,6 +41,24 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         if (view == settingsBtn) {
             Intent intent = new Intent(MenuActivity.this, ProfileActivity.class);
             startActivity(intent);
+        }
+        if (view == soundCommBtn) {
+            if (profile.isSoundCommands()) {
+                soundCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
+                profile.setSoundCommands(!profile.isSoundCommands());
+            } else {
+                soundCommBtn.setBackgroundResource(R.drawable.speaker_icon);
+                profile.setSoundCommands(!profile.isSoundCommands());
+            }
+        }
+        if (view == speechCommBtn) {
+            if (profile.isSpeechCommands()) {
+                speechCommBtn.setBackgroundResource(R.drawable.mic_icon_muted);
+                profile.setSpeechCommands(!profile.isSpeechCommands());
+            } else {
+                speechCommBtn.setBackgroundResource(R.drawable.mic_icon);
+                profile.setSpeechCommands(!profile.isSpeechCommands());
+            }
         }
     }
 }
