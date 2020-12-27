@@ -14,7 +14,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     private Button settingsBtn;
     private Button soundCommBtn;
     private Button speechCommBtn;
-    static public Profile profile;
+    static public Profile profile = new Profile(0, false, false);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

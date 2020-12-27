@@ -2,6 +2,7 @@ package com.example.airconapp.view.Profile;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -21,6 +22,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private Switch speakerSwitch;
     private Switch micSwitch;
     private ProfilePresenter profilePresenter;
+    private SharedPreferences speakerSettings;
+    private SharedPreferences micSettings;
 
 
     @Override
@@ -50,6 +53,14 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         micSwitch = findViewById(R.id.micSwitch);
         micSwitch.setOnClickListener(this);
+
+        speakerSettings = getSharedPreferences("speaker", 0);
+        boolean spkrPref = speakerSettings.getBoolean("speaker", true);
+        speakerSwitch.setChecked(spkrPref);
+
+        micSettings = getSharedPreferences("mic", 0);
+        boolean micPref = micSettings.getBoolean("mic", true);
+        micSwitch.setChecked(micPref);
     }
 
     public void applyFontSize(){
@@ -57,7 +68,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
          //0.85 small size, 1 normal size, 1.15 big etc
         if(MenuActivity.profile.getFontSize() == 0)
         {
-            configuration.fontScale=(float) 0.85;
+            configuration.fontScale=(float) 0.25;
             DisplayMetrics metrics = new DisplayMetrics();
             getWindowManager().getDefaultDisplay().getMetrics(metrics);
             metrics.scaledDensity = configuration.fontScale * metrics.density;
@@ -72,7 +83,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             getBaseContext().getResources().updateConfiguration(configuration, metrics);
         }
         else {
-            configuration.fontScale=(float) 1.20;
+            configuration.fontScale=(float) 2.5;
             DisplayMetrics metrics = new DisplayMetrics();
             getWindowManager().getDefaultDisplay().getMetrics(metrics);
             metrics.scaledDensity = configuration.fontScale * metrics.density;
@@ -103,12 +114,22 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             applyFontSize();
         }
         if (view == speakerSwitch){
-            speakerSwitch.toggle();
-            profilePresenter.onToggleSpeaker();
+            SharedPreferences.Editor editor = speakerSettings.edit();
+            editor.putBoolean("speaker", speakerSwitch.isChecked());
+            editor.commit();
+
+            MenuActivity.profile.setSoundCommands(!MenuActivity.profile.isSoundCommands());
+            //speakerSwitch.toggle();
+            //profilePresenter.onToggleSpeaker();
         }
         if (view == micSwitch){
-            micSwitch.toggle();
-            profilePresenter.onToggleMic();
+            SharedPreferences.Editor editor = micSettings.edit();
+            editor.putBoolean("mic", micSwitch.isChecked());
+            editor.commit();
+
+            MenuActivity.profile.setSpeechCommands(!MenuActivity.profile.isSpeechCommands());
+            //micSwitch.toggle();
+            //profilePresenter.onToggleMic();
         }
         if (view == homeBtn){
             Intent intent = new Intent(ProfileActivity.this, MenuActivity.class);

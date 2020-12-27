@@ -208,24 +208,21 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
             Intent intent = new Intent(AirConActivity.this, AdvancedACSettingsActivity.class);
             startActivity(intent);
         }
-
         if (view == soundCommBtn) {
             if (MenuActivity.profile.isSoundCommands()) {
                 soundCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
-                MenuActivity.profile.setSoundCommands(false);
             } else {
                 soundCommBtn.setBackgroundResource(R.drawable.speaker_icon);
-                MenuActivity.profile.setSoundCommands(true);
             }
+            MenuActivity.profile.setSoundCommands(!MenuActivity.profile.isSoundCommands());
         }
         if (view == speechCommBtn) {
             if (MenuActivity.profile.isSpeechCommands()) {
                 speechCommBtn.setBackgroundResource(R.drawable.mic_icon_muted);
-                MenuActivity.profile.setSpeechCommands(false);
             } else {
                 speechCommBtn.setBackgroundResource(R.drawable.mic_icon);
-                MenuActivity.profile.setSpeechCommands(true);
             }
+            MenuActivity.profile.setSpeechCommands(!MenuActivity.profile.isSpeechCommands());
         }
         if (view == powerBtn) {
             if (airCon.isPower()) {

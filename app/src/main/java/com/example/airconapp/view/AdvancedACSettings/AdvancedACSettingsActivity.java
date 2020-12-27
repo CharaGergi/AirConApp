@@ -3,6 +3,7 @@ package com.example.airconapp.view.AdvancedACSettings;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -139,20 +140,18 @@ public class AdvancedACSettingsActivity extends AppCompatActivity implements Vie
         if (view == soundCommBtn) {
             if (MenuActivity.profile.isSoundCommands()) {
                 soundCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
-                MenuActivity.profile.setSoundCommands(false);
             } else {
                 soundCommBtn.setBackgroundResource(R.drawable.speaker_icon);
-                MenuActivity.profile.setSoundCommands(true);
             }
+            MenuActivity.profile.setSoundCommands(!MenuActivity.profile.isSoundCommands());
         }
         if (view == speechCommBtn) {
             if (MenuActivity.profile.isSpeechCommands()) {
                 speechCommBtn.setBackgroundResource(R.drawable.mic_icon_muted);
-                MenuActivity.profile.setSpeechCommands(false);
             } else {
                 speechCommBtn.setBackgroundResource(R.drawable.mic_icon);
-                MenuActivity.profile.setSpeechCommands(true);
             }
+            MenuActivity.profile.setSpeechCommands(!MenuActivity.profile.isSpeechCommands());
         }
         if (view == sleepSwitch)
         {
