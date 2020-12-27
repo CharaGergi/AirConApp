@@ -14,7 +14,6 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     private Button settingsBtn;
     static public Profile profile;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

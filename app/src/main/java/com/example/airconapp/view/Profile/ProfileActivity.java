@@ -54,7 +54,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     public void applyFontSize(){
         Configuration configuration = getResources().getConfiguration();
-         //0.85 small size, 1 normal size, 1,15 big etc
+         //0.85 small size, 1 normal size, 1.15 big etc
         if(MenuActivity.profile.getFontSize() == 0)
         {
             configuration.fontScale=(float) 0.85;
@@ -88,18 +88,19 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view)
     {
         if (view == backBtn) {
-            //must save previous activity
-            Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
-            startActivity(intent);
+            super.onBackPressed();
         }
         if (view == smallBtn){
             MenuActivity.profile.setFontSize(0);
+            applyFontSize();
         }
         if (view == mediumBtn){
             MenuActivity.profile.setFontSize(1);
+            applyFontSize();
         }
         if (view == largeBtn){
             MenuActivity.profile.setFontSize(2);
+            applyFontSize();
         }
         if (view == speakerSwitch){
             speakerSwitch.toggle();
