@@ -29,6 +29,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        applyFontSize();
         setContentView(R.layout.activity_profile);
 
         profilePresenter = new ProfilePresenter(this);
