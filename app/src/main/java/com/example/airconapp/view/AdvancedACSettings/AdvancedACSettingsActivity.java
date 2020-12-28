@@ -11,11 +11,12 @@ import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import com.example.airconapp.R;
+import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
 import com.example.airconapp.view.AirCon.AirConActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
 import com.example.airconapp.view.Profile.ProfileActivity;
 
-public class AdvancedACSettingsActivity extends AppCompatActivity implements View.OnClickListener, AdvancedACSettingsView
+public class AdvancedACSettingsActivity extends UtilitiesActivity implements View.OnClickListener, AdvancedACSettingsView
 {
     private Button backBtn;
     private Button settingsBtn;
@@ -36,6 +37,7 @@ public class AdvancedACSettingsActivity extends AppCompatActivity implements Vie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        applyFontSize(getResources().getConfiguration());
         setContentView(R.layout.activity_advanced_ac_settings);
 
         advancedACSettingsPresenter = new AdvancedACSettingsPresenter(this);

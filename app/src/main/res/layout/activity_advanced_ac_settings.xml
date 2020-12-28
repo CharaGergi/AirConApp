@@ -67,7 +67,7 @@
         android:layout_marginTop="26dp"
         android:text="@string/airIntensity"
         android:textColor="@color/light_black"
-        android:textSize="24dp"
+        android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/airIntensity"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
@@ -108,7 +108,7 @@
         android:layout_marginTop="36dp"
         android:text="@string/sleep"
         android:textColor="@color/light_black"
-        android:textSize="24dp"
+        android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/sleep"
         app:layout_constraintTop_toBottomOf="@+id/airIntensity" />
 
@@ -140,7 +140,7 @@
         android:layout_marginEnd="160dp"
         android:text="@string/silent"
         android:textColor="@color/light_black"
-        android:textSize="24dp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/airIntensityseekBar" />
 
@@ -164,7 +164,7 @@
         android:layout_marginTop="60dp"
         android:text="@string/timer"
         android:textColor="@color/light_black"
-        android:textSize="24dp"
+        android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/timer"
         app:layout_constraintTop_toBottomOf="@+id/sleepTxtView" />
 
@@ -190,7 +190,7 @@
         android:layout_marginTop="202dp"
         android:text="@string/hours"
         android:textColor="@color/light_black"
-        android:textSize="22dp"
+        android:textSize="22sp"
         app:layout_constraintStart_toEndOf="@+id/hourTimerEditTxt"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
@@ -216,7 +216,7 @@
         android:layout_marginTop="60dp"
         android:text="@string/minutes"
         android:textColor="@color/light_black"
-        android:textSize="22dp"
+        android:textSize="22sp"
         app:layout_constraintStart_toEndOf="@+id/minsTimerEditTxt"
         app:layout_constraintTop_toBottomOf="@+id/silentTxtView" />
 
@@ -238,7 +238,7 @@
         android:layout_marginTop="48dp"
         android:text="@string/timerOff"
         android:textColor="@color/light_black"
-        android:textSize="22dp"
+        android:textSize="22sp"
         app:layout_constraintStart_toEndOf="@+id/timerOff"
         app:layout_constraintTop_toBottomOf="@+id/timerTxtView" />
 
@@ -264,7 +264,7 @@
         android:layout_marginTop="50dp"
         android:text="@string/hours"
         android:textColor="@color/light_black"
-        android:textSize="22dp"
+        android:textSize="22sp"
         app:layout_constraintStart_toEndOf="@+id/hoursTimerOffEditTxt"
         app:layout_constraintTop_toBottomOf="@+id/hoursTimerTxtView" />
 
@@ -290,7 +290,7 @@
         android:layout_marginTop="52dp"
         android:text="@string/minutes"
         android:textColor="@color/light_black"
-        android:textSize="22dp"
+        android:textSize="22sp"
         app:layout_constraintStart_toEndOf="@+id/minsTimerOffEditTxt"
         app:layout_constraintTop_toBottomOf="@+id/minsTimerTxtView" />
 
@@ -302,7 +302,7 @@
         android:layout_marginBottom="108dp"
         android:text="@string/applyTo"
         android:textColor="@color/light_black"
-        android:textSize="24dp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -314,7 +314,7 @@
         android:layout_marginBottom="104dp"
         android:text="@string/applyToAll"
         android:textColor="@color/light_black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

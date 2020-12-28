@@ -1,18 +1,18 @@
 package com.example.airconapp.view.Profile;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
+
 import com.example.airconapp.R;
+import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
 
-public class ProfileActivity extends AppCompatActivity implements View.OnClickListener, ProfileView
+public class ProfileActivity extends UtilitiesActivity implements View.OnClickListener, ProfileView
 {
     private Button backBtn;
     private Button smallBtn;
@@ -24,12 +24,13 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private ProfilePresenter profilePresenter;
     private SharedPreferences speakerSettings;
     private SharedPreferences micSettings;
+    private Configuration conf;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        applyFontSize();
         setContentView(R.layout.activity_profile);
 
         profilePresenter = new ProfilePresenter(this);
@@ -64,33 +65,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         micSwitch.setChecked(micPref);
     }
 
-    public void applyFontSize(){
-        Configuration configuration = getResources().getConfiguration();
-         //0.85 small size, 1 normal size, 1.15 big etc
-        if(MenuActivity.profile.getFontSize() == 0)
-        {
-            configuration.fontScale=(float) 0.25;
-            DisplayMetrics metrics = new DisplayMetrics();
-            getWindowManager().getDefaultDisplay().getMetrics(metrics);
-            metrics.scaledDensity = configuration.fontScale * metrics.density;
-            getBaseContext().getResources().updateConfiguration(configuration, metrics);
-        }
-        else if (MenuActivity.profile.getFontSize() == 1)
-        {
-            configuration.fontScale=(float) 1;
-            DisplayMetrics metrics = new DisplayMetrics();
-            getWindowManager().getDefaultDisplay().getMetrics(metrics);
-            metrics.scaledDensity = configuration.fontScale * metrics.density;
-            getBaseContext().getResources().updateConfiguration(configuration, metrics);
-        }
-        else {
-            configuration.fontScale=(float) 2.5;
-            DisplayMetrics metrics = new DisplayMetrics();
-            getWindowManager().getDefaultDisplay().getMetrics(metrics);
-            metrics.scaledDensity = configuration.fontScale * metrics.density;
-            getBaseContext().getResources().updateConfiguration(configuration, metrics);
-        }
-    }
+
 
     @Override
     protected void onPause() {
@@ -100,19 +75,23 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view)
     {
         if (view == backBtn) {
-            super.onBackPressed();
+            Intent intent = new Intent(ProfileActivity.this, MenuActivity.class);
+            startActivity(intent);
         }
         if (view == smallBtn){
             MenuActivity.profile.setFontSize(0);
-            applyFontSize();
+            applyFontSize(getResources().getConfiguration());
+            this.recreate();
         }
         if (view == mediumBtn){
             MenuActivity.profile.setFontSize(1);
-            applyFontSize();
+            applyFontSize(getResources().getConfiguration());
+            this.recreate();
         }
         if (view == largeBtn){
             MenuActivity.profile.setFontSize(2);
-            applyFontSize();
+            applyFontSize(getResources().getConfiguration());
+            this.recreate();
         }
         if (view == speakerSwitch){
             SharedPreferences.Editor editor = speakerSettings.edit();

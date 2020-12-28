@@ -15,11 +15,12 @@ import android.widget.TextView;
 
 import com.example.airconapp.R;
 import com.example.airconapp.domain.AirCon;
+import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
 import com.example.airconapp.view.AdvancedACSettings.AdvancedACSettingsActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
 import com.example.airconapp.view.Profile.ProfileActivity;
 
-public class AirConActivity extends AppCompatActivity implements View.OnClickListener, AirConView {
+public class AirConActivity extends UtilitiesActivity implements View.OnClickListener, AirConView {
     private AirCon airCon;
     private TextView ACName;
     private Button backBtn;
@@ -46,6 +47,7 @@ public class AirConActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        applyFontSize(getResources().getConfiguration());
         setContentView(R.layout.activity_air_con);
         Intent intent = getIntent();
 

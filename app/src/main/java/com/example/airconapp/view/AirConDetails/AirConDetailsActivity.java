@@ -8,10 +8,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.airconapp.R;
+import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
 import com.example.airconapp.view.AirCon.AirConActivity;
 import com.example.airconapp.view.Profile.ProfileActivity;
 
-public class AirConDetailsActivity extends AppCompatActivity implements View.OnClickListener, AirConDetailsView
+public class AirConDetailsActivity extends UtilitiesActivity implements View.OnClickListener, AirConDetailsView
 {
     private Button backBtn;
     private Button settingsBtn;
@@ -28,6 +29,7 @@ public class AirConDetailsActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        applyFontSize(getResources().getConfiguration());
         setContentView(R.layout.activity_air_con_details);
 
         airConDetailsPresenter = new AirConDetailsPresenter(this);
