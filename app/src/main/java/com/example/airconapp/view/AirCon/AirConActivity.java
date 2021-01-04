@@ -153,7 +153,7 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
             coldBtn.setBackgroundResource(R.drawable.cold_icon);
             fanBtn.setBackgroundResource(R.drawable.fan_icon);
             humidityBtn.setBackgroundResource(R.drawable.humidity_icon);
-            //to implement autoBtn
+            autoBtn.setBackgroundResource(R.drawable.automatic_icon);
 
             heatBtn.setBackgroundResource(R.drawable.heat_icon_selected);
             airConPresenter.onSetMode(0);
@@ -162,7 +162,7 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
             heatBtn.setBackgroundResource(R.drawable.heat_icon);
             fanBtn.setBackgroundResource(R.drawable.fan_icon);
             humidityBtn.setBackgroundResource(R.drawable.humidity_icon);
-            //to implement autoBtn
+            autoBtn.setBackgroundResource(R.drawable.automatic_icon);
 
             coldBtn.setBackgroundResource(R.drawable.cold_icon_selected);
             airConPresenter.onSetMode(1);
@@ -173,14 +173,14 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
             fanBtn.setBackgroundResource(R.drawable.fan_icon);
             humidityBtn.setBackgroundResource(R.drawable.humidity_icon);
 
-            // to be implemented
+            autoBtn.setBackgroundResource(R.drawable.automatic_icon_selected);
             airConPresenter.onSetMode(2);
         }
         if (view == fanBtn && 3 != mainMode) {
-            heatBtn.setBackgroundResource(R.drawable.heat_icon);
-            coldBtn.setBackgroundResource(R.drawable.cold_icon);
-            humidityBtn.setBackgroundResource(R.drawable.humidity_icon);
-            //to implement autoBtn
+            //heatBtn.setBackgroundResource(R.drawable.heat_icon);
+            //coldBtn.setBackgroundResource(R.drawable.cold_icon);
+            //humidityBtn.setBackgroundResource(R.drawable.humidity_icon);
+            autoBtn.setBackgroundResource(R.drawable.automatic_icon);
 
             fanBtn.setBackgroundResource(R.drawable.fan_icon_selected);
             airConPresenter.onSetMode(3);
@@ -189,7 +189,7 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
             heatBtn.setBackgroundResource(R.drawable.heat_icon);
             fanBtn.setBackgroundResource(R.drawable.fan_icon);
             coldBtn.setBackgroundResource(R.drawable.cold_icon);
-            //to implement autoBtn
+            autoBtn.setBackgroundResource(R.drawable.automatic_icon);
 
             humidityBtn.setBackgroundResource(R.drawable.humidity_icon_selected);
             airConPresenter.onSetMode(4);

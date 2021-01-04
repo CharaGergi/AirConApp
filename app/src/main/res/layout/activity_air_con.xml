@@ -97,8 +97,7 @@
         android:layout_height="70dp"
         android:layout_marginStart="85dp"
         android:layout_marginTop="64dp"
-        android:text="Automatic"
-        android:textColor="#0069FF"
+        android:background="@drawable/automatic_icon"
         android:textSize="13dp"
         app:layout_constraintStart_toEndOf="@+id/coldBtn"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
