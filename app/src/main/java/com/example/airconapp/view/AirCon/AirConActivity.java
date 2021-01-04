@@ -42,14 +42,19 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
     private EditText temperatureEditTxt;
     private AirConPresenter airConPresenter;
     private int mainMode;
+    private int menuFont;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        applyFontSize(getResources().getConfiguration());
         setContentView(R.layout.activity_air_con);
+
         Intent intent = getIntent();
+        menuFont = intent.getIntExtra("FONT", 1);
+        MenuActivity.profile.setFontSize(menuFont);
+
+        applyFontSize(getResources().getConfiguration());
 
         airCon = (AirCon) intent.getSerializableExtra("airCon");
         ACName.setText(airCon.getName());
@@ -121,6 +126,7 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
     public void onClick(View view) {
         if (view == backBtn) {
             Intent intent = new Intent(AirConActivity.this, MenuActivity.class);
+            intent.putExtra("FONT", menuFont);
             startActivity(intent);
         }
         if (view == settingsBtn) {
@@ -208,6 +214,7 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
         }
         if (view == advancedSettingsBtn) {
             Intent intent = new Intent(AirConActivity.this, AdvancedACSettingsActivity.class);
+            intent.putExtra("FONT", menuFont);
             startActivity(intent);
         }
         if (view == soundCommBtn) {
