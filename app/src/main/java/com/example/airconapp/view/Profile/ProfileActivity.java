@@ -79,16 +79,28 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
             startActivity(intent);
         }
         if (view == smallBtn){
+            mediumBtn.setBackgroundResource(R.drawable.mediumFont);
+            largeBtn.setBackgroundResource(R.drawable.bigFont);
+            smallBtn.setBackgroundResource(R.drawable.smallFont_selected);
+
             MenuActivity.profile.setFontSize(0);
             applyFontSize(getResources().getConfiguration());
             this.recreate();
         }
         if (view == mediumBtn){
+            smallBtn.setBackgroundResource(R.drawable.smallFont);
+            largeBtn.setBackgroundResource(R.drawable.bigFont);
+            mediumBtn.setBackgroundResource(R.drawable.mediumFont_selected);
+
             MenuActivity.profile.setFontSize(1);
             applyFontSize(getResources().getConfiguration());
             this.recreate();
         }
         if (view == largeBtn){
+            smallBtn.setBackgroundResource(R.drawable.smallFont);
+            mediumBtn.setBackgroundResource(R.drawable.mediumFont);
+            largeBtn.setBackgroundResource(R.drawable.bigFont_selected);
+
             MenuActivity.profile.setFontSize(2);
             applyFontSize(getResources().getConfiguration());
             this.recreate();
