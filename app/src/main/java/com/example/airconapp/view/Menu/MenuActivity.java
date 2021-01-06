@@ -21,16 +21,28 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        applyFontSize(getResources().getConfiguration());
         setContentView(R.layout.activity_menu);
+
+        Intent intent = getIntent();
+        profile.setFontSize(intent.getIntExtra("FONT", 1));
+
+        applyFontSize(getResources().getConfiguration());
 
         settingsBtn = findViewById(R.id.settings_button);
         settingsBtn.setOnClickListener(this);
 
         soundCommBtn = findViewById(R.id.soundCommandsBtn);
+        if (!profile.isSoundCommands())
+        {
+            soundCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
+        }
         soundCommBtn.setOnClickListener(this);
 
         speechCommBtn = findViewById(R.id.speechCommandsBtn);
+        if (!profile.isSpeechCommands())
+        {
+            speechCommBtn.setBackgroundResource(R.drawable.mic_icon_muted);
+        }
         speechCommBtn.setOnClickListener(this);
     }
 
@@ -43,6 +55,7 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
     {
         if (view == settingsBtn) {
             Intent intent = new Intent(MenuActivity.this, ProfileActivity.class);
+            intent.putExtra("PREVIOUS_ACTIVITY", MenuActivity.class.toString());
             startActivity(intent);
         }
         if (view == soundCommBtn) {
@@ -60,7 +73,6 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
                 speechCommBtn.setBackgroundResource(R.drawable.mic_icon);
             }
             profile.setSpeechCommands(!profile.isSpeechCommands());
-
         }
     }
 }

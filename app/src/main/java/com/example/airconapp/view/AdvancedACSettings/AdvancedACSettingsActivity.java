@@ -33,12 +33,18 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
     private EditText timerOffMinsEditTxt;
     private ScrollView airCons;
     private AdvancedACSettingsPresenter advancedACSettingsPresenter;
+    private int menuFont;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        applyFontSize(getResources().getConfiguration());
         setContentView(R.layout.activity_advanced_ac_settings);
+
+        Intent intent = getIntent();
+        menuFont = intent.getIntExtra("FONT", 1);
+        MenuActivity.profile.setFontSize(menuFont);
+
+        applyFontSize(getResources().getConfiguration());
 
         advancedACSettingsPresenter = new AdvancedACSettingsPresenter(this);
 
@@ -52,9 +58,17 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
         homeBtn.setOnClickListener(this);
 
         soundCommBtn = findViewById(R.id.soundCommandsBtn);
+        if (!MenuActivity.profile.isSoundCommands())
+        {
+            soundCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
+        }
         soundCommBtn.setOnClickListener(this);
 
         speechCommBtn = findViewById(R.id.speechCommandsBtn);
+        if (!MenuActivity.profile.isSpeechCommands())
+        {
+            speechCommBtn.setBackgroundResource(R.drawable.mic_icon_muted);
+        }
         speechCommBtn.setOnClickListener(this);
 
         sleepSwitch = findViewById(R.id.sleepSwitch);
@@ -127,6 +141,7 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
         if (view == backBtn)
         {
             Intent intent = new Intent(AdvancedACSettingsActivity.this, AirConActivity.class);
+            intent.putExtra("FONT", menuFont);
             startActivity(intent);
         }
         if (view == settingsBtn)
@@ -137,6 +152,7 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
         if (view == homeBtn)
         {
             Intent intent = new Intent(AdvancedACSettingsActivity.this, MenuActivity.class);
+            intent.putExtra("FONT", menuFont);
             startActivity(intent);
         }
         if (view == soundCommBtn) {
