@@ -1,53 +1,50 @@
-package com.example.airconapp.view.Menu;
+package com.example.airconapp.view.SearchResults;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import com.example.airconapp.R;
-import com.example.airconapp.domain.Profile;
+import com.example.airconapp.view.Menu.MenuActivity;
 import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
 import com.example.airconapp.view.Profile.ProfileActivity;
-import com.example.airconapp.view.SearchResults.SearchResultsActivity;
 
-public class MenuActivity extends UtilitiesActivity implements View.OnClickListener
-{
-    private Button settingsBtn;
+public class SearchResultsActivity extends UtilitiesActivity implements View.OnClickListener {
+    private Button backBtn;
     private Button soundCommBtn;
     private Button speechCommBtn;
-    private Button searchBtn;
-    static public Profile profile = new Profile(0, false, false);
-
+    private Button settingsBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_search_results);
 
         Intent intent = getIntent();
-        profile.setFontSize(intent.getIntExtra("FONT", 1));
+        MenuActivity.profile.setFontSize(intent.getIntExtra("FONT", 1));
 
         applyFontSize(getResources().getConfiguration());
 
-        settingsBtn = findViewById(R.id.settings_button);
-        settingsBtn.setOnClickListener(this);
+        backBtn = findViewById(R.id.back_button);
+        backBtn.setOnClickListener(this);
 
         soundCommBtn = findViewById(R.id.soundCommandsBtn);
-        if (!profile.isSoundCommands())
+        if (!MenuActivity.profile.isSoundCommands())
         {
             soundCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
         }
         soundCommBtn.setOnClickListener(this);
 
         speechCommBtn = findViewById(R.id.speechCommandsBtn);
-        if (!profile.isSpeechCommands())
+        if (!MenuActivity.profile.isSpeechCommands())
         {
             speechCommBtn.setBackgroundResource(R.drawable.mic_icon_muted);
         }
         speechCommBtn.setOnClickListener(this);
 
-        searchBtn = findViewById(R.id.searchBtn);
-        searchBtn.setOnClickListener(this);
+        settingsBtn = findViewById(R.id.settings_button);
+        settingsBtn.setOnClickListener(this);
     }
 
     @Override
@@ -55,10 +52,10 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
         super.onPause();
     }
 
-    public void onClick(View view)
-    {
-        if (view == settingsBtn) {
-            handleSettingsBtn(MenuActivity.this);
+    public void onClick(View view) {
+        if (view == backBtn)
+        {
+            handleBackBtn(SearchResultsActivity.this, MenuActivity.class);
         }
         if (view == soundCommBtn) {
             toggleSoundBtn(soundCommBtn);
@@ -66,11 +63,8 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
         if (view == speechCommBtn) {
             toggleSpeechBtn(speechCommBtn);
         }
-        if (view == searchBtn)
-        {
-            Intent intent = new Intent(MenuActivity.this, SearchResultsActivity.class);
-            intent.putExtra("FONT", profile.getFontSize());
-            startActivity(intent);
+        if (view == settingsBtn) {
+            handleSettingsBtn(SearchResultsActivity.this);
         }
     }
 }

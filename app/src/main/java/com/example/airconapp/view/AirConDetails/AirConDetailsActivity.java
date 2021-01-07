@@ -49,12 +49,10 @@ public class AirConDetailsActivity extends UtilitiesActivity implements View.OnC
     public void onClick(View view)
     {
         if (view == backBtn) {
-            Intent intent = new Intent(AirConDetailsActivity.this, AirConActivity.class);
-            startActivity(intent);
+            handleBackBtn(AirConDetailsActivity.this, AirConActivity.class);
         }
         if (view == settingsBtn) {
-            Intent intent = new Intent(AirConDetailsActivity.this, ProfileActivity.class);
-            startActivity(intent);
+            handleSettingsBtn(AirConDetailsActivity.this);
         }
     }
 

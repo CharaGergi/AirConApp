@@ -125,13 +125,10 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void onClick(View view) {
         if (view == backBtn) {
-            Intent intent = new Intent(AirConActivity.this, MenuActivity.class);
-            intent.putExtra("FONT", menuFont);
-            startActivity(intent);
+            handleBackBtn(AirConActivity.this, MenuActivity.class);
         }
         if (view == settingsBtn) {
-            Intent intent = new Intent(AirConActivity.this, ProfileActivity.class);
-            startActivity(intent);
+            handleSettingsBtn(AirConActivity.this);
         }
         if (view == editNameBtn) {
             ACName.setCursorVisible(true);
@@ -218,20 +215,10 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
             startActivity(intent);
         }
         if (view == soundCommBtn) {
-            if (MenuActivity.profile.isSoundCommands()) {
-                soundCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
-            } else {
-                soundCommBtn.setBackgroundResource(R.drawable.speaker_icon);
-            }
-            MenuActivity.profile.setSoundCommands(!MenuActivity.profile.isSoundCommands());
+            toggleSoundBtn(soundCommBtn);
         }
         if (view == speechCommBtn) {
-            if (MenuActivity.profile.isSpeechCommands()) {
-                speechCommBtn.setBackgroundResource(R.drawable.mic_icon_muted);
-            } else {
-                speechCommBtn.setBackgroundResource(R.drawable.mic_icon);
-            }
-            MenuActivity.profile.setSpeechCommands(!MenuActivity.profile.isSpeechCommands());
+            toggleSpeechBtn(speechCommBtn);
         }
         if (view == powerBtn) {
             if (airCon.isPower()) {

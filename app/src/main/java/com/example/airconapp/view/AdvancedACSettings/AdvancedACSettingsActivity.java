@@ -140,14 +140,11 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
     {
         if (view == backBtn)
         {
-            Intent intent = new Intent(AdvancedACSettingsActivity.this, AirConActivity.class);
-            intent.putExtra("FONT", menuFont);
-            startActivity(intent);
+            handleBackBtn(AdvancedACSettingsActivity.this, AirConActivity.class);
         }
         if (view == settingsBtn)
         {
-            Intent intent = new Intent(AdvancedACSettingsActivity.this, ProfileActivity.class);
-            startActivity(intent);
+            handleSettingsBtn(AdvancedACSettingsActivity.this);
         }
         if (view == homeBtn)
         {
@@ -156,20 +153,10 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
             startActivity(intent);
         }
         if (view == soundCommBtn) {
-            if (MenuActivity.profile.isSoundCommands()) {
-                soundCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
-            } else {
-                soundCommBtn.setBackgroundResource(R.drawable.speaker_icon);
-            }
-            MenuActivity.profile.setSoundCommands(!MenuActivity.profile.isSoundCommands());
+            toggleSoundBtn(soundCommBtn);
         }
         if (view == speechCommBtn) {
-            if (MenuActivity.profile.isSpeechCommands()) {
-                speechCommBtn.setBackgroundResource(R.drawable.mic_icon_muted);
-            } else {
-                speechCommBtn.setBackgroundResource(R.drawable.mic_icon);
-            }
-            MenuActivity.profile.setSpeechCommands(!MenuActivity.profile.isSpeechCommands());
+            toggleSpeechBtn(speechCommBtn);
         }
         if (view == sleepSwitch)
         {
