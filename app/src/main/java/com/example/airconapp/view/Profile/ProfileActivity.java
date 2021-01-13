@@ -1,6 +1,5 @@
 package com.example.airconapp.view.Profile;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -12,10 +11,8 @@ import com.example.airconapp.R;
 import com.example.airconapp.domain.AirCon;
 import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
 import com.example.airconapp.view.AdvancedACSettings.AdvancedACSettingsActivity;
-import com.example.airconapp.view.AirCon.AirConActivity;
 import com.example.airconapp.view.AirConDetails.AirConDetailsActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
-import com.example.airconapp.view.SearchResults.SearchResultsActivity;
 
 public class ProfileActivity extends UtilitiesActivity implements View.OnClickListener, ProfileView
 {
@@ -26,8 +23,10 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
     private Button homeBtn;
     private Switch speakerSwitch;
     private Switch micSwitch;
+    private ProfilePresenter profilePresenter;
     private SharedPreferences speakerSettings;
     private SharedPreferences micSettings;
+    private Configuration conf;
     private String prev_activity;
 
     @Override
@@ -37,7 +36,8 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
 
         Intent intent = getIntent();
         prev_activity = intent.getStringExtra("PREVIOUS_ACTIVITY");
-        prev_activity = stringManipulation(prev_activity);
+
+        profilePresenter = new ProfilePresenter(this);
 
         backBtn = findViewById(R.id.back_button);
         backBtn.setOnClickListener(this);
@@ -51,8 +51,6 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
         largeBtn = findViewById(R.id.bigFontBtn);
         largeBtn.setOnClickListener(this);
 
-        handleButtonFonts();
-
         homeBtn = findViewById(R.id.homeBtn);
         homeBtn.setOnClickListener(this);
 
@@ -62,12 +60,12 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
         micSwitch = findViewById(R.id.micSwitch);
         micSwitch.setOnClickListener(this);
 
-        speakerSettings = getSharedPreferences("speaker", MODE_MULTI_PROCESS);
-        boolean spkrPref = speakerSettings.getBoolean("speaker", MenuActivity.profile.isSoundCommands());
+        speakerSettings = getSharedPreferences("speaker", 0);
+        boolean spkrPref = speakerSettings.getBoolean("speaker", true);
         speakerSwitch.setChecked(spkrPref);
 
-        micSettings = getSharedPreferences("mic", MODE_MULTI_PROCESS);
-        boolean micPref = micSettings.getBoolean("mic", MenuActivity.profile.isSpeechCommands());
+        micSettings = getSharedPreferences("mic", 0);
+        boolean micPref = micSettings.getBoolean("mic", true);
         micSwitch.setChecked(micPref);
     }
 
@@ -80,7 +78,11 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
     {
         if (view == backBtn) {
             Intent intent;
-            if (prev_activity.equalsIgnoreCase(AirConActivity.class.toString()))
+            if (prev_activity.equalsIgnoreCase(MenuActivity.class.toString()))
+            {
+                intent = new Intent(ProfileActivity.this, MenuActivity.class);
+            }
+            else if (prev_activity.equalsIgnoreCase(AirCon.class.toString()))
             {
                 intent = new Intent(ProfileActivity.this, AirCon.class);
             }
@@ -88,33 +90,37 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
             {
                 intent = new Intent(ProfileActivity.this, AdvancedACSettingsActivity.class);
             }
-            else if (prev_activity.equalsIgnoreCase(AirConDetailsActivity.class.toString()))
-            {
-                intent = new Intent(ProfileActivity.this, AirConDetailsActivity.class);
-            }
-            else if (prev_activity.equalsIgnoreCase(SearchResultsActivity.class.toString()))
-            {
-                intent = new Intent(ProfileActivity.this, SearchResultsActivity.class);
-            }
             else
             {
-                intent = new Intent(ProfileActivity.this, MenuActivity.class);
+                intent = new Intent(ProfileActivity.this, AirConDetailsActivity.class);
             }
 
             intent.putExtra("FONT", MenuActivity.profile.getFontSize());
             startActivity(intent);
         }
         if (view == smallBtn){
+            mediumBtn.setBackgroundResource(R.drawable.medium_font);
+            largeBtn.setBackgroundResource(R.drawable.big_font);
+            smallBtn.setBackgroundResource(R.drawable.small_font_selected);
+
             MenuActivity.profile.setFontSize(0);
             applyFontSize(getResources().getConfiguration());
             this.recreate();
         }
         if (view == mediumBtn){
+            smallBtn.setBackgroundResource(R.drawable.small_font);
+            largeBtn.setBackgroundResource(R.drawable.big_font);
+            mediumBtn.setBackgroundResource(R.drawable.medium_font_selected);
+
             MenuActivity.profile.setFontSize(1);
             applyFontSize(getResources().getConfiguration());
             this.recreate();
         }
         if (view == largeBtn){
+            smallBtn.setBackgroundResource(R.drawable.small_font);
+            mediumBtn.setBackgroundResource(R.drawable.medium_font);
+            largeBtn.setBackgroundResource(R.drawable.big_font_selected);
+
             MenuActivity.profile.setFontSize(2);
             applyFontSize(getResources().getConfiguration());
             this.recreate();
@@ -122,11 +128,15 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
         if (view == speakerSwitch){
             if (MenuActivity.profile.isSoundCommands())
             {
-                savePreferences("speaker", speakerSwitch.isChecked(), speakerSettings);
+                SharedPreferences.Editor editor = speakerSettings.edit();
+                editor.putBoolean("speaker", speakerSwitch.isChecked());
+                editor.commit();
             }
             else
             {
-                savePreferences("speaker", !speakerSwitch.isChecked(), speakerSettings);
+                SharedPreferences.Editor editor = speakerSettings.edit();
+                editor.putBoolean("speaker", !speakerSwitch.isChecked());
+                editor.commit();
             }
 
             MenuActivity.profile.setSoundCommands(!MenuActivity.profile.isSoundCommands());
@@ -134,11 +144,15 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
         if (view == micSwitch){
             if (MenuActivity.profile.isSpeechCommands())
             {
-                savePreferences("mic", micSwitch.isChecked(), micSettings);
+                SharedPreferences.Editor editor = micSettings.edit();
+                editor.putBoolean("mic", micSwitch.isChecked());
+                editor.commit();
             }
             else
             {
-                savePreferences("mic", !micSwitch.isChecked(), micSettings);
+                SharedPreferences.Editor editor = micSettings.edit();
+                editor.putBoolean("mic", !micSwitch.isChecked());
+                editor.commit();
             }
 
             MenuActivity.profile.setSpeechCommands(!MenuActivity.profile.isSpeechCommands());
@@ -182,27 +196,5 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
 
     public SharedPreferences getMicSettings() {
         return micSettings;
-    }
-
-    private void savePreferences(String key, boolean value, SharedPreferences sharedPreferences) {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean(key, value);
-        editor.apply();
-    }
-
-    private void handleButtonFonts()
-    {
-        if (MenuActivity.profile.getFontSize() == 0)
-        {
-            smallBtn.setBackgroundResource(R.drawable.small_font_selected);
-        }
-        else if (MenuActivity.profile.getFontSize() == 1)
-        {
-            mediumBtn.setBackgroundResource(R.drawable.medium_font_selected);
-        }
-        else
-        {
-            largeBtn.setBackgroundResource(R.drawable.big_font_selected);
-        }
     }
 }

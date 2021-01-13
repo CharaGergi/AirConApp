@@ -1,5 +1,7 @@
 package com.example.airconapp.domain;
 
+import java.util.Random;
+
 public class AirCon
 {
     private String name;
@@ -12,6 +14,9 @@ public class AirCon
     private int timer;
     private int timerOff;
     private boolean power = false;
+    private AirConDetails airConDetails;
+    private Random random = new Random();
+    private int randomSerial;
 
     public AirCon(String name, int mainMode, int temperature, int airIntensity, int tilt, boolean sleepMode, boolean silentMode, int timer, int timerOff, boolean power) {
         this.name = name;
@@ -24,6 +29,8 @@ public class AirCon
         this.timer = timer;
         this.timerOff = timerOff;
         this.power = power;
+        randomSerial = random.nextInt(3265) + 1000;
+        this.airConDetails = new AirConDetails(name, randomSerial, 23884, 25249," A++", 58, "1078x325x246", " 955x700x396" );
     }
 
     public String getName()

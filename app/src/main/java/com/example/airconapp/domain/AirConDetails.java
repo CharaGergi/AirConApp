@@ -3,7 +3,7 @@ package com.example.airconapp.domain;
 public class AirConDetails
 {
     private String name;
-    private String serialNo;
+    private int serialNo;
     private int coolingPower;
     private int heatingPower;
     private String energyClass;
@@ -11,7 +11,7 @@ public class AirConDetails
     private String interiorUnitDimensions;
     private String exteriorUnitDimensions;
 
-    public AirConDetails(String name, String serialNo, int coolingPower, int heatingPower, String energyClass, int noisePower, String interiorUnitDimensions, String exteriorUnitDimensions) {
+    public AirConDetails(String name, int serialNo, int coolingPower, int heatingPower, String energyClass, int noisePower, String interiorUnitDimensions, String exteriorUnitDimensions) {
         this.name = name;
         this.serialNo = serialNo;
         this.coolingPower = coolingPower;
@@ -26,7 +26,7 @@ public class AirConDetails
         return name;
     }
 
-    public String getSerialNo() {
+    public int getSerialNo() {
         return serialNo;
     }
 
@@ -58,7 +58,7 @@ public class AirConDetails
         this.name = name;
     }
 
-    public void setSerialNo(String serialNo) {
+    public void setSerialNo(int serialNo) {
         this.serialNo = serialNo;
     }
 
