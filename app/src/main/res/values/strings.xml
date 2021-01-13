@@ -42,4 +42,5 @@
     <string name="internalUnit">Εσωτερική Μονάδα</string>
     <string name="externalUnit">Εξωτερική Μονάδα</string>
     <string name="startBtn">Εφαρμογή</string>
+    <string name="results">Αποτελέσματα Αναζήτησης</string>
 </resources>

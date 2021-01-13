@@ -100,8 +100,8 @@
     <Button
         android:id="@+id/searchBtn"
         android:layout_width="320dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="60dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="40dp"
         android:text="@string/searchBtn"
         android:textAllCaps="false"
         android:textSize="25sp"
