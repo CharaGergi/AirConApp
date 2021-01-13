@@ -1,24 +1,27 @@
 package com.example.airconapp.view.AirCon;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.InputType;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.airconapp.R;
 import com.example.airconapp.domain.AirCon;
+import com.example.airconapp.domain.Utilities;
 import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
 import com.example.airconapp.view.AdvancedACSettings.AdvancedACSettingsActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
-import com.example.airconapp.view.Profile.ProfileActivity;
+import com.example.airconapp.view.SearchResults.SearchResultsActivity;
+
+import java.io.Serializable;
 
 public class AirConActivity extends UtilitiesActivity implements View.OnClickListener, AirConView {
     private AirCon airCon;
@@ -43,6 +46,8 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
     private AirConPresenter airConPresenter;
     private int mainMode;
     private int menuFont;
+    private String airConName;
+    private boolean foundFlag = false;
 
 
     @Override
@@ -52,19 +57,39 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
 
         Intent intent = getIntent();
         menuFont = intent.getIntExtra("FONT", 1);
+        airConName = intent.getStringExtra("AC_NAME");
         MenuActivity.profile.setFontSize(menuFont);
 
         applyFontSize(getResources().getConfiguration());
 
-        airCon = (AirCon) intent.getSerializableExtra("airCon");
+        for (AirCon ac : Utilities.getSelectedAirCons())
+        {
+            if (ac.getName().equalsIgnoreCase(airConName))
+            {
+                airCon = ac;
+                foundFlag = true;
+            }
+        }
+
+        if (!foundFlag)
+        {
+            Toast.makeText(AirConActivity.this, "This AC does not exist (?)", Toast.LENGTH_SHORT).show();
+            handleBackBtn(AirConActivity.this, MenuActivity.class);
+        }
+
+        ACName = findViewById(R.id.logo);
+
         ACName.setText(airCon.getName());
         mainMode = airCon.getMainMode();
+
+        temperatureEditTxt = findViewById(R.id.tempEditTxt);
+        temperatureEditTxt.setText(String.valueOf(airCon.getTemperature()));
 
         //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE); // if the attribute in the manifest doesn't work, use this
 
         // need to implement the way that the activity will get the AC name (maybe MVP)
 
-        airConPresenter = new AirConPresenter(this);
+        airConPresenter = new AirConPresenter(this, airCon);
 
         backBtn = findViewById(R.id.back_button);
         backBtn.setOnClickListener(this);
@@ -212,6 +237,7 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
         if (view == advancedSettingsBtn) {
             Intent intent = new Intent(AirConActivity.this, AdvancedACSettingsActivity.class);
             intent.putExtra("FONT", menuFont);
+            intent.putExtra("AC", (Parcelable) airCon);
             startActivity(intent);
         }
         if (view == soundCommBtn) {

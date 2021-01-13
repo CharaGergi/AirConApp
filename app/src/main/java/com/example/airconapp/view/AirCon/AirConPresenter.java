@@ -7,8 +7,9 @@ public class AirConPresenter
     private AirConView view;
     private AirCon airCon;
 
-    public AirConPresenter(AirConView view) {
+    public AirConPresenter(AirConView view, AirCon airCon) {
         this.view = view;
+        this.airCon = airCon;
     }
 
     public void onSetMode(int num)
@@ -42,12 +43,12 @@ public class AirConPresenter
 
     public void onIncreaseTempBtn()
     {
-        airCon.setTemperature(airCon.getTemperature()+1);
+        airCon.setTemperature(airCon.getTemperature() + 1);
     }
 
     public void onDecreaseTempBtn()
     {
-        airCon.setTemperature(airCon.getTemperature()-1);
+        airCon.setTemperature(airCon.getTemperature() - 1);
     }
 
     public void onIncreaseTilt()

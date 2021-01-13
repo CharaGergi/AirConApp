@@ -30,7 +30,7 @@ public class AirCon
         this.timerOff = timerOff;
         this.power = power;
         randomSerial = random.nextInt(3265) + 1000;
-        this.airConDetails = new AirConDetails(name, randomSerial, 23884, 25249," A++", 58, "1078x325x246", " 955x700x396" );
+        this.airConDetails = new AirConDetails(name, randomSerial, 23884, 25249," A++", 58, "1078x325x246", "955x700x396" );
     }
 
     public String getName()
@@ -72,6 +72,10 @@ public class AirCon
 
     public boolean isPower() {
         return power;
+    }
+
+    public AirConDetails getAirConDetails() {
+        return airConDetails;
     }
 
     public void setName(String name)

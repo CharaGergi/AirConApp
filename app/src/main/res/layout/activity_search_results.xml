@@ -67,13 +67,24 @@
 
     <ListView
         android:id="@+id/foundAirConsList"
-        android:layout_width="964dp"
-        android:layout_height="340dp"
+        android:layout_width="match_parent"
+        android:layout_height="305dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo"
-        app:layout_constraintVertical_bias="0.427" />
+        app:layout_constraintTop_toBottomOf="@+id/logo"/>
+
+    <TextView
+        android:id="@+id/search_hintTxtView"
+        android:layout_width="600dp"
+        android:layout_height="wrap_content"
+        android:text="@string/search_hint"
+        android:textSize="22sp"
+        android:textColor="@color/light_black"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/foundAirConsList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

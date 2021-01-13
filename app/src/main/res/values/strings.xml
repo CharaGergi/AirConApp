@@ -43,4 +43,5 @@
     <string name="externalUnit">Εξωτερική Μονάδα</string>
     <string name="startBtn">Εφαρμογή</string>
     <string name="results">Αποτελέσματα Αναζήτησης</string>
+    <string name="search_hint">Πατήστε κάποιο αντικείμενο για να το προσθέσετε στα επιλεγμένα κλιματιστικά</string>
 </resources>

@@ -11,6 +11,7 @@ import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import com.example.airconapp.R;
+import com.example.airconapp.domain.AirCon;
 import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
 import com.example.airconapp.view.AirCon.AirConActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
@@ -18,6 +19,7 @@ import com.example.airconapp.view.Profile.ProfileActivity;
 
 public class AdvancedACSettingsActivity extends UtilitiesActivity implements View.OnClickListener, AdvancedACSettingsView
 {
+    private AirCon airCon;
     private Button backBtn;
     private Button settingsBtn;
     private Button homeBtn;
@@ -42,6 +44,8 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
 
         Intent intent = getIntent();
         menuFont = intent.getIntExtra("FONT", 1);
+        airCon = intent.getParcelableExtra("AC");
+
         MenuActivity.profile.setFontSize(menuFont);
 
         applyFontSize(getResources().getConfiguration());

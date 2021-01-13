@@ -2,22 +2,17 @@ package com.example.airconapp.view.SearchResults;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TableLayout;
-
+import android.widget.Toast;
 import com.example.airconapp.R;
 import com.example.airconapp.domain.AirCon;
 import com.example.airconapp.domain.Utilities;
 import com.example.airconapp.view.Menu.MenuActivity;
 import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
-import com.example.airconapp.view.Profile.ProfileActivity;
-
-import java.util.HashSet;
 
 public class SearchResultsActivity extends UtilitiesActivity implements View.OnClickListener {
     private Button backBtn;
@@ -25,6 +20,7 @@ public class SearchResultsActivity extends UtilitiesActivity implements View.OnC
     private Button speechCommBtn;
     private Button settingsBtn;
     private ListView foundAirCons;
+    private String[] airConNames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,16 +54,31 @@ public class SearchResultsActivity extends UtilitiesActivity implements View.OnC
         settingsBtn = findViewById(R.id.settings_button);
         settingsBtn.setOnClickListener(this);
 
-        final ArrayAdapter myAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Utilities.getAirCons().toArray());
+        AirCon[] airConArray = new AirCon[Utilities.getAirCons().size()];
+        Utilities.getAirCons().toArray(airConArray);
+
+        airConNames = new String[Utilities.getAirCons().size()];
+        for (int i = 0; i < airConArray.length; i++)
+        {
+            airConNames[i] = airConArray[i].getName();
+        }
+
+        final ArrayAdapter<String> myAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, airConNames);
         foundAirCons.setAdapter(myAdapter);
 
         foundAirCons.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Object airCon = myAdapter.getItem(position);
-                System.out.println(airCon);
+                String airCon = myAdapter.getItem(position);
                 if (airCon == null) return;
-                Utilities.getSelectedAirCons().add((AirCon) airCon);
+                for (AirCon ac : Utilities.getAirCons())
+                {
+                    if (ac.getName().equalsIgnoreCase(airCon))
+                    {
+                        Utilities.getSelectedAirCons().add(ac);
+                        Toast.makeText(SearchResultsActivity.this, "The AC was added to the selected list.", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 }
@@ -91,6 +102,5 @@ public class SearchResultsActivity extends UtilitiesActivity implements View.OnC
         if (view == settingsBtn) {
             handleSettingsBtn(SearchResultsActivity.this);
         }
-
     }
 }

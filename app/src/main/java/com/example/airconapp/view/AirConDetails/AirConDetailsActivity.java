@@ -1,6 +1,5 @@
 package com.example.airconapp.view.AirConDetails;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,14 +7,16 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.airconapp.R;
+import com.example.airconapp.domain.AirCon;
 import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
 import com.example.airconapp.view.AirCon.AirConActivity;
-import com.example.airconapp.view.Profile.ProfileActivity;
+import com.example.airconapp.view.Menu.MenuActivity;
 
 public class AirConDetailsActivity extends UtilitiesActivity implements View.OnClickListener, AirConDetailsView
 {
     private Button backBtn;
     private Button settingsBtn;
+    private AirCon airCon;
     private TextView airConName;
     private TextView airConSerial;
     private TextView airConCP;
@@ -23,16 +24,45 @@ public class AirConDetailsActivity extends UtilitiesActivity implements View.OnC
     private TextView airConEC;
     private TextView airConNP;
     private TextView airConID;
-    private TextView airConOD;
+    private TextView airConED;
     private AirConDetailsPresenter airConDetailsPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        applyFontSize(getResources().getConfiguration());
         setContentView(R.layout.activity_air_con_details);
 
+        Intent intent = getIntent();
+        airCon = (AirCon) intent.getSerializableExtra("AC");
+
+        MenuActivity.profile.setFontSize(intent.getIntExtra("FONT", 1));
+        applyFontSize(getResources().getConfiguration());
+
         airConDetailsPresenter = new AirConDetailsPresenter(this);
+
+        airConName = findViewById(R.id.airConNameTxtView);
+        airConName.setText(airCon.getName());
+
+        airConSerial = findViewById(R.id.airConSerialTxtView);
+        airConSerial.setText(airCon.getAirConDetails().getSerialNo());
+
+        airConCP = findViewById(R.id.airConCP);
+        airConCP.setText(airCon.getAirConDetails().getCoolingPower());
+
+        airConHP = findViewById(R.id.airConHP);
+        airConHP.setText(airCon.getAirConDetails().getHeatingPower());
+
+        airConEC = findViewById(R.id.airConEC);
+        airConEC.setText(airCon.getAirConDetails().getEnergyClass());
+
+        airConNP = findViewById(R.id.airConNP);
+        airConNP.setText(airCon.getAirConDetails().getNoisePower());
+
+        airConID = findViewById(R.id.airConID);
+        airConID.setText(airCon.getAirConDetails().getInteriorUnitDimensions());
+
+        airConED = findViewById(R.id.airConED);
+        airConED.setText(airCon.getAirConDetails().getExteriorUnitDimensions());
 
         backBtn = findViewById(R.id.back_button);
         backBtn.setOnClickListener(this);
@@ -93,6 +123,6 @@ public class AirConDetailsActivity extends UtilitiesActivity implements View.OnC
 
     @Override
     public String getExteriorUnitDimensions() {
-        return airConOD.getText().toString();
+        return airConED.getText().toString();
     }
 }
