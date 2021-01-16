@@ -44,19 +44,19 @@ public class AirConDetailsActivity extends UtilitiesActivity implements View.OnC
         airConName.setText(airCon.getName());
 
         airConSerial = findViewById(R.id.airConSerialTxtView);
-        airConSerial.setText(airCon.getAirConDetails().getSerialNo());
+        airConSerial.setText(String.valueOf(airCon.getAirConDetails().getSerialNo()));
 
         airConCP = findViewById(R.id.airConCP);
-        airConCP.setText(airCon.getAirConDetails().getCoolingPower());
+        airConCP.setText(String.valueOf(airCon.getAirConDetails().getCoolingPower()));
 
         airConHP = findViewById(R.id.airConHP);
-        airConHP.setText(airCon.getAirConDetails().getHeatingPower());
+        airConHP.setText(String.valueOf(airCon.getAirConDetails().getHeatingPower()));
 
         airConEC = findViewById(R.id.airConEC);
         airConEC.setText(airCon.getAirConDetails().getEnergyClass());
 
         airConNP = findViewById(R.id.airConNP);
-        airConNP.setText(airCon.getAirConDetails().getNoisePower());
+        airConNP.setText(String.valueOf(airCon.getAirConDetails().getNoisePower()));
 
         airConID = findViewById(R.id.airConID);
         airConID.setText(airCon.getAirConDetails().getInteriorUnitDimensions());

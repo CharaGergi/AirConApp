@@ -18,6 +18,8 @@ import com.example.airconapp.view.AirConDetails.AirConDetailsActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
 import com.example.airconapp.view.Profile.ProfileActivity;
 
+import java.io.Serializable;
+
 public class AdvancedACSettingsActivity extends UtilitiesActivity implements View.OnClickListener, AdvancedACSettingsView
 {
     private AirCon airCon;
@@ -169,6 +171,7 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
         }
         if (view == detailsBtn){
             Intent intent = new Intent(AdvancedACSettingsActivity.this, AirConDetailsActivity.class);
+            intent.putExtra("AC", (Serializable) airCon);
             intent.putExtra("FONT", menuFont);
             startActivity(intent);
         }
@@ -187,6 +190,7 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
             applySwitch.toggle();
             advancedACSettingsPresenter.onToggleApplyToAll();
         }
+
     }
 
     @Override
