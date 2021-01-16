@@ -9,13 +9,17 @@ import android.widget.TextView;
 import com.example.airconapp.R;
 import com.example.airconapp.domain.AirCon;
 import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
+import com.example.airconapp.view.AdvancedACSettings.AdvancedACSettingsActivity;
 import com.example.airconapp.view.AirCon.AirConActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
+
+import java.io.Serializable;
 
 public class AirConDetailsActivity extends UtilitiesActivity implements View.OnClickListener, AirConDetailsView
 {
     private Button backBtn;
     private Button settingsBtn;
+    private Button homeBtn;
     private AirCon airCon;
     private TextView airConName;
     private TextView airConSerial;
@@ -69,6 +73,9 @@ public class AirConDetailsActivity extends UtilitiesActivity implements View.OnC
 
         settingsBtn = findViewById(R.id.settings_button);
         settingsBtn.setOnClickListener(this);
+
+        homeBtn = findViewById(R.id.homeBtn);
+        homeBtn.setOnClickListener(this);
     }
 
     @Override
@@ -79,10 +86,19 @@ public class AirConDetailsActivity extends UtilitiesActivity implements View.OnC
     public void onClick(View view)
     {
         if (view == backBtn) {
-            handleBackBtn(AirConDetailsActivity.this, AirConActivity.class);
+            Intent intent = new Intent(AirConDetailsActivity.this, AdvancedACSettingsActivity.class);
+            intent.putExtra("FONT", MenuActivity.profile.getFontSize());
+            intent.putExtra("AC", (Serializable) airCon);
+            startActivity(intent);
         }
         if (view == settingsBtn) {
-            handleSettingsBtn(AirConDetailsActivity.this);
+            handleSettingsBtn(AirConDetailsActivity.this, airCon);
+        }
+        if (view == homeBtn)
+        {
+            Intent intent = new Intent(AirConDetailsActivity.this, MenuActivity.class);
+            intent.putExtra("FONT", MenuActivity.profile.getFontSize());
+            startActivity(intent);
         }
     }
 

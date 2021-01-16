@@ -1,9 +1,7 @@
 package com.example.airconapp.view.Profile;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,9 +14,11 @@ import com.example.airconapp.view.AirCon.AirConActivity;
 import com.example.airconapp.view.AirConDetails.AirConDetailsActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
 import com.example.airconapp.view.SearchResults.SearchResultsActivity;
+import java.io.Serializable;
 
 public class ProfileActivity extends UtilitiesActivity implements View.OnClickListener, ProfileView
 {
+    AirCon airCon;
     private Button backBtn;
     private Button smallBtn;
     private Button mediumBtn;
@@ -38,6 +38,8 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
         Intent intent = getIntent();
         prev_activity = intent.getStringExtra("PREVIOUS_ACTIVITY");
         prev_activity = stringManipulation(prev_activity);
+
+        airCon = (AirCon) intent.getSerializableExtra("AC");
 
         backBtn = findViewById(R.id.back_button);
         backBtn.setOnClickListener(this);
@@ -64,16 +66,20 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
 
         speakerSettings = getSharedPreferences("speaker", MODE_MULTI_PROCESS);
         boolean spkrPref = speakerSettings.getBoolean("speaker", MenuActivity.profile.isSoundCommands());
+        System.out.println("speaker:"+spkrPref);
         speakerSwitch.setChecked(spkrPref);
 
         micSettings = getSharedPreferences("mic", MODE_MULTI_PROCESS);
         boolean micPref = micSettings.getBoolean("mic", MenuActivity.profile.isSpeechCommands());
+        System.out.println("mic:"+micPref);
         micSwitch.setChecked(micPref);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        clearPreferences(speakerSettings);
+        clearPreferences(micSettings);
     }
 
     public void onClick(View view)
@@ -82,7 +88,7 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
             Intent intent;
             if (prev_activity.equalsIgnoreCase(AirConActivity.class.toString()))
             {
-                intent = new Intent(ProfileActivity.this, AirCon.class);
+                intent = new Intent(ProfileActivity.this, AirConActivity.class);
             }
             else if (prev_activity.equalsIgnoreCase(AdvancedACSettingsActivity.class.toString()))
             {
@@ -102,6 +108,7 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
             }
 
             intent.putExtra("FONT", MenuActivity.profile.getFontSize());
+            intent.putExtra("AC", (Serializable) airCon);
             startActivity(intent);
         }
         if (view == smallBtn){
@@ -128,7 +135,6 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
             {
                 savePreferences("speaker", !speakerSwitch.isChecked(), speakerSettings);
             }
-
             MenuActivity.profile.setSoundCommands(!MenuActivity.profile.isSoundCommands());
         }
         if (view == micSwitch){
@@ -140,7 +146,6 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
             {
                 savePreferences("mic", !micSwitch.isChecked(), micSettings);
             }
-
             MenuActivity.profile.setSpeechCommands(!MenuActivity.profile.isSpeechCommands());
         }
         if (view == homeBtn){
@@ -187,6 +192,13 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
     private void savePreferences(String key, boolean value, SharedPreferences sharedPreferences) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(key, value);
+        editor.apply();
+    }
+
+    private void clearPreferences(SharedPreferences sharedPreferences)
+    {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
         editor.apply();
     }
 

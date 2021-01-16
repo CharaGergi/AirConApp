@@ -57,24 +57,29 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
 
         Intent intent = getIntent();
         menuFont = intent.getIntExtra("FONT", 1);
-        airConName = intent.getStringExtra("AC_NAME");
-        MenuActivity.profile.setFontSize(menuFont);
+        airCon = (AirCon) intent.getSerializableExtra("AC");
 
-        applyFontSize(getResources().getConfiguration());
-
-        for (AirCon ac : Utilities.getSelectedAirCons())
+        if (airCon == null)
         {
-            if (ac.getName().equalsIgnoreCase(airConName))
+            airConName = intent.getStringExtra("AC_NAME");
+            MenuActivity.profile.setFontSize(menuFont);
+
+            applyFontSize(getResources().getConfiguration());
+
+            for (AirCon ac : Utilities.getSelectedAirCons())
             {
-                airCon = ac;
-                foundFlag = true;
+                if (ac.getName().equalsIgnoreCase(airConName))
+                {
+                    airCon = ac;
+                    foundFlag = true;
+                }
             }
-        }
 
-        if (!foundFlag)
-        {
-            Toast.makeText(AirConActivity.this, "This AC does not exist (?)", Toast.LENGTH_SHORT).show();
-            handleBackBtn(AirConActivity.this, MenuActivity.class);
+            if (!foundFlag)
+            {
+                Toast.makeText(AirConActivity.this, "This AC does not exist (?)", Toast.LENGTH_SHORT).show();
+                handleBackBtn(AirConActivity.this, MenuActivity.class);
+            }
         }
 
         ACName = findViewById(R.id.logo);
@@ -131,9 +136,18 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
         advancedSettingsBtn.setOnClickListener(this);
 
         soundCommBtn = findViewById(R.id.soundCommandsBtn);
+
+        if (!MenuActivity.profile.isSoundCommands())
+        {
+            soundCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
+        }
         soundCommBtn.setOnClickListener(this);
 
         speechCommBtn = findViewById(R.id.speechCommandsBtn);
+        if (!MenuActivity.profile.isSpeechCommands())
+        {
+            speechCommBtn.setBackgroundResource(R.drawable.mic_icon_muted);
+        }
         speechCommBtn.setOnClickListener(this);
 
         powerBtn = findViewById(R.id.powerBtn);
@@ -153,7 +167,7 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
             handleBackBtn(AirConActivity.this, MenuActivity.class);
         }
         if (view == settingsBtn) {
-            handleSettingsBtn(AirConActivity.this);
+            handleSettingsBtn(AirConActivity.this, airCon);
         }
         if (view == editNameBtn) {
             ACName.setCursorVisible(true);
@@ -251,11 +265,10 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
         if (view == powerBtn) {
             if (airCon.isPower()) {
                 powerBtn.setBackgroundTintList(getResources().getColorStateList(R.color.red));
-                airCon.setPower(true);
             } else {
                 powerBtn.setBackgroundTintList(getResources().getColorStateList(R.color.green));
-                airCon.setPower(false);
             }
+            airCon.setPower(!airCon.isPower());
         }
     }
 

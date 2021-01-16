@@ -17,10 +17,12 @@ import android.util.DisplayMetrics;
 import android.widget.Button;
 
 import com.example.airconapp.R;
+import com.example.airconapp.domain.AirCon;
 import com.example.airconapp.view.Menu.MenuActivity;
 import com.example.airconapp.view.Profile.ProfileActivity;
 import com.example.airconapp.view.SearchResults.SearchResultsActivity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public abstract class UtilitiesActivity extends AppCompatActivity {
@@ -146,10 +148,11 @@ public abstract class UtilitiesActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void handleSettingsBtn(Activity context)
+    public void handleSettingsBtn(Activity context, AirCon airCon)
     {
         Intent intent = new Intent(context, ProfileActivity.class);
         intent.putExtra("PREVIOUS_ACTIVITY", context.toString());
+        intent.putExtra("AC", (Serializable) airCon);
         startActivity(intent);
     }
 

@@ -105,7 +105,7 @@ public class SearchResultsActivity extends UtilitiesActivity implements View.OnC
             toggleSpeechBtn(speechCommBtn);
         }
         if (view == settingsBtn) {
-            handleSettingsBtn(SearchResultsActivity.this);
+            handleSettingsBtn(SearchResultsActivity.this, null);
         }
         if (view == homeBtn){
             System.out.println("Home Button in Search Results pressed");

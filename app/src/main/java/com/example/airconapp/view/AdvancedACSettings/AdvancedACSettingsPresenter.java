@@ -8,9 +8,10 @@ public class AdvancedACSettingsPresenter
     private AdvancedACSettingsView view;
     private AirCon airCon;
 
-    public AdvancedACSettingsPresenter(AdvancedACSettingsView view)
+    public AdvancedACSettingsPresenter(AdvancedACSettingsView view, AirCon airCon)
     {
         this.view = view;
+        this.airCon = airCon;
     }
 
     public int onChangeIntensity()

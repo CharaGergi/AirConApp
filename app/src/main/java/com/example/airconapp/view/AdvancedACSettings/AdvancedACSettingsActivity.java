@@ -54,7 +54,7 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
 
         applyFontSize(getResources().getConfiguration());
 
-        advancedACSettingsPresenter = new AdvancedACSettingsPresenter(this);
+        advancedACSettingsPresenter = new AdvancedACSettingsPresenter(this, airCon);
 
         backBtn = findViewById(R.id.back_button);
         backBtn.setOnClickListener(this);
@@ -151,11 +151,14 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
     {
         if (view == backBtn)
         {
-            handleBackBtn(AdvancedACSettingsActivity.this, AirConActivity.class);
+            Intent intent = new Intent(AdvancedACSettingsActivity.this, AirConActivity.class);
+            intent.putExtra("FONT", MenuActivity.profile.getFontSize());
+            intent.putExtra("AC", (Serializable) airCon);
+            startActivity(intent);
         }
         if (view == settingsBtn)
         {
-            handleSettingsBtn(AdvancedACSettingsActivity.this);
+            handleSettingsBtn(AdvancedACSettingsActivity.this, airCon);
         }
         if (view == homeBtn)
         {
@@ -190,7 +193,6 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
             applySwitch.toggle();
             advancedACSettingsPresenter.onToggleApplyToAll();
         }
-
     }
 
     @Override

@@ -40,6 +40,22 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
         settingsBtn = findViewById(R.id.settings_button);
         settingsBtn.setOnClickListener(this);
 
+        soundCommBtn = findViewById(R.id.soundCommandsBtn);
+        System.out.println("sound:"+profile.isSoundCommands());
+        if (!profile.isSoundCommands())
+        {
+            soundCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
+        }
+        soundCommBtn.setOnClickListener(this);
+
+        speechCommBtn = findViewById(R.id.speechCommandsBtn);
+        System.out.println("speech:"+profile.isSpeechCommands());
+        if (!profile.isSpeechCommands())
+        {
+            speechCommBtn.setBackgroundResource(R.drawable.mic_icon_muted);
+        }
+        speechCommBtn.setOnClickListener(this);
+
         selectedAirCons = (ListView) findViewById(R.id.selectedAirConsList);
 
         if (Utilities.getSelectedAirCons() != null)
@@ -70,20 +86,6 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
             });
         }
 
-        soundCommBtn = findViewById(R.id.soundCommandsBtn);
-        if (!profile.isSoundCommands())
-        {
-            soundCommBtn.setBackgroundResource(R.drawable.speaker_icon_muted);
-        }
-        soundCommBtn.setOnClickListener(this);
-
-        speechCommBtn = findViewById(R.id.speechCommandsBtn);
-        if (!profile.isSpeechCommands())
-        {
-            speechCommBtn.setBackgroundResource(R.drawable.mic_icon_muted);
-        }
-        speechCommBtn.setOnClickListener(this);
-
         searchBtn = findViewById(R.id.searchBtn);
         searchBtn.setOnClickListener(this);
     }
@@ -96,7 +98,7 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
     public void onClick(View view)
     {
         if (view == settingsBtn) {
-            handleSettingsBtn(MenuActivity.this);
+            handleSettingsBtn(MenuActivity.this, null);
         }
         if (view == soundCommBtn) {
             toggleSoundBtn(soundCommBtn);
