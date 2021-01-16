@@ -1,8 +1,9 @@
 package com.example.airconapp.domain;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class AirCon
+public class AirCon implements Serializable
 {
     private String name;
     private int mainMode; // 0 = sun, 1 = snow, 2 = auto, 3 = humidity, 4 = fan

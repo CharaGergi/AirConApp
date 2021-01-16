@@ -40,7 +40,7 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
         settingsBtn = findViewById(R.id.settings_button);
         settingsBtn.setOnClickListener(this);
 
-        selectedAirCons = findViewById(R.id.selectedAirConsList);
+        selectedAirCons = (ListView) findViewById(R.id.selectedAirConsList);
 
         if (Utilities.getSelectedAirCons() != null)
         {

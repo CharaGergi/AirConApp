@@ -13,12 +13,14 @@ import com.example.airconapp.domain.AirCon;
 import com.example.airconapp.domain.Utilities;
 import com.example.airconapp.view.Menu.MenuActivity;
 import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
+import com.example.airconapp.view.Profile.ProfileActivity;
 
 public class SearchResultsActivity extends UtilitiesActivity implements View.OnClickListener {
     private Button backBtn;
     private Button soundCommBtn;
     private Button speechCommBtn;
     private Button settingsBtn;
+    private Button homeBtn;
     private ListView foundAirCons;
     private String[] airConNames;
 
@@ -35,7 +37,10 @@ public class SearchResultsActivity extends UtilitiesActivity implements View.OnC
         backBtn = findViewById(R.id.back_button);
         backBtn.setOnClickListener(this);
 
-        foundAirCons = findViewById(R.id.foundAirConsList);
+        homeBtn = findViewById(R.id.homeBtn);
+        homeBtn.setOnClickListener(this);
+
+        foundAirCons = (ListView)findViewById(R.id.foundAirConsList);
 
         soundCommBtn = findViewById(R.id.soundCommandsBtn);
         if (!MenuActivity.profile.isSoundCommands())
@@ -101,6 +106,11 @@ public class SearchResultsActivity extends UtilitiesActivity implements View.OnC
         }
         if (view == settingsBtn) {
             handleSettingsBtn(SearchResultsActivity.this);
+        }
+        if (view == homeBtn){
+            Intent intent = new Intent(SearchResultsActivity.this, MenuActivity.class);
+            intent.putExtra("FONT", MenuActivity.profile.getFontSize());
+            startActivity(intent);
         }
     }
 }

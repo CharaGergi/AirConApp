@@ -41,10 +41,7 @@ public class AirConPresenter
         airCon.setTemperature(Integer.parseInt(view.getAirConTemp()));
     }
 
-    public void onIncreaseTempBtn()
-    {
-        airCon.setTemperature(airCon.getTemperature() + 1);
-    }
+    public void onIncreaseTempBtn() { airCon.setTemperature(airCon.getTemperature() + 1); }
 
     public void onDecreaseTempBtn()
     {

@@ -224,9 +224,11 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
         }
         if (view == increaseTempBtn) {
             airConPresenter.onIncreaseTempBtn();
+            temperatureEditTxt.setText(String.valueOf(airCon.getTemperature()));
         }
         if (view == decreaseTempBtn) {
             airConPresenter.onDecreaseTempBtn();
+            temperatureEditTxt.setText(String.valueOf(airCon.getTemperature()));
         }
         if (view == increaseAngleBtn) {
             airConPresenter.onIncreaseTilt();
@@ -237,7 +239,7 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
         if (view == advancedSettingsBtn) {
             Intent intent = new Intent(AirConActivity.this, AdvancedACSettingsActivity.class);
             intent.putExtra("FONT", menuFont);
-            intent.putExtra("AC", (Parcelable) airCon);
+            intent.putExtra("AC", (Serializable) airCon);
             startActivity(intent);
         }
         if (view == soundCommBtn) {

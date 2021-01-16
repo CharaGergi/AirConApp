@@ -14,6 +14,7 @@ import com.example.airconapp.R;
 import com.example.airconapp.domain.AirCon;
 import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
 import com.example.airconapp.view.AirCon.AirConActivity;
+import com.example.airconapp.view.AirConDetails.AirConDetailsActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
 import com.example.airconapp.view.Profile.ProfileActivity;
 
@@ -25,6 +26,7 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
     private Button homeBtn;
     private Button soundCommBtn;
     private Button speechCommBtn;
+    private Button detailsBtn;
     private Switch sleepSwitch;
     private Switch silentSwitch;
     private SeekBar airSeekbar;
@@ -44,7 +46,7 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
 
         Intent intent = getIntent();
         menuFont = intent.getIntExtra("FONT", 1);
-        airCon = intent.getParcelableExtra("AC");
+        airCon = (AirCon) intent.getSerializableExtra("AC");
 
         MenuActivity.profile.setFontSize(menuFont);
 
@@ -60,6 +62,9 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
 
         homeBtn = findViewById(R.id.homeBtn);
         homeBtn.setOnClickListener(this);
+
+        detailsBtn = findViewById(R.id.detailsBtn);
+        detailsBtn.setOnClickListener(this);
 
         soundCommBtn = findViewById(R.id.soundCommandsBtn);
         if (!MenuActivity.profile.isSoundCommands())
@@ -161,6 +166,11 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
         }
         if (view == speechCommBtn) {
             toggleSpeechBtn(speechCommBtn);
+        }
+        if (view == detailsBtn){
+            Intent intent = new Intent(AdvancedACSettingsActivity.this, AirConDetailsActivity.class);
+            intent.putExtra("FONT", menuFont);
+            startActivity(intent);
         }
         if (view == sleepSwitch)
         {
