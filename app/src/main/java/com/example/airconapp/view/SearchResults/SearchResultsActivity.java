@@ -108,6 +108,7 @@ public class SearchResultsActivity extends UtilitiesActivity implements View.OnC
             handleSettingsBtn(SearchResultsActivity.this);
         }
         if (view == homeBtn){
+            System.out.println("Home Button in Search Results pressed");
             Intent intent = new Intent(SearchResultsActivity.this, MenuActivity.class);
             intent.putExtra("FONT", MenuActivity.profile.getFontSize());
             startActivity(intent);

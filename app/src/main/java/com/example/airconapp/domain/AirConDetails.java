@@ -1,6 +1,8 @@
 package com.example.airconapp.domain;
 
-public class AirConDetails
+import java.io.Serializable;
+
+public class AirConDetails implements Serializable
 {
     private String name;
     private int serialNo;
