@@ -12,6 +12,7 @@ import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
 import com.example.airconapp.view.AdvancedACSettings.AdvancedACSettingsActivity;
 import com.example.airconapp.view.AirCon.AirConActivity;
 import com.example.airconapp.view.AirConDetails.AirConDetailsActivity;
+import com.example.airconapp.view.Help.HelpActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
 import com.example.airconapp.view.SearchResults.SearchResultsActivity;
 import java.io.Serializable;
@@ -24,6 +25,7 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
     private Button mediumBtn;
     private Button largeBtn;
     private Button homeBtn;
+    private Button helpBtn;
     private Switch speakerSwitch;
     private Switch micSwitch;
     private SharedPreferences speakerSettings;
@@ -34,6 +36,10 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        System.out.println(MenuActivity.profile.isSoundCommands() );
+        System.out.println(MenuActivity.profile.isSpeechCommands() );
+
+
 
         Intent intent = getIntent();
         prev_activity = intent.getStringExtra("PREVIOUS_ACTIVITY");
@@ -63,6 +69,9 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
 
         micSwitch = findViewById(R.id.micSwitch);
         micSwitch.setOnClickListener(this);
+
+        helpBtn = findViewById(R.id.helpBtn);
+        helpBtn.setOnClickListener(this);
 
         speakerSettings = getSharedPreferences("speaker", MODE_MULTI_PROCESS);
         boolean spkrPref = speakerSettings.getBoolean("speaker", MenuActivity.profile.isSoundCommands());
@@ -102,9 +111,12 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
             {
                 intent = new Intent(ProfileActivity.this, SearchResultsActivity.class);
             }
-            else
+            else if (prev_activity.equalsIgnoreCase(MenuActivity.class.toString()))
             {
                 intent = new Intent(ProfileActivity.this, MenuActivity.class);
+            }
+            else {
+                intent = new Intent(ProfileActivity.this, HelpActivity.class);
             }
 
             intent.putExtra("FONT", MenuActivity.profile.getFontSize());
@@ -152,6 +164,9 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
             Intent intent = new Intent(ProfileActivity.this, MenuActivity.class);
             intent.putExtra("FONT", MenuActivity.profile.getFontSize());
             startActivity(intent);
+        }
+        if (view == helpBtn){
+            handleHelpBtn(ProfileActivity.this, MenuActivity.profile.getFontSize());
         }
     }
 

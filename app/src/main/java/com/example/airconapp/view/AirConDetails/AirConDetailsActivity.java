@@ -22,6 +22,7 @@ public class AirConDetailsActivity extends UtilitiesActivity implements View.OnC
     private Button backBtn;
     private Button settingsBtn;
     private Button homeBtn;
+    private Button helpBtn;
     private AirCon airCon;
     private TextView airConName;
     private TextView airConSerial;
@@ -78,6 +79,9 @@ public class AirConDetailsActivity extends UtilitiesActivity implements View.OnC
 
         homeBtn = findViewById(R.id.homeBtn);
         homeBtn.setOnClickListener(this);
+
+        helpBtn = findViewById(R.id.helpBtn);
+        helpBtn.setOnClickListener(this);
     }
 
     @Override
@@ -101,6 +105,9 @@ public class AirConDetailsActivity extends UtilitiesActivity implements View.OnC
             Intent intent = new Intent(AirConDetailsActivity.this, MenuActivity.class);
             intent.putExtra("FONT", MenuActivity.profile.getFontSize());
             startActivity(intent);
+        }
+        if (view == helpBtn){
+            handleHelpBtn(AirConDetailsActivity.this, MenuActivity.profile.getFontSize());
         }
     }
 

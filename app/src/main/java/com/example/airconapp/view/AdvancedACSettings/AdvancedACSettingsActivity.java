@@ -15,6 +15,7 @@ import com.example.airconapp.domain.AirCon;
 import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
 import com.example.airconapp.view.AirCon.AirConActivity;
 import com.example.airconapp.view.AirConDetails.AirConDetailsActivity;
+import com.example.airconapp.view.Help.HelpActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
 import com.example.airconapp.view.Profile.ProfileActivity;
 
@@ -29,6 +30,7 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
     private Button soundCommBtn;
     private Button speechCommBtn;
     private Button detailsBtn;
+    private Button helpBtn;
     private Switch sleepSwitch;
     private Switch silentSwitch;
     private SeekBar airSeekbar;
@@ -67,6 +69,9 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
 
         detailsBtn = findViewById(R.id.detailsBtn);
         detailsBtn.setOnClickListener(this);
+
+        helpBtn = findViewById(R.id.helpBtn);
+        helpBtn.setOnClickListener(this);
 
         soundCommBtn = findViewById(R.id.soundCommandsBtn);
         if (!MenuActivity.profile.isSoundCommands())
@@ -177,6 +182,9 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
             intent.putExtra("AC", (Serializable) airCon);
             intent.putExtra("FONT", menuFont);
             startActivity(intent);
+        }
+        if (view == helpBtn){
+            handleHelpBtn(AdvancedACSettingsActivity.this, menuFont);
         }
         if (view == sleepSwitch)
         {

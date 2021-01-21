@@ -19,6 +19,7 @@ import com.example.airconapp.domain.Utilities;
 import com.example.airconapp.view.AdvancedACSettings.AdvancedACSettingsActivity;
 import com.example.airconapp.view.AirCon.AirConActivity;
 import com.example.airconapp.view.AirConDetails.AirConDetailsActivity;
+import com.example.airconapp.view.Help.HelpActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
 import com.example.airconapp.view.Profile.ProfileActivity;
 import com.example.airconapp.view.SearchResults.SearchResultsActivity;
@@ -240,6 +241,14 @@ public abstract class UtilitiesActivity extends AppCompatActivity {
         Intent intent = new Intent(context, ProfileActivity.class);
         intent.putExtra("PREVIOUS_ACTIVITY", context.toString());
         intent.putExtra("AC", (Serializable) airCon);
+        startActivity(intent);
+    }
+
+    public void handleHelpBtn(Activity context, int font)
+    {
+        Intent intent = new Intent(context, HelpActivity.class);
+        intent.putExtra("PREVIOUS_ACTIVITY", context.toString());
+        intent.putExtra("FONT", font);
         startActivity(intent);
     }
 

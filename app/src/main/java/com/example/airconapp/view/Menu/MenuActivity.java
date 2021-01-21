@@ -12,6 +12,7 @@ import com.example.airconapp.domain.AirCon;
 import com.example.airconapp.domain.Profile;
 import com.example.airconapp.domain.Utilities;
 import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
+import com.example.airconapp.view.AdvancedACSettings.AdvancedACSettingsActivity;
 import com.example.airconapp.view.AirCon.AirConActivity;
 import com.example.airconapp.view.SearchResults.SearchResultsActivity;
 
@@ -21,6 +22,7 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
     private Button soundCommBtn;
     private Button speechCommBtn;
     private Button searchBtn;
+    private Button helpBtn;
     private ListView selectedAirCons;
     private String[] selectedAirConsNames;
     static public Profile profile = new Profile(0, true, true);
@@ -89,7 +91,8 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
         searchBtn = findViewById(R.id.searchBtn);
         searchBtn.setOnClickListener(this);
 
-
+        helpBtn = findViewById(R.id.helpBtn);
+        helpBtn.setOnClickListener(this);
     }
 
     @Override
@@ -113,6 +116,9 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
             Intent intent = new Intent(MenuActivity.this, SearchResultsActivity.class);
             intent.putExtra("FONT", profile.getFontSize());
             startActivity(intent);
+        }
+        if (view == helpBtn){
+            handleHelpBtn(MenuActivity.this, MenuActivity.profile.getFontSize());
         }
     }
 }

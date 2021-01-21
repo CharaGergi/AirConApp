@@ -21,6 +21,7 @@ public class SearchResultsActivity extends UtilitiesActivity implements View.OnC
     private Button speechCommBtn;
     private Button settingsBtn;
     private Button homeBtn;
+    private Button helpBtn;
     private ListView foundAirCons;
     private String[] airConNames;
 
@@ -39,6 +40,9 @@ public class SearchResultsActivity extends UtilitiesActivity implements View.OnC
 
         homeBtn = findViewById(R.id.homeBtn);
         homeBtn.setOnClickListener(this);
+
+        helpBtn = findViewById(R.id.helpBtn);
+        helpBtn.setOnClickListener(this);
 
         foundAirCons = (ListView)findViewById(R.id.foundAirConsList);
 
@@ -112,6 +116,9 @@ public class SearchResultsActivity extends UtilitiesActivity implements View.OnC
             Intent intent = new Intent(SearchResultsActivity.this, MenuActivity.class);
             intent.putExtra("FONT", MenuActivity.profile.getFontSize());
             startActivity(intent);
+        }
+        if(view == helpBtn){
+            handleHelpBtn(SearchResultsActivity.this, MenuActivity.profile.getFontSize());
         }
     }
 }

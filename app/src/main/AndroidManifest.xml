@@ -27,6 +27,9 @@
             android:name=".view.Profile.ProfileActivity"
             android:screenOrientation="landscape" />
         <activity
+            android:name=".view.Help.HelpActivity"
+            android:screenOrientation="landscape" />
+        <activity
             android:name=".view.Menu.MenuActivity"
             android:screenOrientation="landscape">
             <intent-filter>
