@@ -23,7 +23,7 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
     private Button searchBtn;
     private ListView selectedAirCons;
     private String[] selectedAirConsNames;
-    static public Profile profile = new Profile(0, false, false);
+    static public Profile profile = new Profile(0, true, true);
     static public Utilities utilities = new Utilities();
 
 
@@ -88,6 +88,8 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
 
         searchBtn = findViewById(R.id.searchBtn);
         searchBtn.setOnClickListener(this);
+
+
     }
 
     @Override

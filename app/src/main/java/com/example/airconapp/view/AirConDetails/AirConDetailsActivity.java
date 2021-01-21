@@ -1,5 +1,6 @@
 package com.example.airconapp.view.AirConDetails;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.example.airconapp.view.AirCon.AirConActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class AirConDetailsActivity extends UtilitiesActivity implements View.OnClickListener, AirConDetailsView
 {
@@ -100,6 +102,14 @@ public class AirConDetailsActivity extends UtilitiesActivity implements View.OnC
             intent.putExtra("FONT", MenuActivity.profile.getFontSize());
             startActivity(intent);
         }
+    }
+
+    @Override
+    public void handleSpeechCommands(ArrayList<String> data, Activity context, AirCon airCon, int menuFont)
+    {
+        super.handleSpeechCommands(data, context, airCon, menuFont);
+
+        // stuff to do
     }
 
     @Override
