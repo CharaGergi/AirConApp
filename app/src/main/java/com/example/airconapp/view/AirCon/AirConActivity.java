@@ -60,29 +60,34 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
 
         Intent intent = getIntent();
         menuFont = intent.getIntExtra("FONT", 1);
-        airConName = intent.getStringExtra("AC_NAME");
+        airCon = (AirCon) intent.getSerializableExtra("AC");
         MenuActivity.profile.setFontSize(menuFont);
 
         applyFontSize(getResources().getConfiguration());
 
-        for (AirCon ac : Utilities.getSelectedAirCons())
+        if (airCon == null)
         {
-            if (ac.getName().equalsIgnoreCase(airConName))
+            airConName = intent.getStringExtra("AC_NAME");
+
+            for (AirCon ac : Utilities.getSelectedAirCons())
             {
-                airCon = ac;
-                foundFlag = true;
+                if (ac.getName().equalsIgnoreCase(airConName))
+                {
+                    airCon = ac;
+                    foundFlag = true;
+                }
+            }
+
+            if (!foundFlag)
+            {
+                Toast.makeText(AirConActivity.this, "This AC does not exist (?)", Toast.LENGTH_SHORT).show();
+                handleBackBtn(AirConActivity.this, MenuActivity.class);
             }
         }
 
-        if (!foundFlag)
-        {
-            Toast.makeText(AirConActivity.this, "This AC does not exist (?)", Toast.LENGTH_SHORT).show();
-            handleBackBtn(AirConActivity.this, MenuActivity.class);
-        }
-
         ACName = findViewById(R.id.logo);
+        ACName.setText(airCon.getName());
 
-        ACName.setText(airConName);
         mainMode = airCon.getMainMode();
 
         temperatureEditTxt = findViewById(R.id.tempEditTxt);
@@ -267,11 +272,10 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
         if (view == powerBtn) {
             if (airCon.isPower()) {
                 powerBtn.setBackgroundTintList(getResources().getColorStateList(R.color.red));
-                airCon.setPower(true);
             } else {
                 powerBtn.setBackgroundTintList(getResources().getColorStateList(R.color.green));
-                airCon.setPower(false);
             }
+            airCon.setPower(!airCon.isPower());
         }
         if (view == helpBtn){
             handleHelpBtn(AirConActivity.this, menuFont);
