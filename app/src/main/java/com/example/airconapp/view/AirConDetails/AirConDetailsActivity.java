@@ -111,14 +111,14 @@ public class AirConDetailsActivity extends UtilitiesActivity implements View.OnC
         }
     }
 
-    @Override
+  /*  @Override
     public void handleSpeechCommands(ArrayList<String> data, Activity context, AirCon airCon, int menuFont)
     {
         super.handleSpeechCommands(data, context, airCon, menuFont);
 
         // stuff to do
     }
-
+*/
     @Override
     public String getAirConName() {
         return airConName.getText().toString();

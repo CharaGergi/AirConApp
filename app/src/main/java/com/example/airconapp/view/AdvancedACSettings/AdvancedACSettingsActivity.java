@@ -5,13 +5,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.Switch;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+
 import com.example.airconapp.R;
 import com.example.airconapp.domain.AirCon;
+import com.example.airconapp.domain.Utilities;
 import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
 import com.example.airconapp.view.AirCon.AirConActivity;
 import com.example.airconapp.view.AirConDetails.AirConDetailsActivity;
@@ -40,8 +46,11 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
     private EditText timerOffHourEditTxt;
     private EditText timerOffMinsEditTxt;
     private ScrollView airCons;
+    private TableLayout applyToTable;
+    private TextView applyToTextView;
     private AdvancedACSettingsPresenter advancedACSettingsPresenter;
     private int menuFont;
+    private boolean isSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +82,28 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
         helpBtn = findViewById(R.id.helpBtn);
         helpBtn.setOnClickListener(this);
 
+        applyToTable = findViewById(R.id.scrollViewTable);
+        applyToTextView = findViewById(R.id.scrollViewTableEditTxt);
+
+        for(AirCon airCon: Utilities.getSelectedAirCons()) {
+            TableRow row = new TableRow(this);
+
+            TextView name = new TextView(this);
+            name.setText(airCon.getName());
+            row.addView(name);
+
+            row.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(!isSelected)
+                        v.setBackgroundResource(R.color.light_blue);
+                    else v.setBackgroundResource(R.color.white);
+                    isSelected = !isSelected;
+                    }
+            });
+            applyToTable.addView(row);
+        }
+
         soundCommBtn = findViewById(R.id.soundCommandsBtn);
         if (!MenuActivity.profile.isSoundCommands())
         {
@@ -94,7 +125,6 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
         silentSwitch.setOnClickListener(this);
 
         airSeekbar = findViewById(R.id.airIntensityseekBar);
-        //airSeekbar.setOnSeekBarChangeListener(); // need to check this
         airSeekbar.setMax(4);
 
         airSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
@@ -112,31 +142,6 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
                     airSeekbar.setProgress(seekBarProgress);
             }
         });
-
-
-
-
-
-
-
-            /*@Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                Toast.makeText(ToggleButtonActivity.this,
-                        "Seekbar vale "+i, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                Toast.makeText(ToggleButtonActivity.this,
-                        "Seekbar touch started", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                Toast.makeText(ToggleButtonActivity.this,
-                        "Seekbar touch stopped", Toast.LENGTH_SHORT).show();
-            }
-        });*/
 
         applySwitch = findViewById(R.id.applyToAllSwitch);
         applySwitch.setOnClickListener(this);

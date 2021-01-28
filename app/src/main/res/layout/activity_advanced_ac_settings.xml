@@ -71,16 +71,6 @@
         app:layout_constraintStart_toEndOf="@+id/airIntensity"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
-    <ImageView
-        android:id="@+id/airIntensity"
-        android:layout_width="80dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="184dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo"
-        app:srcCompat="@drawable/air_intensity" />
-
     <SeekBar
         android:id="@+id/airIntensityseekBar"
         android:layout_width="120dp"
@@ -91,52 +81,11 @@
         app:layout_constraintStart_toEndOf="@+id/airIntensityTxtView"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
-    <ImageView
-        android:id="@+id/sleep"
-        android:layout_width="66dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="102dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo"
-        app:srcCompat="@drawable/sleep_icon" />
-
-    <TextView
-        android:id="@+id/sleepTxtView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="@string/sleep"
-        android:textColor="@color/light_black"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/sleep"
-        app:layout_constraintTop_toBottomOf="@+id/airIntensity" />
-
-    <Switch
-        android:id="@+id/sleepSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="56dp"
-        android:scaleX="1.3"
-        app:layout_constraintStart_toEndOf="@+id/sleepTxtView"
-        app:layout_constraintTop_toBottomOf="@+id/airIntensityTxtView" />
-
-    <ImageView
-        android:id="@+id/silent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/silentTxtView"
-        app:layout_constraintTop_toBottomOf="@+id/airIntensityseekBar"
-        app:srcCompat="@drawable/silent_icon" />
-
     <TextView
         android:id="@+id/silentTxtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="160dp"
         android:text="@string/silent"
         android:textColor="@color/light_black"
@@ -144,36 +93,76 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/airIntensityseekBar" />
 
-    <Button
-        android:id="@+id/timer"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="190dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/timer_icon"
-        android:backgroundTint="@color/colorPrimary"
-        android:clickable="false"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sleepTxtView" />
-
     <TextView
-        android:id="@+id/timerTxtView"
+        android:id="@+id/sleepTxtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="60dp"
-        android:text="@string/timer"
+        android:layout_marginTop="28dp"
+        android:text="@string/sleep"
         android:textColor="@color/light_black"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/timer"
-        app:layout_constraintTop_toBottomOf="@+id/sleepTxtView" />
+        app:layout_constraintStart_toEndOf="@+id/sleep"
+        app:layout_constraintTop_toBottomOf="@+id/airIntensity" />
+
+    <ImageView
+        android:id="@+id/airIntensity"
+        android:layout_width="80dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:srcCompat="@drawable/air_intensity" />
+
+    <Switch
+        android:id="@+id/sleepSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="40dp"
+        android:scaleX="1.3"
+        app:layout_constraintStart_toEndOf="@+id/sleepTxtView"
+        app:layout_constraintTop_toBottomOf="@+id/airIntensityTxtView" />
+
+    <Button
+        android:id="@+id/startTimerBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="52dp"
+        android:text="@string/startBtn"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toEndOf="@+id/minsTimerTxtView"
+        app:layout_constraintTop_toBottomOf="@+id/silentTxtView" />
+
+    <TextView
+        android:id="@+id/hoursTimerOffTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/hours"
+        android:textColor="@color/light_black"
+        android:textSize="22sp"
+        app:layout_constraintStart_toEndOf="@+id/hoursTimerOffEditTxt"
+        app:layout_constraintTop_toBottomOf="@+id/hoursTimerTxtView" />
+
+    <ImageView
+        android:id="@+id/timerOff"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timer"
+        app:srcCompat="@drawable/timer_off" />
 
     <EditText
         android:id="@+id/hourTimerEditTxt"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="194dp"
+        android:layout_marginTop="180dp"
         android:background="@color/light_blue"
         android:ems="10"
         android:gravity="center"
@@ -182,98 +171,45 @@
         app:layout_constraintStart_toEndOf="@+id/timerTxtView"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
-    <TextView
-        android:id="@+id/hoursTimerTxtView"
+    <Switch
+        android:id="@+id/silentSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="202dp"
-        android:text="@string/hours"
-        android:textColor="@color/light_black"
-        android:textSize="22sp"
-        app:layout_constraintStart_toEndOf="@+id/hourTimerEditTxt"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="96dp"
+        android:scaleX="1.3"
+        app:layout_constraintStart_toEndOf="@+id/silentTxtView"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
-    <EditText
-        android:id="@+id/minsTimerEditTxt"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="52dp"
-        android:background="@color/light_blue"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="number"
-        android:text="0"
-        app:layout_constraintStart_toEndOf="@+id/hoursTimerTxtView"
-        app:layout_constraintTop_toBottomOf="@+id/silentTxtView" />
-
     <TextView
-        android:id="@+id/minsTimerTxtView"
+        android:id="@+id/minsTimerOffTxtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="60dp"
         android:text="@string/minutes"
         android:textColor="@color/light_black"
         android:textSize="22sp"
-        app:layout_constraintStart_toEndOf="@+id/minsTimerEditTxt"
-        app:layout_constraintTop_toBottomOf="@+id/silentTxtView" />
+        app:layout_constraintStart_toEndOf="@+id/minsTimerOffEditTxt"
+        app:layout_constraintTop_toBottomOf="@+id/minsTimerTxtView" />
 
-    <ImageView
-        android:id="@+id/timerOff"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="190dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timer"
-        app:srcCompat="@drawable/timer_off" />
-
-    <TextView
-        android:id="@+id/timerOffTxtView"
+    <Button
+        android:id="@+id/startTimerOffBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="48dp"
-        android:text="@string/timerOff"
-        android:textColor="@color/light_black"
-        android:textSize="22sp"
-        app:layout_constraintStart_toEndOf="@+id/timerOff"
-        app:layout_constraintTop_toBottomOf="@+id/timerTxtView" />
-
-    <EditText
-        android:id="@+id/hoursTimerOffEditTxt"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="28dp"
-        android:background="@color/light_blue"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="number"
-        android:text="0"
-        app:layout_constraintStart_toEndOf="@+id/timerOffTxtView"
-        app:layout_constraintTop_toBottomOf="@+id/hourTimerEditTxt" />
-
-    <TextView
-        android:id="@+id/hoursTimerOffTxtView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
-        android:text="@string/hours"
-        android:textColor="@color/light_black"
-        android:textSize="22sp"
-        app:layout_constraintStart_toEndOf="@+id/hoursTimerOffEditTxt"
-        app:layout_constraintTop_toBottomOf="@+id/hoursTimerTxtView" />
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/startBtn"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toEndOf="@+id/minsTimerOffTxtView"
+        app:layout_constraintTop_toBottomOf="@+id/startTimerBtn" />
 
     <EditText
         android:id="@+id/minsTimerOffEditTxt"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="40dp"
         android:background="@color/light_blue"
         android:ems="10"
         android:gravity="center"
@@ -283,7 +219,7 @@
         app:layout_constraintTop_toBottomOf="@+id/minsTimerEditTxt" />
 
     <TextView
-        android:id="@+id/minsTimerOffTxtView"
+        android:id="@+id/minsTimerTxtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -291,8 +227,104 @@
         android:text="@string/minutes"
         android:textColor="@color/light_black"
         android:textSize="22sp"
-        app:layout_constraintStart_toEndOf="@+id/minsTimerOffEditTxt"
-        app:layout_constraintTop_toBottomOf="@+id/minsTimerTxtView" />
+        app:layout_constraintStart_toEndOf="@+id/minsTimerEditTxt"
+        app:layout_constraintTop_toBottomOf="@+id/silentTxtView" />
+
+    <TextView
+        android:id="@+id/timerOffTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/timerOff"
+        android:textColor="@color/light_black"
+        android:textSize="22sp"
+        app:layout_constraintStart_toEndOf="@+id/timerOff"
+        app:layout_constraintTop_toBottomOf="@+id/timerTxtView" />
+
+    <ImageView
+        android:id="@+id/silent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/silentTxtView"
+        app:layout_constraintTop_toBottomOf="@+id/airIntensityseekBar"
+        app:srcCompat="@drawable/silent_icon" />
+
+    <EditText
+        android:id="@+id/minsTimerEditTxt"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="44dp"
+        android:background="@color/light_blue"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        android:text="0"
+        app:layout_constraintStart_toEndOf="@+id/hoursTimerTxtView"
+        app:layout_constraintTop_toBottomOf="@+id/silentTxtView" />
+
+    <TextView
+        android:id="@+id/timerTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="56dp"
+        android:text="@string/timer"
+        android:textColor="@color/light_black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/timer"
+        app:layout_constraintTop_toBottomOf="@+id/sleepTxtView" />
+
+    <TextView
+        android:id="@+id/hoursTimerTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="188dp"
+        android:text="@string/hours"
+        android:textColor="@color/light_black"
+        android:textSize="22sp"
+        app:layout_constraintStart_toEndOf="@+id/hourTimerEditTxt"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <ImageView
+        android:id="@+id/sleep"
+        android:layout_width="66dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="88dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:srcCompat="@drawable/sleep_icon" />
+
+    <EditText
+        android:id="@+id/hoursTimerOffEditTxt"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/light_blue"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        android:text="0"
+        app:layout_constraintStart_toEndOf="@+id/timerOffTxtView"
+        app:layout_constraintTop_toBottomOf="@+id/hourTimerEditTxt" />
+
+    <Button
+        android:id="@+id/timer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/timer_icon"
+        android:backgroundTint="@color/colorPrimary"
+        android:clickable="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sleepTxtView" />
 
     <TextView
         android:id="@+id/applyToTxtView"
@@ -316,7 +348,8 @@
         android:textColor="@color/light_black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/scrollView2" />
 
     <Switch
         android:id="@+id/applyToAllSwitch"
@@ -327,16 +360,6 @@
         android:scaleX="1.3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/applyToAllTxtView" />
-
-    <Switch
-        android:id="@+id/silentSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="110dp"
-        android:layout_marginStart="50dp"
-        android:scaleX="1.3"
-        app:layout_constraintStart_toEndOf="@+id/silentTxtView"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <Button
         android:id="@+id/soundCommandsBtn"
@@ -360,32 +383,29 @@
         android:id="@+id/scrollView2"
         android:layout_width="275dp"
         android:layout_height="100dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="52dp"
         app:layout_constraintStart_toEndOf="@+id/applyToTxtView"
-        app:layout_constraintTop_toBottomOf="@+id/timerOffTxtView" />
+        app:layout_constraintTop_toBottomOf="@+id/timerOffTxtView">
 
-    <Button
-        android:id="@+id/startTimerBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="51dp"
-        android:text="@string/startBtn"
-        android:textAllCaps="false"
-        app:layout_constraintStart_toEndOf="@+id/minsTimerTxtView"
-        app:layout_constraintTop_toBottomOf="@+id/silentTxtView" />
+        <TableLayout
+            android:id="@+id/scrollViewTable"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
-    <Button
-        android:id="@+id/startTimerOffBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="33dp"
-        android:text="@string/startBtn"
-        android:textAllCaps="false"
-        app:layout_constraintStart_toEndOf="@+id/minsTimerOffTxtView"
-        app:layout_constraintTop_toBottomOf="@+id/startTimerBtn" />
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:id="@+id/scrollViewTableEditTxt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" />
+            </TableRow>
+
+        </TableLayout>
+
+    </ScrollView>
 
     <TextView
         android:id="@+id/detailsText"
@@ -397,7 +417,8 @@
         android:textColor="@color/light_black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/scrollView2" />
 
     <Button
         android:id="@+id/detailsBtn"
@@ -418,7 +439,7 @@
         android:layout_height="45dp"
         android:layout_marginStart="15dp"
         android:layout_marginBottom="15dp"
-        android:text="Button"
+        android:background="@drawable/info"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

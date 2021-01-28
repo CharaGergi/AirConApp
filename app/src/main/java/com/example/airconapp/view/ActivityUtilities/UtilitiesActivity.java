@@ -27,10 +27,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public abstract class UtilitiesActivity extends AppCompatActivity {
+public class UtilitiesActivity extends AppCompatActivity {
 
-    private SpeechRecognizer speechRecognizer;
-    final Intent speechRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+    public SpeechRecognizer speechRecognizer;
+    final public Intent speechRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
     private final int RECORD_AUDIO_REQUEST_CODE = 1;
     private ArrayList<String> data;
     private Class contextToGoBackTo;
@@ -39,6 +39,7 @@ public abstract class UtilitiesActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         askVoicePermission();
+        //speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
     }
 
 
@@ -48,55 +49,57 @@ public abstract class UtilitiesActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.RECORD_AUDIO}, RECORD_AUDIO_REQUEST_CODE);
     }
 
-    private void SpeechRecognizer(final Activity context, final AirCon airCon, final int menuFont) {
-        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
-        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        //katalavainei ellinika. uparxei erwthsh sto stackoverflow gia language codes
-        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "el_GR");
-        // to apo katw sxolio katalavainei to default tou kinitou:
-        //speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
-        speechRecognizer.setRecognitionListener(new RecognitionListener() {
-            @Override
-            public void onReadyForSpeech(Bundle params) {
-            }
+    public void SpeechRecognizer(final Activity context, final AirCon airCon, final int menuFont) {
+            //speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
+            //speechRecognizer.startListening(speechRecognizerIntent);
+            speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+            //katalavainei ellinika. uparxei erwthsh sto stackoverflow gia language codes
+            speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");
+            // to apo katw sxolio katalavainei to default tou kinitou:
+            //speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+            speechRecognizer.setRecognitionListener(new RecognitionListener() {
+                @Override
+                public void onReadyForSpeech(Bundle params) {
+                }
 
-            @Override
-            public void onBeginningOfSpeech() {
-            }
+                @Override
+                public void onBeginningOfSpeech() {
+                }
 
-            @Override
-            public void onRmsChanged(float rmsdB) {
-            }
+                @Override
+                public void onRmsChanged(float rmsdB) {
+                }
 
-            @Override
-            public void onBufferReceived(byte[] buffer) {
-            }
+                @Override
+                public void onBufferReceived(byte[] buffer) {
+                }
 
-            @Override
-            public void onEndOfSpeech() {
-                speechRecognizer.stopListening();
-            }
+                @Override
+                public void onEndOfSpeech() {
+                    speechRecognizer.stopListening();
+                }
 
-            @Override
-            public void onError(int error) {
-            }
+                @Override
+                public void onError(int error) {
+                }
 
-            @Override
-            public void onPartialResults(Bundle partialResults) {
-            }
+                @Override
+                public void onPartialResults(Bundle partialResults) {
+                }
 
-            @Override
-            public void onEvent(int eventType, Bundle params) {
-            }
+                @Override
+                public void onEvent(int eventType, Bundle params) {
+                }
 
-            @Override
-            public void onResults(Bundle results) {
-                data = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
-                handleSpeechCommands(data, context, airCon, menuFont);
-                //data.get(0) einai ola osa katalave, opote ta vgazei se toast
-                //Toast.makeText(GPSActivity.this, data.get(0), Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onResults(Bundle results) {
+                    data = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+                    handleSpeechCommands(data, context, airCon, menuFont);
+                    //data.get(0) einai ola osa katalave, opote ta vgazei se toast
+                    //Toast.makeText(GPSActivity.this, data.get(0), Toast.LENGTH_SHORT).show();
+                }
+
+            });
     }
 
     public void handleSpeechCommands(ArrayList<String> data, Activity context, AirCon airCon, int menuFont)
@@ -104,9 +107,11 @@ public abstract class UtilitiesActivity extends AppCompatActivity {
         StringTokenizer tokenizer = new StringTokenizer(data.get(0));
         while(tokenizer.hasMoreTokens())
         {
-            if (tokenizer.nextToken().equalsIgnoreCase("προφίλ"))
+            if (tokenizer.nextToken().equalsIgnoreCase("yes"))
             {
                 handleSettingsBtn(context, airCon);
+                System.out.println("data" + data.get(0));
+
             }
             else if (tokenizer.nextToken().equalsIgnoreCase("μενού"))
             {
@@ -137,7 +142,7 @@ public abstract class UtilitiesActivity extends AppCompatActivity {
                     }
                 }
             }
-            else if (tokenizer.nextToken().equalsIgnoreCase("πίσω"))
+            else if (tokenizer.nextToken().equalsIgnoreCase("back"))
             {
                 handleBackBtn(context, contextToGoBackTo);
             }
@@ -168,7 +173,7 @@ public abstract class UtilitiesActivity extends AppCompatActivity {
         }
     }
 
-    private void searchSelectedAndStartActivity(String acName, Activity context, Class destination, int menuFont)
+    public void searchSelectedAndStartActivity(String acName, Activity context, Class destination, int menuFont)
     {
         for (AirCon ac : Utilities.getSelectedAirCons())
         {
