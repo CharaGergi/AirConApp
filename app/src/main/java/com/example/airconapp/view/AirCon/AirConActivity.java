@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.speech.SpeechRecognizer;
 import android.text.InputType;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -161,6 +162,13 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
             speechCommBtn.setBackgroundResource(R.drawable.mic_icon_muted);
         }
         speechCommBtn.setOnClickListener(this);
+
+        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
+        SpeechRecognizer(AirConActivity.this, airCon, MenuActivity.profile.getFontSize());
+        if (MenuActivity.profile.isSpeechCommands())
+        {
+            speechRecognizer.startListening(speechRecognizerIntent);
+        }
     }
 
     @Override
@@ -278,7 +286,7 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
             airCon.setPower(!airCon.isPower());
         }
         if (view == helpBtn){
-            handleHelpBtn(AirConActivity.this, menuFont);
+            handleHelpBtn(AirConActivity.this);
         }
     }
 

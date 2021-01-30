@@ -3,6 +3,7 @@ package com.example.airconapp.view.AdvancedACSettings;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.SpeechRecognizer;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
@@ -118,6 +119,13 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
         }
         speechCommBtn.setOnClickListener(this);
 
+        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
+        SpeechRecognizer(AdvancedACSettingsActivity.this, airCon, MenuActivity.profile.getFontSize());
+        if (MenuActivity.profile.isSpeechCommands())
+        {
+            speechRecognizer.startListening(speechRecognizerIntent);
+        }
+
         sleepSwitch = findViewById(R.id.sleepSwitch);
         sleepSwitch.setOnClickListener(this);
 
@@ -150,6 +158,9 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
         timerMinsEditTxt = findViewById(R.id.minsTimerEditTxt);
         timerOffHourEditTxt = findViewById(R.id.hoursTimerOffEditTxt);
         timerOffMinsEditTxt = findViewById(R.id.minsTimerOffEditTxt);
+
+        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
+        SpeechRecognizer(AdvancedACSettingsActivity.this, airCon, MenuActivity.profile.getFontSize());
     }
 
     @Override
@@ -189,7 +200,7 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
             startActivity(intent);
         }
         if (view == helpBtn){
-            handleHelpBtn(AdvancedACSettingsActivity.this, menuFont);
+            handleHelpBtn(AdvancedACSettingsActivity.this);
         }
         if (view == sleepSwitch)
         {

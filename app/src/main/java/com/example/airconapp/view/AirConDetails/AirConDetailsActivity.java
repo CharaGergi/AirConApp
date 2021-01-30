@@ -3,6 +3,7 @@ package com.example.airconapp.view.AirConDetails;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.SpeechRecognizer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -82,6 +83,13 @@ public class AirConDetailsActivity extends UtilitiesActivity implements View.OnC
 
         helpBtn = findViewById(R.id.helpBtn);
         helpBtn.setOnClickListener(this);
+
+        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
+        SpeechRecognizer(AirConDetailsActivity.this, airCon, MenuActivity.profile.getFontSize());
+        if (MenuActivity.profile.isSpeechCommands())
+        {
+            speechRecognizer.startListening(speechRecognizerIntent);
+        }
     }
 
     @Override
@@ -107,7 +115,7 @@ public class AirConDetailsActivity extends UtilitiesActivity implements View.OnC
             startActivity(intent);
         }
         if (view == helpBtn){
-            handleHelpBtn(AirConDetailsActivity.this, MenuActivity.profile.getFontSize());
+            handleHelpBtn(AirConDetailsActivity.this);
         }
     }
 

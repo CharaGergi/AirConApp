@@ -65,8 +65,13 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
             speechCommBtn.setBackgroundResource(R.drawable.mic_icon_muted);
         }
         speechCommBtn.setOnClickListener(this);
-        //utilitiesActivity.SpeechRecognizer(MenuActivity.this, null, profile.getFontSize());
-        //utilitiesActivity.speechRecognizer.startListening(utilitiesActivity.speechRecognizerIntent);
+
+        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
+        SpeechRecognizer(MenuActivity.this,airCon , profile.getFontSize());
+        if (profile.isSpeechCommands())
+        {
+            speechRecognizer.startListening(speechRecognizerIntent);
+        }
 
 
         selectedAirCons = (ListView) findViewById(R.id.selectedAirConsList);
@@ -107,8 +112,7 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
         helpBtn = findViewById(R.id.helpBtn);
         helpBtn.setOnClickListener(this);
 
-        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
-        SpeechRecognizer(MenuActivity.this,airCon , profile.getFontSize());
+
         System.out.println("speech :" + SpeechRecognizer.isRecognitionAvailable(this));
     }
 
@@ -117,17 +121,17 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
         super.onPause();
     }
 
-    @Override
+    /*@Override
     public void handleSpeechCommands(ArrayList<String> data, Activity context, AirCon airCon, int menuFont) {
         super.handleSpeechCommands(data, context, airCon, menuFont);
-        StringTokenizer tokenizer = new StringTokenizer(data.get(0));
+        *//*StringTokenizer tokenizer = new StringTokenizer(data.get(0));
         while(tokenizer.hasMoreTokens()) {
             if(tokenizer.nextToken().equalsIgnoreCase("επίλεξε")){
                 String name = tokenizer.nextToken(tokenizer.nextToken());
                 utilitiesActivity.searchSelectedAndStartActivity(name, MenuActivity.this, AirConActivity.class , profile.getFontSize());
             }
-        }
-    }
+        }*//*
+    }*/
 
     public void onClick(View view)
     {
@@ -152,7 +156,7 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
             startActivity(intent);
         }
         if (view == helpBtn){
-            handleHelpBtn(MenuActivity.this, MenuActivity.profile.getFontSize());
+            handleHelpBtn(MenuActivity.this);
         }
     }
 }

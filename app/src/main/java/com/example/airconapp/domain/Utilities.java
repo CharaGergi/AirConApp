@@ -11,10 +11,10 @@ public class Utilities
     public Utilities() {
         foundAirCons = new HashSet<>();
         selectedAirCons = new HashSet<>();
-        airCon1 = new AirCon("ToyotomiBed", 1 , 25, 2, 2, false, false, 0 , 3, true);
-        airCon2 = new AirCon("ToyotomiKit", 3, 20, 1, 3, false, true, 4 , 0, true);
-        airCon3 = new AirCon("ToyotomiLiv", 1, 14, 0, 1, true, false, 4 , 0, false);
-        airCon4 = new AirCon("ToyotomiBed2", 4, 19, 3, 0, false, false, 4 , 0, false);
+        airCon1 = new AirCon("Κρεβατοκάμαρα", 1 , 25, 2, 2, false, false, 0 , 3, true);
+        airCon2 = new AirCon("Κουζίνα", 3, 20, 1, 3, false, true, 4 , 0, true);
+        airCon3 = new AirCon("Σαλόνι", 1, 14, 0, 1, true, false, 4 , 0, false);
+        airCon4 = new AirCon("Παιδικό", 4, 19, 3, 0, false, false, 4 , 0, false);
         foundAirCons.add(airCon1);
         foundAirCons.add(airCon2);
         foundAirCons.add(airCon3);

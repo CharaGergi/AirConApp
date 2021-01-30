@@ -19,6 +19,8 @@ public class AirCon implements Serializable
     private Random random = new Random();
     private int randomSerial;
 
+    public AirCon() {}
+
     public AirCon(String name, int mainMode, int temperature, int airIntensity, int tilt, boolean sleepMode, boolean silentMode, int timer, int timerOff, boolean power) {
         this.name = name;
         this.mainMode = mainMode;

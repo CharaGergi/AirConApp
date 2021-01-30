@@ -2,6 +2,7 @@ package com.example.airconapp.view.SearchResults;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.SpeechRecognizer;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import com.example.airconapp.R;
 import com.example.airconapp.domain.AirCon;
 import com.example.airconapp.domain.Utilities;
+import com.example.airconapp.view.AdvancedACSettings.AdvancedACSettingsActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
 import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
 import com.example.airconapp.view.Profile.ProfileActivity;
@@ -60,6 +62,13 @@ public class SearchResultsActivity extends UtilitiesActivity implements View.OnC
         }
         speechCommBtn.setOnClickListener(this);
 
+        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
+        SpeechRecognizer(SearchResultsActivity.this, new AirCon(), MenuActivity.profile.getFontSize());
+        if (MenuActivity.profile.isSpeechCommands())
+        {
+            speechRecognizer.startListening(speechRecognizerIntent);
+        }
+
         settingsBtn = findViewById(R.id.settings_button);
         settingsBtn.setOnClickListener(this);
 
@@ -90,7 +99,7 @@ public class SearchResultsActivity extends UtilitiesActivity implements View.OnC
                 }
             }
         });
-}
+    }
 
     @Override
     protected void onPause() {
@@ -118,7 +127,7 @@ public class SearchResultsActivity extends UtilitiesActivity implements View.OnC
             startActivity(intent);
         }
         if(view == helpBtn){
-            handleHelpBtn(SearchResultsActivity.this, MenuActivity.profile.getFontSize());
+            handleHelpBtn(SearchResultsActivity.this);
         }
     }
 }

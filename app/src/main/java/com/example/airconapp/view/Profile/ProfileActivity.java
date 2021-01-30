@@ -3,11 +3,13 @@ package com.example.airconapp.view.Profile;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.speech.SpeechRecognizer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
 import com.example.airconapp.R;
 import com.example.airconapp.domain.AirCon;
+import com.example.airconapp.domain.Profile;
 import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
 import com.example.airconapp.view.AdvancedACSettings.AdvancedACSettingsActivity;
 import com.example.airconapp.view.AirCon.AirConActivity;
@@ -82,6 +84,13 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
         boolean micPref = micSettings.getBoolean("mic", MenuActivity.profile.isSpeechCommands());
         System.out.println("mic:"+micPref);
         micSwitch.setChecked(micPref);
+
+        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
+        SpeechRecognizer(ProfileActivity.this, airCon, MenuActivity.profile.getFontSize());
+        if (MenuActivity.profile.isSpeechCommands())
+        {
+            speechRecognizer.startListening(speechRecognizerIntent);
+        }
     }
 
     @Override
@@ -166,7 +175,7 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
             startActivity(intent);
         }
         if (view == helpBtn){
-            handleHelpBtn(ProfileActivity.this, MenuActivity.profile.getFontSize());
+            handleHelpBtn(ProfileActivity.this);
         }
     }
 
