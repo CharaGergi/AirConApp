@@ -4,14 +4,19 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import android.Manifest;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import com.example.airconapp.R;
 import com.example.airconapp.domain.AirCon;
@@ -39,6 +44,8 @@ public class UtilitiesActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         askVoicePermission();
+        hideUI();
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
     private void askVoicePermission() {
@@ -99,6 +106,17 @@ public class UtilitiesActivity extends AppCompatActivity {
             {
                 handleBackBtn(context, MenuActivity.class);
             }
+            else if (token.equalsIgnoreCase("εύρεση κλιματιστικών"))
+            {
+                findPreviousActivity(context.toString(), context);
+                searchSelectedAndStartActivity(null, context, SearchResultsActivity.class, menuFont);
+            }
+            else if (token.equalsIgnoreCase("βασικές"))
+            {
+                String acName = tokenizer.nextToken();
+                findPreviousActivity(context.toString(), context);
+                searchSelectedAndStartActivity(acName, context, AirConActivity.class, menuFont);
+            }
             else if (token.equalsIgnoreCase("λεπτομέρειες"))
             {
                 String acName = tokenizer.nextToken();
@@ -117,13 +135,8 @@ public class UtilitiesActivity extends AppCompatActivity {
                 int temp = Integer.parseInt(tokenizer.nextToken());
                 String acName = tokenizer.nextToken(String.valueOf(temp));
 
-                for (AirCon ac : Utilities.getSelectedAirCons())
-                {
-                    if (acName.equalsIgnoreCase(ac.getName()))
-                    {
-                        ac.setTemperature(temp);
-                    }
-                }
+                airCon = findSelectedAC(acName);
+                airCon.setTemperature(temp);
             }
             else if (token.equalsIgnoreCase("πίσω"))
             {
@@ -171,16 +184,21 @@ public class UtilitiesActivity extends AppCompatActivity {
 
     public void searchSelectedAndStartActivity(String acName, Activity context, Class destination, int menuFont)
     {
-        for (AirCon ac : Utilities.getSelectedAirCons())
+        Intent intent = new Intent(context, destination);
+        intent.putExtra("FONT", menuFont);
+        
+        if (acName != null)
         {
-            if (acName.equalsIgnoreCase(ac.getName()))
+            for (AirCon ac : Utilities.getSelectedAirCons())
             {
-                Intent intent = new Intent(context, destination);
-                intent.putExtra("FONT", menuFont);
-                intent.putExtra("AC", (Serializable) ac);
-                startActivity(intent);
+                if (acName.equalsIgnoreCase(ac.getName()))
+                {
+                    intent.putExtra("AC", (Serializable) ac);
+                }
             }
         }
+
+        startActivity(intent);
     }
 
     public void applyFontSize(Configuration configuration){
@@ -252,6 +270,18 @@ public class UtilitiesActivity extends AppCompatActivity {
         intent.putExtra("FONT", MenuActivity.profile.getFontSize());
         startActivity(intent);
     }
+    
+    public AirCon findSelectedAC(String acName)
+    {
+        for (AirCon ac : Utilities.getSelectedAirCons())
+        {
+            if (acName.equalsIgnoreCase(ac.getName()))
+            {
+                return ac;
+            }
+        }
+        return null;
+    }
 
     public String stringManipulation(String value)
     {
@@ -259,5 +289,33 @@ public class UtilitiesActivity extends AppCompatActivity {
         value = value.substring(0, pos);
         value = "class " + value;
         return value;
+    }
+
+    public void hideUI(){
+        int uiOptions = getWindow().getDecorView().getSystemUiVisibility();
+        int newUiOptions = uiOptions;
+
+        boolean isImmersiveModeEnabled =
+                ((uiOptions | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY) == uiOptions);
+        if (isImmersiveModeEnabled) {
+            System.out.println("Turning immersive mode mode off. ");
+        } else {
+            System.out.println("Turning immersive mode mode on.");
+        }
+
+        if (Build.VERSION.SDK_INT >= 14) {
+            newUiOptions ^= View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+        }
+
+        // has white space above logo/when status bar isn't shown
+        /*if (Build.VERSION.SDK_INT >= 16) {
+            newUiOptions ^= View.SYSTEM_UI_FLAG_FULLSCREEN;
+        }*/
+
+        if (Build.VERSION.SDK_INT >= 18) {
+            newUiOptions ^= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+        }
+
+        getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
     }
 }
