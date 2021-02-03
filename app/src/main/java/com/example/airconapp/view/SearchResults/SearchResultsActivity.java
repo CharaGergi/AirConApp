@@ -127,7 +127,7 @@ public class SearchResultsActivity extends UtilitiesActivity implements View.OnC
             startActivity(intent);
         }
         if(view == helpBtn){
-            handleHelpBtn(SearchResultsActivity.this);
+            handleHelpBtn(SearchResultsActivity.this, null);
         }
     }
 }

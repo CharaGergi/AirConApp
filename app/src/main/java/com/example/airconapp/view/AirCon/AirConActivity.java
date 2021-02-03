@@ -1,29 +1,24 @@
 package com.example.airconapp.view.AirCon;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.AppCompatButton;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.speech.SpeechRecognizer;
 import android.text.InputType;
 import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.airconapp.R;
 import com.example.airconapp.domain.AirCon;
-import com.example.airconapp.domain.Profile;
 import com.example.airconapp.domain.Utilities;
 import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
 import com.example.airconapp.view.AdvancedACSettings.AdvancedACSettingsActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
-import com.example.airconapp.view.SearchResults.SearchResultsActivity;
-
 import java.io.Serializable;
 
 public class AirConActivity extends UtilitiesActivity implements View.OnClickListener, AirConView {
@@ -143,6 +138,11 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
         speechCommBtn = findViewById(R.id.speechCommandsBtn);
 
         powerBtn = findViewById(R.id.powerBtn);
+        if (airCon.isPower()) {
+            powerBtn.setBackgroundResource(R.drawable.power_icon_red);
+        } else {
+            powerBtn.setBackgroundResource(R.drawable.power_icon_green);
+        }
         powerBtn.setOnClickListener(this);
 
         helpBtn = findViewById(R.id.helpBtn);
@@ -279,14 +279,14 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
         }
         if (view == powerBtn) {
             if (airCon.isPower()) {
-                powerBtn.setBackgroundTintList(getResources().getColorStateList(R.color.red));
+                powerBtn.setBackgroundResource(R.drawable.power_icon_green);
             } else {
-                powerBtn.setBackgroundTintList(getResources().getColorStateList(R.color.green));
+                powerBtn.setBackgroundResource(R.drawable.power_icon_red);
             }
             airCon.setPower(!airCon.isPower());
         }
         if (view == helpBtn){
-            handleHelpBtn(AirConActivity.this);
+            handleHelpBtn(AirConActivity.this, airCon);
         }
     }
 

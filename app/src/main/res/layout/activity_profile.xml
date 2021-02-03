@@ -29,7 +29,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/back_icon"
-        android:backgroundTint="@color/white"
+        style="@style/BackButton"
         app:layout_constraintBottom_toBottomOf="@+id/logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -41,7 +41,7 @@
         android:layout_height="55dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/home_icon_default"
-        android:backgroundTint="@color/colorPrimary"
+        style="@style/HomeButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -29,7 +29,7 @@
         android:layout_marginEnd="36dp"
         android:layout_marginTop="26.5dp"
         android:background="@drawable/settings_icon"
-        android:backgroundTint="@color/grey"
+        style="@style/SettingsButton"
         app:layout_constraintBottom_toBottomOf="@+id/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -42,7 +42,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/back_icon"
-        android:backgroundTint="@color/white"
+        style="@style/BackButton"
         app:layout_constraintBottom_toBottomOf="@+id/logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -67,7 +67,7 @@
         android:layout_marginTop="26.5dp"
         android:layout_marginEnd="236dp"
         android:background="@drawable/pencil_icon"
-        android:backgroundTint="#7D7D7D"
+        style="@style/EditButton"
         app:layout_constraintEnd_toStartOf="@+id/settings_button"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -216,8 +216,7 @@
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/power_icon"
-        android:backgroundTint="#E2202C"
+        android:background="@drawable/power_icon_red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -244,7 +243,6 @@
         android:id="@+id/advancedSettingsTxtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         android:text="@string/advancedSettings"
         android:textColor="@color/light_black"
         android:textSize="23sp"
@@ -257,12 +255,13 @@
         android:id="@+id/advancedSettingsBtn"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="2dp"
         android:background="@drawable/button_up"
         android:rotation="90"
         app:layout_constraintBottom_toTopOf="@+id/powerBtn"
-        app:layout_constraintStart_toEndOf="@+id/advancedSettingsTxtView" />
+        app:layout_constraintStart_toEndOf="@+id/advancedSettingsTxtView"
+        app:layout_constraintTop_toBottomOf="@+id/angleTxtView" />
 
     <Button
         android:id="@+id/helpBtn"

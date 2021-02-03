@@ -148,7 +148,7 @@ public class UtilitiesActivity extends AppCompatActivity {
             }
             else if (token.equalsIgnoreCase("βοήθεια"))
             {
-               handleHelpBtn(context);
+               handleHelpBtn(context, airCon);
             }
             else
             {
@@ -263,11 +263,12 @@ public class UtilitiesActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void handleHelpBtn(Activity context)
+    public void handleHelpBtn(Activity context, AirCon airCon)
     {
         Intent intent = new Intent(context, HelpActivity.class);
         intent.putExtra("PREVIOUS_ACTIVITY", context.toString());
         intent.putExtra("FONT", MenuActivity.profile.getFontSize());
+        intent.putExtra("AC", (Serializable) airCon);
         startActivity(intent);
     }
     

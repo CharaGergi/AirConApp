@@ -175,7 +175,7 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
             startActivity(intent);
         }
         if (view == helpBtn){
-            handleHelpBtn(ProfileActivity.this);
+            handleHelpBtn(ProfileActivity.this, airCon);
         }
     }
 

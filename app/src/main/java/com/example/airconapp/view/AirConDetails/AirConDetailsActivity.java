@@ -115,7 +115,7 @@ public class AirConDetailsActivity extends UtilitiesActivity implements View.OnC
             startActivity(intent);
         }
         if (view == helpBtn){
-            handleHelpBtn(AirConDetailsActivity.this);
+            handleHelpBtn(AirConDetailsActivity.this, airCon);
         }
     }
 

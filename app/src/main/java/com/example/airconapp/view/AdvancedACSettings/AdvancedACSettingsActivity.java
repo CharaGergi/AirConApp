@@ -200,7 +200,7 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
             startActivity(intent);
         }
         if (view == helpBtn){
-            handleHelpBtn(AdvancedACSettingsActivity.this);
+            handleHelpBtn(AdvancedACSettingsActivity.this, airCon);
         }
         if (view == sleepSwitch)
         {

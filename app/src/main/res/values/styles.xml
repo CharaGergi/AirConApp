@@ -4,4 +4,24 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
     </style>
+
+    <style name="HomeButton" parent="Base.TextAppearance.AppCompat.Button" >
+        <item name="backgroundTint">@color/colorPrimary</item>
+    </style>
+
+    <style name="BackButton" parent="Base.TextAppearance.AppCompat.Button" >
+        <item name="backgroundTint">@color/white</item>
+    </style>
+
+    <style name="SettingsButton" parent="Base.TextAppearance.AppCompat.Button" >
+        <item name="backgroundTint">@color/grey</item>
+    </style>
+
+    <style name="PowerButton" parent="Base.TextAppearance.AppCompat.Button" >
+        <item name="backgroundTint">#E2202C</item>
+    </style>
+
+    <style name="EditButton" parent="Base.TextAppearance.AppCompat.Button" >
+        <item name="backgroundTint">#7D7D7D</item>
+    </style>
 </resources>

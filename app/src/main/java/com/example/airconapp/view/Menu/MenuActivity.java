@@ -104,7 +104,7 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
             });
         }
 
-        airCon = new AirCon("Test", 1 , 25, 2, 2, false, false, 0 , 3, true);
+        airCon = new AirCon();
 
         searchBtn = findViewById(R.id.searchBtn);
         searchBtn.setOnClickListener(this);
@@ -156,7 +156,7 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
             startActivity(intent);
         }
         if (view == helpBtn){
-            handleHelpBtn(MenuActivity.this);
+            handleHelpBtn(MenuActivity.this, airCon);
         }
     }
 }
