@@ -12,10 +12,8 @@ import android.widget.Toast;
 import com.example.airconapp.R;
 import com.example.airconapp.domain.AirCon;
 import com.example.airconapp.domain.Utilities;
-import com.example.airconapp.view.AdvancedACSettings.AdvancedACSettingsActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
 import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
-import com.example.airconapp.view.Profile.ProfileActivity;
 
 public class SearchResultsActivity extends UtilitiesActivity implements View.OnClickListener {
     private Button backBtn;
@@ -63,7 +61,7 @@ public class SearchResultsActivity extends UtilitiesActivity implements View.OnC
         speechCommBtn.setOnClickListener(this);
 
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
-        SpeechRecognizer(SearchResultsActivity.this, new AirCon(), MenuActivity.profile.getFontSize());
+        SpeechRecognizer(SearchResultsActivity.this, MenuActivity.profile.getFontSize());
         if (MenuActivity.profile.isSpeechCommands())
         {
             speechRecognizer.startListening(speechRecognizerIntent);
@@ -109,13 +107,16 @@ public class SearchResultsActivity extends UtilitiesActivity implements View.OnC
     public void onClick(View view) {
         if (view == backBtn)
         {
-            handleBackBtn(SearchResultsActivity.this, MenuActivity.class);
+            handleBackBtn(SearchResultsActivity.this, MenuActivity.class, new AirCon());
         }
         if (view == soundCommBtn) {
             toggleSoundBtn(soundCommBtn);
         }
         if (view == speechCommBtn) {
             toggleSpeechBtn(speechCommBtn);
+            if(MenuActivity.profile.isSpeechCommands()) {
+                speechRecognizer.startListening(speechRecognizerIntent);
+            }
         }
         if (view == settingsBtn) {
             handleSettingsBtn(SearchResultsActivity.this, null);

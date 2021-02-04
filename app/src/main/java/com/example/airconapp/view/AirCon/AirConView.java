@@ -1,7 +1,6 @@
 package com.example.airconapp.view.AirCon;
 
 import android.widget.Button;
-import android.widget.EditText;
 
 public interface AirConView
 {

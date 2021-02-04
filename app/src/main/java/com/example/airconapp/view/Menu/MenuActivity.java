@@ -1,6 +1,5 @@
 package com.example.airconapp.view.Menu;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.SpeechRecognizer;
@@ -9,19 +8,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.MultiAutoCompleteTextView;
-
 import com.example.airconapp.R;
 import com.example.airconapp.domain.AirCon;
 import com.example.airconapp.domain.Profile;
 import com.example.airconapp.domain.Utilities;
 import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
-import com.example.airconapp.view.AdvancedACSettings.AdvancedACSettingsActivity;
 import com.example.airconapp.view.AirCon.AirConActivity;
 import com.example.airconapp.view.SearchResults.SearchResultsActivity;
-
-import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 public class MenuActivity extends UtilitiesActivity implements View.OnClickListener
 {
@@ -33,8 +26,6 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
     private ListView selectedAirCons;
     private String[] selectedAirConsNames;
     static public Profile profile = new Profile(0, true, true);
-    static public Utilities utilities = new Utilities();
-    static public UtilitiesActivity utilitiesActivity = new UtilitiesActivity();
     static private AirCon airCon;
 
     @Override
@@ -67,12 +58,11 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
         speechCommBtn.setOnClickListener(this);
 
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
-        SpeechRecognizer(MenuActivity.this,airCon , profile.getFontSize());
+        SpeechRecognizer(MenuActivity.this, profile.getFontSize());
         if (profile.isSpeechCommands())
         {
             speechRecognizer.startListening(speechRecognizerIntent);
         }
-
 
         selectedAirCons = (ListView) findViewById(R.id.selectedAirConsList);
 
@@ -111,9 +101,6 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
 
         helpBtn = findViewById(R.id.helpBtn);
         helpBtn.setOnClickListener(this);
-
-
-        System.out.println("speech :" + SpeechRecognizer.isRecognitionAvailable(this));
     }
 
     @Override
@@ -121,22 +108,10 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
         super.onPause();
     }
 
-    /*@Override
-    public void handleSpeechCommands(ArrayList<String> data, Activity context, AirCon airCon, int menuFont) {
-        super.handleSpeechCommands(data, context, airCon, menuFont);
-        *//*StringTokenizer tokenizer = new StringTokenizer(data.get(0));
-        while(tokenizer.hasMoreTokens()) {
-            if(tokenizer.nextToken().equalsIgnoreCase("επίλεξε")){
-                String name = tokenizer.nextToken(tokenizer.nextToken());
-                utilitiesActivity.searchSelectedAndStartActivity(name, MenuActivity.this, AirConActivity.class , profile.getFontSize());
-            }
-        }*//*
-    }*/
-
     public void onClick(View view)
     {
         if (view == settingsBtn) {
-            handleSettingsBtn(MenuActivity.this, null);
+            handleSettingsBtn(MenuActivity.this, airCon);
         }
         if (view == soundCommBtn) {
             toggleSoundBtn(soundCommBtn);
@@ -145,9 +120,7 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
             toggleSpeechBtn(speechCommBtn);
             if(profile.isSpeechCommands()) {
                 speechRecognizer.startListening(speechRecognizerIntent);
-                System.out.println("speech :" + SpeechRecognizer.isRecognitionAvailable(this));
             }
-
         }
         if (view == searchBtn)
         {

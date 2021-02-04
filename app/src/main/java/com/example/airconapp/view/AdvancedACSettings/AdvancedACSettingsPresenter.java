@@ -17,7 +17,6 @@ public class AdvancedACSettingsPresenter
     public int onChangeIntensity()
     {
         airCon.setAirIntensity(view.getAirConAirDens().getProgress());
-
         return view.getAirConAirDens().getProgress();
     }
 
@@ -25,23 +24,17 @@ public class AdvancedACSettingsPresenter
     {
         int mins = Integer.parseInt(view.getAirConHTimer());
         int hours = Integer.parseInt(view.getAirConMTimer());
-
         int total = (hours*60) + mins;
-
         airCon.setTimer(total);
-
         return total;
     }
 
     public int onSetTimerOff()
-        {
+    {
         int mins = Integer.parseInt(view.getAirConMTimerOff());
         int hours = Integer.parseInt(view.getAirConHTimerOff());
-
         int total = (hours*60) + mins;
-
         airCon.setTimerOff(total);
-
         return total;
     }
 

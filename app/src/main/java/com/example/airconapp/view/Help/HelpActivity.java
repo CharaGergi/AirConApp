@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.speech.SpeechRecognizer;
 import android.view.View;
 import android.widget.Button;
-
+import android.widget.TextView;
 import com.example.airconapp.R;
 import com.example.airconapp.domain.AirCon;
 import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
@@ -15,11 +15,20 @@ import com.example.airconapp.view.AirConDetails.AirConDetailsActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
 import com.example.airconapp.view.Profile.ProfileActivity;
 import com.example.airconapp.view.SearchResults.SearchResultsActivity;
-
 import java.io.Serializable;
 
-
 public class HelpActivity extends UtilitiesActivity implements View.OnClickListener {
+    private TextView top;
+    private TextView search;
+    private TextView basic;
+    private TextView temp;
+    private TextView advanced;
+    private TextView details;
+    private TextView onOff;
+    private TextView menu;
+    private TextView back;
+    private TextView settings;
+    private TextView help;
     private Button backBtn;
     private Button homeBtn;
     private String prev_activity;
@@ -37,7 +46,17 @@ public class HelpActivity extends UtilitiesActivity implements View.OnClickListe
 
         MenuActivity.profile.setFontSize(intent.getIntExtra("FONT", 1));
 
-        applyFontSize(getResources().getConfiguration());
+        top = findViewById(R.id.helpTxtViewTop);
+        search = findViewById(R.id.helpTxtViewSearch);
+        basic = findViewById(R.id.helpTxtViewBasic);
+        temp = findViewById(R.id.helpTxtViewTemp);
+        advanced = findViewById(R.id.helpTxtViewAdvanced);
+        details = findViewById(R.id.helpTxtViewDetails);
+        onOff = findViewById(R.id.helpTxtViewOnOff);
+        menu = findViewById(R.id.helpTxtViewMenu);
+        back = findViewById(R.id.helpTxtViewBack);
+        settings = findViewById(R.id.helpTxtViewSettings);
+        help = findViewById(R.id.helpTxtViewInfo);
 
         backBtn = findViewById(R.id.back_button);
         backBtn.setOnClickListener(this);
@@ -46,7 +65,7 @@ public class HelpActivity extends UtilitiesActivity implements View.OnClickListe
         homeBtn.setOnClickListener(this);
 
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
-        SpeechRecognizer(HelpActivity.this, airCon, MenuActivity.profile.getFontSize());
+        SpeechRecognizer(HelpActivity.this, MenuActivity.profile.getFontSize());
         if (MenuActivity.profile.isSpeechCommands())
         {
             speechRecognizer.startListening(speechRecognizerIntent);
@@ -92,6 +111,5 @@ public class HelpActivity extends UtilitiesActivity implements View.OnClickListe
             intent.putExtra("AC", (Serializable) airCon);
             startActivity(intent);
         }
-
     }
 }

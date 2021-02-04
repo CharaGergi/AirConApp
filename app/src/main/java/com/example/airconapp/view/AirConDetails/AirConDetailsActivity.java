@@ -1,22 +1,17 @@
 package com.example.airconapp.view.AirConDetails;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.SpeechRecognizer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.example.airconapp.R;
 import com.example.airconapp.domain.AirCon;
 import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
 import com.example.airconapp.view.AdvancedACSettings.AdvancedACSettingsActivity;
-import com.example.airconapp.view.AirCon.AirConActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
-
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class AirConDetailsActivity extends UtilitiesActivity implements View.OnClickListener, AirConDetailsView
 {
@@ -85,7 +80,7 @@ public class AirConDetailsActivity extends UtilitiesActivity implements View.OnC
         helpBtn.setOnClickListener(this);
 
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
-        SpeechRecognizer(AirConDetailsActivity.this, airCon, MenuActivity.profile.getFontSize());
+        SpeechRecognizer(AirConDetailsActivity.this, MenuActivity.profile.getFontSize());
         if (MenuActivity.profile.isSpeechCommands())
         {
             speechRecognizer.startListening(speechRecognizerIntent);
@@ -119,14 +114,6 @@ public class AirConDetailsActivity extends UtilitiesActivity implements View.OnC
         }
     }
 
-  /*  @Override
-    public void handleSpeechCommands(ArrayList<String> data, Activity context, AirCon airCon, int menuFont)
-    {
-        super.handleSpeechCommands(data, context, airCon, menuFont);
-
-        // stuff to do
-    }
-*/
     @Override
     public String getAirConName() {
         return airConName.getText().toString();

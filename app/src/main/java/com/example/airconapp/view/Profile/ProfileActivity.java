@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.Switch;
 import com.example.airconapp.R;
 import com.example.airconapp.domain.AirCon;
-import com.example.airconapp.domain.Profile;
 import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
 import com.example.airconapp.view.AdvancedACSettings.AdvancedACSettingsActivity;
 import com.example.airconapp.view.AirCon.AirConActivity;
@@ -41,11 +40,10 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
         System.out.println(MenuActivity.profile.isSoundCommands() );
         System.out.println(MenuActivity.profile.isSpeechCommands() );
 
-
-
         Intent intent = getIntent();
         prev_activity = intent.getStringExtra("PREVIOUS_ACTIVITY");
         prev_activity = stringManipulation(prev_activity);
+        System.out.println("PREVIOUS ACTIVITY : " +prev_activity);
 
         airCon = (AirCon) intent.getSerializableExtra("AC");
 
@@ -86,7 +84,7 @@ public class ProfileActivity extends UtilitiesActivity implements View.OnClickLi
         micSwitch.setChecked(micPref);
 
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
-        SpeechRecognizer(ProfileActivity.this, airCon, MenuActivity.profile.getFontSize());
+        SpeechRecognizer(ProfileActivity.this, MenuActivity.profile.getFontSize());
         if (MenuActivity.profile.isSpeechCommands())
         {
             speechRecognizer.startListening(speechRecognizerIntent);

@@ -8,7 +8,6 @@ public class Profile
     private boolean speechCommands = true;
     private boolean soundCommands = true;
 
-
     Profile() {}
 
     public Profile(int fontSize, boolean speechCommands, boolean soundCommands) {
@@ -37,12 +36,11 @@ public class Profile
         this.speechCommands = speechCommands;
     }
 
-    public void setSoundCommands(boolean soundCommands) {this.soundCommands = soundCommands; }
-
-
+    public void setSoundCommands(boolean soundCommands) {
+        this.soundCommands = soundCommands;
+    }
 
     public HashSet<AirCon> search() {
-        //HashSet<AirCon> rtemp = new HashSet<>();
         HashSet<AirCon> result = new HashSet<>(Utilities.getAirCons());
 
         return result;

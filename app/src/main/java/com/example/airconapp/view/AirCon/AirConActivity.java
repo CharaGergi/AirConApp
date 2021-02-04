@@ -1,7 +1,6 @@
 package com.example.airconapp.view.AirCon;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.widget.AppCompatButton;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.example.airconapp.R;
 import com.example.airconapp.domain.AirCon;
 import com.example.airconapp.domain.Utilities;
@@ -76,8 +74,7 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
 
             if (!foundFlag)
             {
-                Toast.makeText(AirConActivity.this, "This AC does not exist (?)", Toast.LENGTH_SHORT).show();
-                handleBackBtn(AirConActivity.this, MenuActivity.class);
+                handleBackBtn(AirConActivity.this, MenuActivity.class, airCon);
             }
         }
 
@@ -88,10 +85,6 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
 
         temperatureEditTxt = findViewById(R.id.tempEditTxt);
         temperatureEditTxt.setText(String.valueOf(airCon.getTemperature()));
-
-        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE); // if the attribute in the manifest doesn't work, use this
-
-        // need to implement the way that the activity will get the AC name (maybe MVP)
 
         airConPresenter = new AirConPresenter(this, airCon);
 
@@ -164,7 +157,7 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
         speechCommBtn.setOnClickListener(this);
 
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
-        SpeechRecognizer(AirConActivity.this, airCon, MenuActivity.profile.getFontSize());
+        SpeechRecognizer(AirConActivity.this, MenuActivity.profile.getFontSize());
         if (MenuActivity.profile.isSpeechCommands())
         {
             speechRecognizer.startListening(speechRecognizerIntent);
@@ -179,7 +172,7 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void onClick(View view) {
         if (view == backBtn) {
-            handleBackBtn(AirConActivity.this, MenuActivity.class);
+            handleBackBtn(AirConActivity.this, MenuActivity.class, airCon);
         }
         if (view == settingsBtn) {
             handleSettingsBtn(AirConActivity.this, airCon);
@@ -276,6 +269,9 @@ public class AirConActivity extends UtilitiesActivity implements View.OnClickLis
         }
         if (view == speechCommBtn) {
             toggleSpeechBtn(speechCommBtn);
+            if(MenuActivity.profile.isSpeechCommands()) {
+                speechRecognizer.startListening(speechRecognizerIntent);
+            }
         }
         if (view == powerBtn) {
             if (airCon.isPower()) {

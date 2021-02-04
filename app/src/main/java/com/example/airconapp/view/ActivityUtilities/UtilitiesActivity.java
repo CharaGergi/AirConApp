@@ -4,13 +4,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import android.Manifest;
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
@@ -32,13 +30,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class UtilitiesActivity extends AppCompatActivity {
-
+public class UtilitiesActivity extends AppCompatActivity
+{
     public SpeechRecognizer speechRecognizer;
     final public Intent speechRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
     private final int RECORD_AUDIO_REQUEST_CODE = 1;
     private ArrayList<String> data;
-    private Class contextToGoBackTo;
+    private static Class contextToGoBackTo;
+    private static AirCon airCon;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,7 +51,7 @@ public class UtilitiesActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.RECORD_AUDIO}, RECORD_AUDIO_REQUEST_CODE);
     }
 
-    public void SpeechRecognizer(final Activity context, final AirCon airCon, final int menuFont) {
+    public void SpeechRecognizer(final Activity context, final int menuFont) {
         speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
         speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "el_GR");
         //speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault()); // device default
@@ -100,55 +99,101 @@ public class UtilitiesActivity extends AppCompatActivity {
             String token = tokenizer.nextToken();
             if (token.equalsIgnoreCase("ρυθμίσεις"))
             {
+                contextToGoBackTo = findPreviousActivity(context.toString());
                 handleSettingsBtn(context, airCon);
             }
-            else if (token.equalsIgnoreCase("μενού"))
+            else if (token.equalsIgnoreCase("εύρεση"))
             {
-                handleBackBtn(context, MenuActivity.class);
-            }
-            else if (token.equalsIgnoreCase("εύρεση κλιματιστικών"))
-            {
-                findPreviousActivity(context.toString(), context);
-                searchSelectedAndStartActivity(null, context, SearchResultsActivity.class, menuFont);
+                if (tokenizer.nextToken().equalsIgnoreCase("κλιματιστικών"))
+                {
+                    contextToGoBackTo = findPreviousActivity(context.toString());
+                    searchSelectedAndStartActivity(new AirCon().getName(), context, SearchResultsActivity.class, menuFont);
+                }
             }
             else if (token.equalsIgnoreCase("βασικές"))
             {
                 String acName = tokenizer.nextToken();
-                findPreviousActivity(context.toString(), context);
+                contextToGoBackTo = findPreviousActivity(context.toString());
                 searchSelectedAndStartActivity(acName, context, AirConActivity.class, menuFont);
             }
             else if (token.equalsIgnoreCase("λεπτομέρειες"))
             {
                 String acName = tokenizer.nextToken();
-                System.out.println("AC name : " +acName);
-                findPreviousActivity(context.toString(), context);
+                contextToGoBackTo = findPreviousActivity(context.toString());
                 searchSelectedAndStartActivity(acName, context, AirConDetailsActivity.class, menuFont);
             }
             else if (token.equalsIgnoreCase("πρόσθετες"))
             {
                 String acName = tokenizer.nextToken();
-                findPreviousActivity(context.toString(), context);
+                contextToGoBackTo = findPreviousActivity(context.toString());
                 searchSelectedAndStartActivity(acName, context, AdvancedACSettingsActivity.class, menuFont);
             }
             else if (token.equalsIgnoreCase("θερμοκρασία"))
             {
                 int temp = Integer.parseInt(tokenizer.nextToken());
-                String acName = tokenizer.nextToken(String.valueOf(temp));
+                String acName = tokenizer.nextToken();
 
-                airCon = findSelectedAC(acName);
-                airCon.setTemperature(temp);
+                System.out.println("temp given : " +temp+ " ac given : " +acName);
+
+                for (AirCon ac : Utilities.getSelectedAirCons())
+                {
+                    if (acName.equalsIgnoreCase(ac.getName()))
+                    {
+                        ac.setTemperature(temp);
+                    }
+                }
+            }
+            else if (token.equalsIgnoreCase("άνοιξε"))
+            {
+                String acName = tokenizer.nextToken();
+
+                System.out.println("ac given : " +acName);
+
+                for (AirCon ac : Utilities.getSelectedAirCons())
+                {
+                    if (acName.equalsIgnoreCase(ac.getName()))
+                    {
+                        if (!ac.isPower())
+                        {
+                            ac.setPower(true);
+                            System.out.println("air con : " +ac.getName()+ " power : " + ac.isPower());
+                        }
+                        else return;
+                    }
+                }
+            }
+            else if (token.equalsIgnoreCase("κλείσε"))
+            {
+                String acName = tokenizer.nextToken();
+
+                System.out.println("ac given : " +acName);
+
+                for (AirCon ac : Utilities.getSelectedAirCons())
+                {
+                    if (acName.equalsIgnoreCase(ac.getName()))
+                    {
+                        if (ac.isPower())
+                        {
+                            ac.setPower(false);
+                            System.out.println("air con : " +ac.getName()+ " power : " + ac.isPower());
+                        }
+                        else return;
+                    }
+                }
             }
             else if (token.equalsIgnoreCase("πίσω"))
             {
-                handleBackBtn(context, contextToGoBackTo);
+                if (airCon == null) airCon = new AirCon();
+                handleBackBtn(context, contextToGoBackTo, airCon);
             }
             else if (token.equalsIgnoreCase("αρχική"))
             {
-                handleBackBtn(context, MenuActivity.class);
+                handleBackBtn(context, MenuActivity.class, airCon);
             }
             else if (token.equalsIgnoreCase("βοήθεια"))
             {
-               handleHelpBtn(context, airCon);
+                contextToGoBackTo = findPreviousActivity(context.toString());
+                handleHelpBtn(context, airCon);
             }
             else
             {
@@ -157,32 +202,32 @@ public class UtilitiesActivity extends AppCompatActivity {
         }
     }
 
-    private void findPreviousActivity(String prev_activity, Activity context)
+    private Class findPreviousActivity(String prev_activity)
     {
         prev_activity = stringManipulation(prev_activity);
         if (prev_activity.equalsIgnoreCase(AirConActivity.class.toString()))
         {
-            contextToGoBackTo =  AirConActivity.class;
+            return AirConActivity.class;
         }
         else if (prev_activity.equalsIgnoreCase(AdvancedACSettingsActivity.class.toString()))
         {
-            contextToGoBackTo =  AdvancedACSettingsActivity.class;
+            return AdvancedACSettingsActivity.class;
         }
         else if (prev_activity.equalsIgnoreCase(AirConDetailsActivity.class.toString()))
         {
-            contextToGoBackTo =  AirConDetailsActivity.class;
+            return AirConDetailsActivity.class;
         }
         else if (prev_activity.equalsIgnoreCase(SearchResultsActivity.class.toString()))
         {
-            contextToGoBackTo =  SearchResultsActivity.class;
+            return SearchResultsActivity.class;
         }
         else
         {
-            contextToGoBackTo =  MenuActivity.class;
+            return MenuActivity.class;
         }
     }
 
-    public void searchSelectedAndStartActivity(String acName, Activity context, Class destination, int menuFont)
+    private void searchSelectedAndStartActivity(String acName, Activity context, Class destination, int menuFont)
     {
         Intent intent = new Intent(context, destination);
         intent.putExtra("FONT", menuFont);
@@ -196,6 +241,10 @@ public class UtilitiesActivity extends AppCompatActivity {
                     intent.putExtra("AC", (Serializable) ac);
                 }
             }
+        }
+        else
+        {
+            intent.putExtra("AC", (Serializable) new AirCon());
         }
 
         startActivity(intent);
@@ -248,10 +297,12 @@ public class UtilitiesActivity extends AppCompatActivity {
         MenuActivity.profile.setSpeechCommands(!MenuActivity.profile.isSpeechCommands());
     }
 
-    public void handleBackBtn(Activity context, Class destination)
+    public void handleBackBtn(Activity context, Class destination, AirCon airCon)
     {
+        if (airCon == null) airCon = new AirCon();
         Intent intent = new Intent(context, destination);
         intent.putExtra("FONT", MenuActivity.profile.getFontSize());
+        intent.putExtra("AC", (Serializable) airCon);
         startActivity(intent);
     }
 
@@ -271,18 +322,6 @@ public class UtilitiesActivity extends AppCompatActivity {
         intent.putExtra("AC", (Serializable) airCon);
         startActivity(intent);
     }
-    
-    public AirCon findSelectedAC(String acName)
-    {
-        for (AirCon ac : Utilities.getSelectedAirCons())
-        {
-            if (acName.equalsIgnoreCase(ac.getName()))
-            {
-                return ac;
-            }
-        }
-        return null;
-    }
 
     public String stringManipulation(String value)
     {
@@ -292,7 +331,7 @@ public class UtilitiesActivity extends AppCompatActivity {
         return value;
     }
 
-    public void hideUI(){
+    private void hideUI(){
         int uiOptions = getWindow().getDecorView().getSystemUiVisibility();
         int newUiOptions = uiOptions;
 

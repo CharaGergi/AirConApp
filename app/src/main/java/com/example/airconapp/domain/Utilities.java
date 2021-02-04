@@ -25,9 +25,15 @@ public class Utilities
         return foundAirCons;
     }
 
-    public static void setAirCons(HashSet foundAirCons) { Utilities.foundAirCons = foundAirCons;}
+    public static void setAirCons(HashSet foundAirCons) {
+        Utilities.foundAirCons = foundAirCons;
+    }
 
-    public static HashSet<AirCon> getSelectedAirCons() { return selectedAirCons; }
+    public static HashSet<AirCon> getSelectedAirCons() {
+        return selectedAirCons;
+    }
 
-    public static void setSelectedAirCons(HashSet<AirCon> selectedAirCons) { Utilities.selectedAirCons = selectedAirCons;}
+    public static void setSelectedAirCons(HashSet<AirCon> selectedAirCons) {
+        Utilities.selectedAirCons = selectedAirCons;
+    }
 }

@@ -1,12 +1,9 @@
 package com.example.airconapp.view.AdvancedACSettings;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.SpeechRecognizer;
-import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
@@ -15,17 +12,13 @@ import android.widget.Switch;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
 import com.example.airconapp.R;
 import com.example.airconapp.domain.AirCon;
 import com.example.airconapp.domain.Utilities;
 import com.example.airconapp.view.ActivityUtilities.UtilitiesActivity;
 import com.example.airconapp.view.AirCon.AirConActivity;
 import com.example.airconapp.view.AirConDetails.AirConDetailsActivity;
-import com.example.airconapp.view.Help.HelpActivity;
 import com.example.airconapp.view.Menu.MenuActivity;
-import com.example.airconapp.view.Profile.ProfileActivity;
-
 import java.io.Serializable;
 
 public class AdvancedACSettingsActivity extends UtilitiesActivity implements View.OnClickListener, AdvancedACSettingsView
@@ -120,7 +113,7 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
         speechCommBtn.setOnClickListener(this);
 
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
-        SpeechRecognizer(AdvancedACSettingsActivity.this, airCon, MenuActivity.profile.getFontSize());
+        SpeechRecognizer(AdvancedACSettingsActivity.this, MenuActivity.profile.getFontSize());
         if (MenuActivity.profile.isSpeechCommands())
         {
             speechRecognizer.startListening(speechRecognizerIntent);
@@ -160,7 +153,7 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
         timerOffMinsEditTxt = findViewById(R.id.minsTimerOffEditTxt);
 
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
-        SpeechRecognizer(AdvancedACSettingsActivity.this, airCon, MenuActivity.profile.getFontSize());
+        SpeechRecognizer(AdvancedACSettingsActivity.this, MenuActivity.profile.getFontSize());
     }
 
     @Override
@@ -192,6 +185,9 @@ public class AdvancedACSettingsActivity extends UtilitiesActivity implements Vie
         }
         if (view == speechCommBtn) {
             toggleSpeechBtn(speechCommBtn);
+            if(MenuActivity.profile.isSpeechCommands()) {
+                speechRecognizer.startListening(speechRecognizerIntent);
+            }
         }
         if (view == detailsBtn){
             Intent intent = new Intent(AdvancedACSettingsActivity.this, AirConDetailsActivity.class);

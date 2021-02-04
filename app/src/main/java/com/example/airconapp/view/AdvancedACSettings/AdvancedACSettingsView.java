@@ -1,6 +1,5 @@
 package com.example.airconapp.view.AdvancedACSettings;
 
-import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.Switch;
