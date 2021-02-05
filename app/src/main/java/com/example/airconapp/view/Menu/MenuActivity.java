@@ -27,6 +27,7 @@ public class MenuActivity extends UtilitiesActivity implements View.OnClickListe
     private String[] selectedAirConsNames;
     static public Profile profile = new Profile(0, true, true);
     static private AirCon airCon;
+    static public Utilities utilities = new Utilities();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
