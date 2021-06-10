@@ -1,4 +1,4 @@
-**ANDROID APPLICATION - REMOTE CONTROL FOR AIR CONDITIONERS**
+**ANDROID APPLICATION - REMOTE CONTROL FOR AIR CONDITIONS**
 
 The application focuses on visually-impaired people, that's why it has functionalities like voice commands, but
 the goal is to be an easy-to-use app for all regardless age or familiarity with technology.
