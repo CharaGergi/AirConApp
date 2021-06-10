@@ -1,3 +1,7 @@
-Assignment done for the course of Human-Computer Interaction.
+**ANDROID APPLICATION - REMOTE CONTROL FOR AIR CONDITIONERS**
 
-Done alongside [@CharaGergi](https://github.com/CharaGergi) and [@Vasiliki Vasilopoulou](https://github.com/vasilopoulou).
+The application focuses on visually-impaired people, that's why it has functionalities like voice commands, but
+the goal is to be an easy-to-use app for all regardless age or familiarity with technology.
+
+The assignment was done for the course of Human-Computer Interaction. 
+Done alongside [@DioTsolakou](https://github.com/DioTsolakou) and [@Vasiliki Vasilopoulou](https://github.com/vasilopoulou).
